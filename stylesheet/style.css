@@ -1141,7 +1141,7 @@ ul.vertnav-top li > a > span > .cat-label {
 }
 /* horizontal + mobile menu trigger */
 #nav > li > a {
-	font-size: 14px;
+	font-size: 11px;
 	text-transform: uppercase /*1.3333em*/;
 	font-family: 'Rubik', sans-serif;
 	font-weight: 500;
@@ -1303,6 +1303,10 @@ ul.level1 {
 	-o-transition: all 0.5s;
 	transition: all 0.5s;
 	padding-left: 10px;
+}
+
+.level2{
+	text-transform: uppercase !important;
 }
 /* 4th level */
 #nav ul.level2 {
@@ -8277,7 +8281,6 @@ ul.shipping-pro li {
 	float: left;
 	margin-top: 0px;
 	font-weight: 500;
-	margin-left: 10px;
 	border:none;
 	border-radius: 999px;
 	font-family: 'Rubik', sans-serif;
@@ -12788,7 +12791,7 @@ select#shipping-address-select {
     border-bottom: none;
     text-align: center;
     background-repeat: no-repeat;
-    background-image: url(../images/category-bg.jpg);
+    background-image: url(../images/bannerimage/img1.png);
     margin-top: -135px;
 }
 
