@@ -181,12 +181,12 @@ html {
 }
 .mobile-menu .icon-plus:before {
   font-size: 12px;
-   content: "\f067";
+   content: "\f107";
    font-family:FontAwesome
 }
 
 .mobile-menu .icon-minus:before {
-    content: "\f068";
+    content: "\f106";
 	font-family:FontAwesome;
 	 font-size: 12px;
 }
