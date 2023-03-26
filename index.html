@@ -54,7 +54,10 @@
                     <div class="fl-nav-menu">
                         <nav>
                             <div class="mm-toggle-wrap">
-                                <div class="mm-toggle"><i class="icon-align-justify"></i><span
+                                <div class="mm-toggle">
+                                    <i class="icon-align-justify" id="menu_icon" onclick="change_image();"></i>
+                                    <i class="icon-align-cross" id="menu_icon_cross" style="display: none;" onclick="change_image_rep();"></i>
+                                    <span
                                         class="mm-label">Menu</span></div>
                             </div>
                             <div class="nav-inner">
@@ -1478,6 +1481,18 @@
     }
 </script>
 <!-- Hot Deals Timer 1-->
+
+<script>
+    function change_image(){
+        document.getElementById('menu_icon').style.display = 'none';
+        document.getElementById('menu_icon_cross').style.display = 'block';
+    }
+
+    function change_image_rep (){
+        document.getElementById('menu_icon').style.display = 'block';
+        document.getElementById('menu_icon_cross').style.display = 'none';
+    }
+</script>
 
 </body>
 

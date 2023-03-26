@@ -58,8 +58,11 @@
                     <div class="fl-nav-menu">
                         <nav>
                             <div class="mm-toggle-wrap">
-                                <div class="mm-toggle"><i class="icon-align-justify"></i><span
-                                        class="mm-label">Menu</span></div>
+                                <div class="mm-toggle">
+                                    <i class="icon-align-justify" id="menu_icon" onclick="change_image();"></i>
+                                    <i class="icon-align-cross" id="menu_icon_cross" style="display: none;" onclick="change_image_rep();"></i>
+                                    <span
+                                            class="mm-label">Menu</span></div>
                             </div>
                             <div class="nav-inner">
                                 <!-- BEGIN NAV -->
@@ -786,6 +789,18 @@
 <script type="text/javascript" src="js/owl.carousel.min.js"></script>
 <script type="text/javascript" src="js/jquery.mobile-menu.min.js"></script>
 
+
+<script>
+    function change_image(){
+        document.getElementById('menu_icon').style.display = 'none';
+        document.getElementById('menu_icon_cross').style.display = 'block';
+    }
+
+    function change_image_rep (){
+        document.getElementById('menu_icon').style.display = 'block';
+        document.getElementById('menu_icon_cross').style.display = 'none';
+    }
+</script>
 
 </body>
 
