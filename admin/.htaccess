@@ -1,0 +1,66 @@
+ErrorDocument 404 http://localhost/W-Wayshk-Admin/404.php
+
+RewriteEngine on
+
+RewriteRule ^Login index.php [NE,L]
+
+RewriteRule ^Logout logout.php [NE,L]
+
+RewriteRule ^Dashboard dashboard.php [NE,L]
+
+RewriteRule ^Banner home_banner.php [NE,L]
+
+RewriteRule ^Product\-Analysis productAnalysis.php [NE,L]
+
+RewriteRule ^Business-Analysis businessAnalysis.php [NE,L]
+
+RewriteRule ^Store\-Analysis storeAnalysis.php [NE,L]
+
+RewriteRule ^Add-Category addCategory.php [NE,L]
+
+RewriteRule ^Category category.php [NE,L]
+
+RewriteRule ^Add-Sub-Category addSubCategory.php [NE,L]
+
+RewriteRule ^Sub-Category subcategory.php [NE,L]
+
+RewriteRule ^Add-Store addStore.php [NE,L]
+
+RewriteRule ^Store store.php [NE,L]
+
+RewriteRule ^Add-Product addProduct.php [NE,L]
+
+RewriteRule ^Product product.php [NE,L]
+
+RewriteRule ^Add-Course addCourse.php [NE,L]
+
+RewriteRule ^Course course.php [NE,L]
+
+RewriteRule ^Add-Promo-Code addPromoCode.php [NE,L]
+
+RewriteRule ^Promo-Code promoCode.php [NE,L]
+
+RewriteRule ^Pending-Order pendingOrder.php [NE,L]
+
+RewriteRule ^Confirm-Order confirmOrder.php [NE,L]
+
+RewriteRule ^Report report.php [NE,L]
+
+RewriteRule ^Customer customer.php [NE,L]
+
+RewriteRule ^Add-Admin addAdmin.php [NE,L]
+
+RewriteRule ^Admin admin.php [NE,L]
+
+RewriteRule ^Profile profile.php [NE,L]
+
+RewriteRule ^Insert insert.php [NE,L]
+
+RewriteRule ^Update update.php [NE,L]
+
+RewriteRule ^Delete delete.php [NE,L]
+
+RewriteRule ^Add-Stock addStock.php [NE,L]
+
+RewriteRule ^Stock stock.php [NE,L]
+

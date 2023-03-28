@@ -1460,7 +1460,7 @@ if (typeof Object.create !== 'function') {
 	};
 })(jQuery, window, document);
 /* Zoom image */
-if (jQuery('#product-zoom').length > 0) {
+/*if (jQuery('#product-zoom').length > 0) {
 	jQuery('#product-zoom').elevateZoom({
 		zoomType: "inner",
 		cursor: "crosshair",
@@ -1468,4 +1468,4 @@ if (jQuery('#product-zoom').length > 0) {
 		zoomWindowFadeOut: 750,
 		gallery: 'gallery_01'
 	});
-}
+}*/
