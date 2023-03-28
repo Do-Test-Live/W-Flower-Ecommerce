@@ -74,6 +74,21 @@ VALUES ('$sub_cat_name','$category','$image','$inserted_at')");
                 </script>";
 }
 
+if (isset($_POST["add_product_type"])) {
+    $category = $db_handle->checkValue($_POST['category']);
+    $subcategory = $db_handle->checkValue($_POST['subcategory']);
+    $product_type = $db_handle->checkValue($_POST['product_type']);
+    $inserted_at = date("Y-m-d H:i:s");
+
+    $insert = $db_handle->insertQuery("INSERT INTO `product_type`(`product_type`, `cat_id`, `sub_cat_id`, `inserted_at`) 
+VALUES ('$product_type','$category','$subcategory','$inserted_at')");
+
+    echo "<script>
+                document.cookie = 'alert = 3;';
+                window.location.href='Add-Product-Type';
+                </script>";
+}
+
 
 
 

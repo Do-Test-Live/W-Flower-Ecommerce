@@ -11,7 +11,7 @@ if (!isset($_SESSION['userid'])) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Add Sub-Category | Four Seasons</title>
+    <title>Add Product Type | Four Seasons</title>
     <?php include 'include/css.php'; ?>
 </head>
 <body>
@@ -50,7 +50,7 @@ if (!isset($_SESSION['userid'])) {
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Add Sub-Category</h4>
+                            <h4 class="card-title">Add Product Type</h4>
                         </div>
                         <div class="card-body">
                             <div class="basic-form">
@@ -58,7 +58,7 @@ if (!isset($_SESSION['userid'])) {
                                     <div class="form-row">
                                         <div class="form-group col-md-12">
                                             <label>Select Product Category *</label>
-                                            <select class="form-control default-select" id="sel1" name="category" required>
+                                            <select class="form-control default-select" name="category" id="category" required>
                                                 <option value="">Choose Category</option>
                                                 <?php
                                                 $cat = $db_handle->runQuery("SELECT * FROM `category`");
@@ -72,24 +72,18 @@ if (!isset($_SESSION['userid'])) {
                                             </select>
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <label>Sub-Category Name</label>
-                                            <input type="text" class="form-control" name="sub_cat_name" placeholder="" required>
+                                            <label>Select Product Sub-Category *</label>
+                                            <select class="form-control" id="subcategory" name="subcategory" required>
+                                                <option value="">Choose Sub-Category</option>
+                                            </select>
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <label>Sub-Category Image</label>
-                                            <div class="input-group mb-3">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text">Upload</span>
-                                                </div>
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" name="sub_cat_image" accept="image/png, image/jpeg, image/jpg" required>
-                                                    <label class="custom-file-label">Choose file (png, jpg, jpeg)</label>
-                                                </div>
-                                            </div>
+                                            <label>Product Type Name</label>
+                                            <input type="text" class="form-control" name="product_type" placeholder="" required>
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-primary w-50" name="add_sub_cat">Submit</button>
+                                        <button type="submit" class="btn btn-primary w-50" name="add_product_type">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -111,5 +105,35 @@ if (!isset($_SESSION['userid'])) {
 ***********************************-->
 
 <?php include 'include/js.php'; ?>
+<script>
+    $(document).ready(function() {
+        // Bind an event listener to the first select field
+        $('#category').on('change', function() {
+            // Get the selected value from the first select field
+            var selectedValue = $(this).val();
+
+            // Make an AJAX request to fetch the data based on the selected value
+            $.ajax({
+                url: 'fetch-sub-cat.php', // change this to the URL of your PHP script
+                method: 'GET', // or 'GET', depending on how you want to send the data
+                data: { selectedValue: selectedValue },
+                dataType: 'json', // or 'html', depending on how you're returning the data
+                success: function(data) {
+                    // Clear the current options in the second select field
+                    $('#subcategory').empty();
+
+                    // Add the new options based on the fetched data
+                    $.each(data, function(index, value) {
+                        $('#subcategory').append('<option value="' + value.sub_cat_id  + '">' + value.sub_cat_name + '</option>');
+                    });
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error(textStatus, errorThrown);
+                }
+            });
+        });
+    });
+
+</script>
 </body>
 </html>
