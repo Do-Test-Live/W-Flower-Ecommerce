@@ -95,11 +95,12 @@ VALUES ('$product_type','$category','$subcategory','$inserted_at')");
 if (isset($_POST["add_product"])) {
     $product_name = $db_handle->checkValue($_POST['product_name']);
     $product_code = $db_handle->checkValue($_POST['product_code']);
-    $product_weight = $db_handle->checkValue($_POST['product_weight']);
     $product_category = $db_handle->checkValue($_POST['product_category']);
     $selling_price = $db_handle->checkValue($_POST['selling_price']);
     $product_status = $db_handle->checkValue($_POST['product_status']);
     $product_description = $db_handle->checkValue($_POST['product_description']);
+    $product_type = $db_handle->checkValue($_POST['product_type']);
+    $subcategory = $db_handle->checkValue($_POST['subcategory']);
     $inserted_at = date("Y-m-d H:i:s");
 
     $products_image='';
@@ -126,13 +127,15 @@ if (isset($_POST["add_product"])) {
         $products_image = '';
     }
 
-    $insert = $db_handle->insertQuery("INSERT INTO `product`(`category_id`, `product_code`,`product_weight`, `p_name`,`product_price`, `description`, `p_image`,`status`, `inserted_at`) VALUES ('$product_category','$product_code','$product_weight','$product_name','$selling_price','$product_description','$products_image','$product_status','$inserted_at')");
+    $insert = $db_handle->insertQuery("INSERT INTO `product`(`category_id`, `product_code`, `p_name`,`product_price`, `description`, `p_image`,`status`, `inserted_at`) VALUES ('$product_category','$product_code','$product_name','$selling_price','$product_description','$products_image','$product_status','$inserted_at')");
 
     echo "<script>
                 document.cookie = 'alert = 3;';
                 window.location.href='Add-Product';
                 </script>";
 }
+
+
 
 if(isset($_POST['add_course'])){
     $course_name = $db_handle->checkValue($_POST['course_name']);

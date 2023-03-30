@@ -58,19 +58,19 @@ if (!isset($_SESSION['userid'])) {
                                     <div class="form-row">
                                         <div class="form-group col-md-12">
                                             <label>Product Name *</label>
-                                            <input type="text" class="form-control" name="product_name" placeholder="" required>
+                                            <input type="text" class="form-control" name="product_name" placeholder=""
+                                                   required>
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label>Product Code</label>
-                                            <input type="text" class="form-control" name="product_code" placeholder="" required>
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                            <label>Product Weight</label>
-                                            <input type="text" class="form-control" name="product_weight" placeholder="" required>
+                                            <input type="text" class="form-control" name="product_code" placeholder=""
+                                                   required>
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label>Select Product Category *</label>
-                                            <select class="form-control default-select" id="sel1" name="product_category" required>
+                                            <select class="form-control default-select" id="category"
+                                                    name="product_category" required>
+                                                <option>Choose Category</option>
                                                 <?php
                                                 $cat = $db_handle->runQuery("SELECT * FROM `category`");
                                                 $row_count = $db_handle->numRows("SELECT * FROM `category`");
@@ -83,8 +83,21 @@ if (!isset($_SESSION['userid'])) {
                                             </select>
                                         </div>
                                         <div class="form-group col-md-12">
+                                            <label>Select Product Sub-Category *</label>
+                                            <select class="form-control" id="subcategory" name="subcategory">
+                                                <option value="">Choose Sub-Category</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label>Select Product Type *</label>
+                                            <select class="form-control" id="product_type" name="product_type">
+                                                <option value="">Choose Product Type</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-12">
                                             <label>Product Selling Price *</label>
-                                            <input type="number" class="form-control" placeholder="" name="selling_price" required>
+                                            <input type="number" class="form-control" placeholder=""
+                                                   name="selling_price" required>
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label>Product Image *</label>
@@ -93,25 +106,29 @@ if (!isset($_SESSION['userid'])) {
                                                     <span class="input-group-text">Upload</span>
                                                 </div>
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" name="product_image[]" multiple required>
+                                                    <input type="file" class="custom-file-input" name="product_image[]"
+                                                           multiple required>
                                                     <label class="custom-file-label">Choose file</label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label>Product Status *</label>
-                                            <select class="form-control default-select" id="sel1" name="product_status" required>
+                                            <select class="form-control default-select" id="sel1" name="product_status"
+                                                    required>
                                                 <option value="1" selected>Active</option>
                                                 <option value="0">Deactivate</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label>Product Description *</label>
-                                            <textarea class="form-control" rows="4" id="comment" name="product_description" required></textarea>
+                                            <textarea class="form-control" rows="4" id="comment"
+                                                      name="product_description" required></textarea>
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <button type="submit" name="add_product" class="btn btn-primary w-50">Submit</button>
+                                        <button type="submit" name="add_product" class="btn btn-primary w-50">Submit
+                                        </button>
                                     </div>
                                 </form>
                             </div>
@@ -133,6 +150,66 @@ if (!isset($_SESSION['userid'])) {
 ***********************************-->
 
 <?php include 'include/js.php'; ?>
+
+<script>
+    $(document).ready(function() {
+        // Bind an event listener to the first select field
+        $('#category').on('change', function() {
+            // Get the selected value from the first select field
+            var selectedValue = $(this).val();
+
+            // Make an AJAX request to fetch the data based on the selected value
+            $.ajax({
+                url: 'fetch-sub-cat.php', // change this to the URL of your PHP script
+                method: 'GET', // or 'GET', depending on how you want to send the data
+                data: { selectedValue: selectedValue },
+                dataType: 'json', // or 'html', depending on how you're returning the data
+                success: function(data) {
+                    // Clear the current options in the second select field
+                    $('#subcategory').empty();
+
+                    // Add the new options based on the fetched data
+                    $.each(data, function(index, value) {
+                        $('#subcategory').append('<option value="' + value.sub_cat_id  + '">' + value.sub_cat_name + '</option>');
+                    });
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error(textStatus, errorThrown);
+                }
+            });
+        });
+    });
+
+    $(document).ready(function() {
+        // Bind an event listener to the first select field
+        $('#subcategory').on('change', function() {
+            // Get the selected value from the first select field
+            var selectedValue = $(this).val();
+
+            // Make an AJAX request to fetch the data based on the selected value
+            $.ajax({
+                url: 'fetch-product-type.php', // change this to the URL of your PHP script
+                method: 'GET', // or 'GET', depending on how you want to send the data
+                data: { selectedValue: selectedValue },
+                dataType: 'json', // or 'html', depending on how you're returning the data
+                success: function(data) {
+                    console.log(data);
+                    // Clear the current options in the second select field
+                    $('#product_type').empty();
+
+                    // Add the new options based on the fetched data
+                    $.each(data, function(index, value) {
+                        $('#product_type').append('<option value="' + value.product_type_id  + '">' + value.product_type + '</option>');
+                    });
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error(textStatus, errorThrown);
+                }
+            });
+        });
+    });
+
+</script>
 
 </body>
 </html>

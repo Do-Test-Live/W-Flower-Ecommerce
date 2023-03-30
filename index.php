@@ -1,3 +1,9 @@
+<?php
+session_start();
+require_once("admin/include/dbController.php");
+$db_handle = new DBController();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,542 +34,16 @@
 </head>
 <body>
 <div id="page">
-    <header>
-        <div class="container">
-            <div class="row">
-                <div class="container">
-                    <div class="row">
-                        <div class="header-banner">
-                            <div class="assetBlock">
-                                <div id="slideshow">
-                                    <p>Special Offers! - Get <span>50%</span> off on vegetables </p>
-                                    <p>sale <span>40%</span> of on bulk shopping! </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="header">
-            <div class="container">
-                <div class="header-container row">
-                    <div class="logo"><a href="index.html" title="index">
-                        <div><img src="images/logo.png" alt="logo"></div>
-                    </a></div>
-                    <div class="fl-nav-menu">
-                        <nav>
-                            <div class="mm-toggle-wrap">
-                                <div class="mm-toggle">
-                                    <i class="icon-align-justify" id="menu_icon" onclick="change_image();"></i>
-                                    <i class="icon-align-cross" id="menu_icon_cross" style="display: none;" onclick="change_image_rep();"></i>
-                                    <span
-                                        class="mm-label">Menu</span></div>
-                            </div>
-                            <div class="nav-inner">
-                                <!-- BEGIN NAV -->
-                                <ul id="nav" class="hidden-xs">
-                                    <!--<li class="mega-menu"><a class="level-top" href="category.html"><span>valentine's day flower</span></a>
-                                        <div class="level0-wrapper dropdown-6col">
-                                            <div class="container">
-                                                <div class="level0-wrapper2">
-                                                    <div class="col-1">
-                                                        <div class="nav-block nav-block-center">
-                                                            &lt;!&ndash;mega menu&ndash;&gt;
-                                                            <ul class="level0">
-                                                                <li class="level3 nav-6-1 parent item"><a
-                                                                        href="category.html"><span>valentine bouquet</span></a>
-                                                                </li>
-                                                                &lt;!&ndash;level3 nav-6-1 parent item&ndash;&gt;
-                                                                <li class="level3 nav-6-1 parent item"><a
-                                                                        href="category.html"><span>valentine's day gift</span></a>
-                                                                </li>
-                                                            </ul>
-                                                            &lt;!&ndash;level0&ndash;&gt;
-                                                        </div>
-                                                        &lt;!&ndash;nav-block nav-block-center&ndash;&gt;
-                                                    </div>
-                                                    &lt;!&ndash;col-1&ndash;&gt;
-                                                    <div class="col-2">
-                                                        <div class="menu_image"><a title="" href="category.html"><img
-                                                                alt="menu_image" src="images/flower/1.jpg"></a></div>
-                                                    </div>
-                                                    &lt;!&ndash;col-2&ndash;&gt;
-                                                </div>
-                                                &lt;!&ndash;level0-wrapper2&ndash;&gt;
-                                            </div>
-                                            &lt;!&ndash;container&ndash;&gt;
-                                        </div>
-                                        &lt;!&ndash;level0-wrapper dropdown-6col&ndash;&gt;
-                                        &lt;!&ndash;mega menu&ndash;&gt;
-                                    </li>-->
-                                    <li class="mega-menu"><a class="level-top" href="category.html"><span>bouquet</span></a>
-                                        <div class="level0-wrapper dropdown-6col">
-                                            <div class="container">
-                                                <div class="level0-wrapper2">
-                                                    <div class="col-1">
-                                                        <div class="nav-block nav-block-center">
-                                                            <!--mega menu-->
-                                                            <ul class="level0">
-                                                                <li class="level3 nav-6-1 parent item"><a
-                                                                        href="category.html"><span>bouquet of flowers</span></a>
-                                                                    <!--sub sub category-->
-                                                                    <ul class="level1">
-                                                                        <li class="level2 nav-6-1-1"><a
-                                                                                href="category.html"><span>Rose</span></a>
-                                                                        </li>
-                                                                        <!--level2 nav-6-1-1-->
-                                                                        <li class="level2 nav-6-1-1"><a
-                                                                                href="category.html"><span>hydrangea</span></a>
-                                                                        </li>
-                                                                        <!--level2 nav-6-1-1-->
-                                                                        <li class="level2 nav-6-1-1"><a
-                                                                                href="category.html"><span>sunflower</span></a>
-                                                                        </li>
-                                                                        <!--level2 nav-6-1-1-->
-                                                                        <li class="level2 nav-6-1-1"><a
-                                                                                href="category.html"><span>starry sky</span></a>
-                                                                        </li>
-                                                                        <li class="level2 nav-6-1-1"><a
-                                                                                href="category.html"><span>tulip</span></a>
-                                                                        </li>
-                                                                        <li class="level2 nav-6-1-1"><a
-                                                                                href="category.html"><span>carnation</span></a>
-                                                                        </li>
-                                                                        <li class="level2 nav-6-1-1"><a
-                                                                                href="category.html"><span>calla lily</span></a>
-                                                                        </li>
-                                                                        <!--level2 nav-6-1-1-->
-                                                                    </ul>
-                                                                    <!--level1-->
-                                                                    <!--sub sub category-->
-                                                                </li>
-                                                                <!--level3 nav-6-1 parent item-->
-                                                                <li class="level3 nav-6-1 parent item"><a
-                                                                        href="category.html"><span>immortal bouquet</span></a>
-                                                                    <!--sub sub category-->
-                                                                    <ul class="level1">
-                                                                        <li class="level2 nav-6-1-1"><a
-                                                                                href="category.html"><span>standard</span></a>
-                                                                        </li>
-                                                                        <!--level2 nav-6-1-1-->
-                                                                        <li class="level2 nav-6-1-1"><a
-                                                                                href="category.html"><span>mini</span></a>
-                                                                        </li>
-                                                                        <!--level2 nav-6-1-1-->
-                                                                        <li class="level2 nav-6-1-1"><a
-                                                                                href="category.html"><span>single bouquet</span></a>
-                                                                        </li>
-                                                                        <!--level2 nav-6-1-1-->
-                                                                    </ul>
-                                                                    <!--level1-->
-                                                                    <!--sub sub category-->
-                                                                </li>
-                                                            </ul>
-                                                            <!--level0-->
-                                                        </div>
-                                                        <!--nav-block nav-block-center-->
-                                                    </div>
-                                                    <!--col-1-->
-                                                    <div class="col-2">
-                                                        <div class="menu_image"><a title="" href="category.html"><img
-                                                                alt="menu_image" src="images/flower/2.jpg"></a></div>
-                                                    </div>
-                                                    <!--col-2-->
-                                                </div>
-                                                <!--level0-wrapper2-->
-                                            </div>
-                                            <!--container-->
-                                        </div>
-                                        <!--level0-wrapper dropdown-6col-->
-                                        <!--mega menu-->
-                                    </li>
-                                    <li class="mega-menu"><a class="level-top" href="category.html"><span>rose bear</span></a>
-                                        <div class="level0-wrapper dropdown-6col">
-                                            <div class="container">
-                                                <div class="level0-wrapper2">
-                                                    <div class="col-1">
-                                                        <div class="nav-block nav-block-center">
-                                                            <!--mega menu-->
-                                                            <ul class="level0">
-                                                                <li class="level3 nav-6-1 parent item"><a
-                                                                        href="category.html"><span>standard</span></a>
-                                                                </li>
-                                                                <!--level3 nav-6-1 parent item-->
-                                                                <li class="level3 nav-6-1 parent item"><a
-                                                                        href="category.html"><span>mini</span></a>
-                                                                </li>
-                                                                <li class="level3 nav-6-1 parent item"><a
-                                                                        href="category.html"><span>giant</span></a>
-                                                                </li>
-                                                            </ul>
-                                                            <!--level0-->
-                                                        </div>
-                                                        <!--nav-block nav-block-center-->
-                                                    </div>
-                                                    <!--col-1-->
-                                                    <div class="col-2">
-                                                        <div class="menu_image"><a title="" href="category.html"><img
-                                                                alt="menu_image" src="images/flower/3.jpg"></a></div>
-                                                    </div>
-                                                    <!--col-2-->
-                                                </div>
-                                                <!--level0-wrapper2-->
-                                            </div>
-                                            <!--container-->
-                                        </div>
-                                        <!--level0-wrapper dropdown-6col-->
-                                        <!--mega menu-->
-                                    </li>
-                                    <li class="mega-menu"><a class="level-top" href="category.html"><span>Flowers</span></a>
-                                        <div class="level0-wrapper dropdown-6col">
-                                            <div class="container">
-                                                <div class="level0-wrapper2">
-                                                    <div class="col-1">
-                                                        <div class="nav-block nav-block-center">
-                                                            <!--mega menu-->
-                                                            <ul class="level0">
-                                                                <li class="level3 nav-6-1 parent item"><a
-                                                                        href="category.html"><span>bouquet of flowers</span></a>
-                                                                    <!--sub sub category-->
-                                                                    <ul class="level1">
-                                                                        <li class="level2 nav-6-1-1"><a
-                                                                                href="category.html"><span>Rose</span></a>
-                                                                        </li>
-                                                                        <!--level2 nav-6-1-1-->
-                                                                        <li class="level2 nav-6-1-1"><a
-                                                                                href="category.html"><span>hydrangea</span></a>
-                                                                        </li>
-                                                                        <!--level2 nav-6-1-1-->
-                                                                        <li class="level2 nav-6-1-1"><a
-                                                                                href="category.html"><span>sunflower</span></a>
-                                                                        </li>
-                                                                        <!--level2 nav-6-1-1-->
-                                                                        <li class="level2 nav-6-1-1"><a
-                                                                                href="category.html"><span>starry sky</span></a>
-                                                                        </li>
-                                                                        <li class="level2 nav-6-1-1"><a
-                                                                                href="category.html"><span>tulip</span></a>
-                                                                        </li>
-                                                                        <li class="level2 nav-6-1-1"><a
-                                                                                href="category.html"><span>carnation</span></a>
-                                                                        </li>
-                                                                        <li class="level2 nav-6-1-1"><a
-                                                                                href="category.html"><span>calla lily</span></a>
-                                                                        </li>
-                                                                        <!--level2 nav-6-1-1-->
-                                                                    </ul>
-                                                                    <!--level1-->
-                                                                    <!--sub sub category-->
-                                                                </li>
-                                                                <!--level3 nav-6-1 parent item-->
-                                                                <li class="level3 nav-6-1 parent item"><a
-                                                                        href="category.html"><span>flower box</span></a>
-                                                                </li>
-                                                                <li class="level3 nav-6-1 parent item"><a
-                                                                        href="category.html"><span>table flower</span></a>
-                                                                </li>
-                                                                <li class="level3 nav-6-1 parent item"><a
-                                                                        href="category.html"><span>bottle flower</span></a>
-                                                                </li>
-                                                            </ul>
-                                                            <!--level0-->
-                                                        </div>
-                                                        <!--nav-block nav-block-center-->
-                                                    </div>
-                                                    <!--col-1-->
-                                                    <div class="col-2">
-                                                        <div class="menu_image"><a title="" href="category.html"><img
-                                                                alt="menu_image" src="images/flower/4.jpg"></a></div>
-                                                    </div>
-                                                    <!--col-2-->
-                                                </div>
-                                                <!--level0-wrapper2-->
-                                            </div>
-                                            <!--container-->
-                                        </div>
-                                        <!--level0-wrapper dropdown-6col-->
-                                        <!--mega menu-->
-                                    </li>
-                                    <li class="mega-menu"><a class="level-top" href="category.html"><span>preserved flower</span></a>
-                                        <div class="level0-wrapper dropdown-6col">
-                                            <div class="container">
-                                                <div class="level0-wrapper2">
-                                                    <div class="col-1">
-                                                        <div class="nav-block nav-block-center">
-                                                            <!--mega menu-->
-                                                            <ul class="level0">
-                                                                <li class="level3 nav-6-1 parent item"><a
-                                                                        href="category.html"><span>Glass Cover</span></a>
-                                                                </li>
-                                                                <!--level3 nav-6-1 parent item-->
-                                                                <li class="level3 nav-6-1 parent item"><a
-                                                                        href="category.html"><span>immortal bouquet</span></a>
-                                                                    <!--sub sub category-->
-                                                                    <ul class="level1">
-                                                                        <li class="level2 nav-6-1-1"><a
-                                                                                href="category.html"><span>standard</span></a>
-                                                                        </li>
-                                                                        <!--level2 nav-6-1-1-->
-                                                                        <li class="level2 nav-6-1-1"><a
-                                                                                href="category.html"><span>mini</span></a>
-                                                                        </li>
-                                                                        <!--level2 nav-6-1-1-->
-                                                                        <li class="level2 nav-6-1-1"><a
-                                                                                href="category.html"><span>single bouquet</span></a>
-                                                                        </li>
-                                                                    </ul>
-                                                                    <!--level1-->
-                                                                    <!--sub sub category-->
-                                                                </li>
-                                                                <li class="level3 nav-6-1 parent item"><a
-                                                                        href="category.html"><span>Preserved Flower × Bluetooth Speaker</span></a>
-                                                                </li>
-                                                                <li class="level3 nav-6-1 parent item"><a
-                                                                        href="category.html"><span>fantasy series</span></a>
-                                                                </li>
-                                                                <li class="level3 nav-6-1 parent item"><a
-                                                                        href="category.html"><span>flower box</span></a>
-                                                                </li>
-                                                            </ul>
-                                                            <!--level0-->
-                                                        </div>
-                                                        <!--nav-block nav-block-center-->
-                                                    </div>
-                                                    <!--col-1-->
-                                                    <div class="col-2">
-                                                        <div class="menu_image"><a title="" href="category.html"><img
-                                                                alt="menu_image" src="images/flower/4.jpg"></a></div>
-                                                    </div>
-                                                    <!--col-2-->
-                                                </div>
-                                                <!--level0-wrapper2-->
-                                            </div>
-                                            <!--container-->
-                                        </div>
-                                        <!--level0-wrapper dropdown-6col-->
-                                        <!--mega menu-->
-                                    </li>
-                                    <li class="mega-menu"><a class="level-top" href="category.html"><span>orchid</span></a></li>
-                                    <li class="mega-menu"><a class="level-top" href="category.html"><span>flower box</span></a></li>
-                                </ul>
-                                <!--nav-->
-                            </div>
-                        </nav>
-                    </div>
-
-                    <!--row-->
-
-                    <div class="fl-header-right">
-                        <div class="fl-links">
-                            <div class="no-js"><a title="Company" class="clicker"></a>
-                                <div class="fl-nav-links">
-                                    <div class="language-currency">
-                                        <div class="fl-language">
-                                            <ul class="lang">
-                                                <li><a href="category.html"> <img src="images/english.png" alt="English"> <span>English</span>
-                                                </a></li>
-                                                <li><a href="category.html"> <img src="images/francais.png" alt="French"> <span>French</span>
-                                                </a></li>
-                                                <li><a href="category.html"> <img src="images/german.png" alt="German">
-                                                    <span>German</span> </a></li>
-                                            </ul>
-                                        </div>
-                                        <!--fl-language-->
-                                        <!-- END For version 1,2,3,4,6 -->
-                                        <!-- For version 1,2,3,4,6 -->
-                                        <div class="fl-currency">
-                                            <ul class="currencies_list">
-                                                <li><a href="category.html" title="EGP"> £</a></li>
-                                                <li><a href="category.html" title="EUR"> €</a></li>
-                                                <li><a href="category.html" title="USD"> $</a></li>
-                                            </ul>
-                                        </div>
-                                        <!--fl-currency-->
-                                        <!-- END For version 1,2,3,4,6 -->
-                                    </div>
-                                    <ul class="links">
-                                        <li><a href="account.html" title="My Account">My Account</a></li>
-                                        <li><a href="checkout.html" title="Checkout">Checkout</a></li>
-                                        <li class="last"><a href="login.html" title="Login"><span>Login</span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="fl-cart-contain">
-                            <div class="mini-cart">
-                                <div class="basket"><a href="category.html"><span> 2 </span></a></div>
-                                <!--fl-mini-cart-content-->
-                            </div>
-                        </div>
-                        <!--mini-cart-->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+    <?php include('include/header.php'); ?>
     <!--container-->
 
     <div class="content container" style="padding: 0;">
         <!--banner section starts-->
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-                <div class="item active">
-                    <img src="images/bannerimage/1.png" alt="Los Angeles">
-                </div>
-
-                <div class="item">
-                    <img src="images/bannerimage/2.png" alt="Chicago">
-                </div>
-
-                <div class="item">
-                    <img src="images/bannerimage/3.png" alt="New York">
-                </div>
-            </div>
-
-            <!-- Left and right controls -->
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
+        <?php include('include/banner.php'); ?>
         <!--banner section ends-->
 
         <!--Category slider Start-->
-        <div class="top-cate">
-            <div class="featured-pro container">
-                <div class="row">
-                    <div class="slider-items-products">
-                        <div id="top-categories" class="product-flexslider hidden-buttons">
-                            <div class="slider-items slider-width-col3 products-grid">
-                                <div class="item">
-                                    <a href="category.html">
-                                        <div class="pro-img"><img src="images/category/1.jpg"
-                                                                  alt="Fresh Organic Mustard Leaves ">
-                                            <div class="pro-info">Valentine Bouquet</div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <!-- Item -->
-                                <div class="item">
-                                    <a href="category.html">
-                                        <div class="pro-img"><img src="images/category/2.jpg"
-                                                                  alt="Fresh Organic Mustard Leaves ">
-                                            <div class="pro-info">Valentine's Day Gift</div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="category.html">
-                                        <div class="pro-img"><img src="images/category/3.jpg"
-                                                                  alt="Fresh Organic Mustard Leaves ">
-                                            <div class="pro-info">Bouquet of Flowers</div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="category.html">
-                                        <div class="pro-img"><img src="images/category/4.jpg"
-                                                                  alt="Fresh Organic Mustard Leaves ">
-                                            <div class="pro-info">Immortal Bouquet</div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="category.html">
-                                        <div class="pro-img"><img src="images/category/5.jpg"
-                                                                  alt="Fresh Organic Mustard Leaves ">
-                                            <div class="pro-info">Standard</div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="category.html">
-                                        <div class="pro-img"><img src="images/category/6.jpg"
-                                                                  alt="Fresh Organic Mustard Leaves ">
-                                            <div class="pro-info">Mini</div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="category.html">
-                                        <div class="pro-img"><img src="images/category/7.jpg"
-                                                                  alt="Fresh Organic Mustard Leaves ">
-                                            <div class="pro-info">Giant</div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="category.html">
-                                        <div class="pro-img"><img src="images/category/8.jpg"
-                                                                  alt="Fresh Organic Mustard Leaves ">
-                                            <div class="pro-info">Bouquet of Flowers</div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="category.html">
-                                        <div class="pro-img"><img src="images/category/9.jpg"
-                                                                  alt="Fresh Organic Mustard Leaves ">
-                                            <div class="pro-info">Flower Box</div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="category.html">
-                                        <div class="pro-img"><img src="images/category/10.jpg"
-                                                                  alt="Fresh Organic Mustard Leaves ">
-                                            <div class="pro-info">Table Box</div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="category.html">
-                                        <div class="pro-img"><img src="images/category/11.jpg"
-                                                                  alt="Fresh Organic Mustard Leaves ">
-                                            <div class="pro-info">Table Flower</div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="category.html">
-                                        <div class="pro-img"><img src="images/category/12.jpg"
-                                                                  alt="Fresh Organic Mustard Leaves ">
-                                            <div class="pro-info">Bottle Flower</div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="category.html">
-                                        <div class="pro-img"><img src="images/category/13.jpg"
-                                                                  alt="Fresh Organic Mustard Leaves ">
-                                            <div class="pro-info">Glass Cover</div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="category.html">
-                                        <div class="pro-img"><img src="images/category/14.jpg"
-                                                                  alt="Fresh Organic Mustard Leaves ">
-                                            <div class="pro-info">Immortal Bouquet</div>
-                                        </div>
-                                    </a>
-                                </div>
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php include('include/sub_cat_slider.php'); ?>
         <!--Category slider End-->
 
         <!-- best Pro Slider -->
@@ -581,7 +61,7 @@
                                     <div class="item-img-info"><a href="product-detail.html"
                                                                   title="Fresh Organic Mustard Leaves "
                                                                   class="product-image"><img
-                                            src="images/flower/1.jpg" alt="Fresh Organic Mustard Leaves"></a>
+                                                    src="images/flower/1.jpg" alt="Fresh Organic Mustard Leaves"></a>
                                         <div class="new-label new-top-left">Hot</div>
                                         <div class="sale-label sale-top-left">-15%</div>
                                     </div>
@@ -593,7 +73,7 @@
                                     <div class="info-inner">
                                         <div class="item-title"><a href="product-detail.html"
                                                                    title="Fresh Organic Mustard Leaves ">Test
-                                            Flowers </a></div>
+                                                Flowers </a></div>
                                         <div class="item-content">
                                             <div class="item-price">
                                                 <div class="price-box"><span class="regular-price"><span class="price">125.00 HKD</span> </span>
@@ -610,7 +90,7 @@
                                     <div class="item-img-info"><a href="product-detail.html"
                                                                   title="Fresh Organic Mustard Leaves "
                                                                   class="product-image"><img
-                                            src="images/flower/2.jpg" alt="Fresh Organic Mustard Leaves"></a>
+                                                    src="images/flower/2.jpg" alt="Fresh Organic Mustard Leaves"></a>
                                         <div class="new-label new-top-left">Hot</div>
                                         <div class="sale-label sale-top-left">-15%</div>
                                     </div>
@@ -622,7 +102,7 @@
                                     <div class="info-inner">
                                         <div class="item-title"><a href="product-detail.html"
                                                                    title="Fresh Organic Mustard Leaves ">Test
-                                            Flowers </a></div>
+                                                Flowers </a></div>
                                         <div class="item-content">
                                             <div class="item-price">
                                                 <div class="price-box"><span class="regular-price"><span class="price">125.00 HKD</span> </span>
@@ -639,7 +119,7 @@
                                     <div class="item-img-info"><a href="product-detail.html"
                                                                   title="Fresh Organic Mustard Leaves "
                                                                   class="product-image"><img
-                                            src="images/flower/3.jpg" alt="Fresh Organic Mustard Leaves"></a>
+                                                    src="images/flower/3.jpg" alt="Fresh Organic Mustard Leaves"></a>
                                         <div class="new-label new-top-left">Hot</div>
                                         <div class="sale-label sale-top-left">-15%</div>
                                     </div>
@@ -651,7 +131,7 @@
                                     <div class="info-inner">
                                         <div class="item-title"><a href="product-detail.html"
                                                                    title="Fresh Organic Mustard Leaves ">Test
-                                            Flowers </a></div>
+                                                Flowers </a></div>
                                         <div class="item-content">
                                             <div class="item-price">
                                                 <div class="price-box"><span class="regular-price"><span class="price">125.00 HKD</span> </span>
@@ -668,7 +148,7 @@
                                     <div class="item-img-info"><a href="product-detail.html"
                                                                   title="Fresh Organic Mustard Leaves "
                                                                   class="product-image"><img
-                                            src="images/flower/4.jpg" alt="Fresh Organic Mustard Leaves"></a>
+                                                    src="images/flower/4.jpg" alt="Fresh Organic Mustard Leaves"></a>
                                         <div class="new-label new-top-left">Hot</div>
                                         <div class="sale-label sale-top-left">-15%</div>
                                     </div>
@@ -680,7 +160,7 @@
                                     <div class="info-inner">
                                         <div class="item-title"><a href="product-detail.html"
                                                                    title="Fresh Organic Mustard Leaves ">Test
-                                            Flowers </a></div>
+                                                Flowers </a></div>
                                         <div class="item-content">
                                             <div class="item-price">
                                                 <div class="price-box"><span class="regular-price"><span class="price">125.00 HKD</span> </span>
@@ -697,7 +177,7 @@
                                     <div class="item-img-info"><a href="product-detail.html"
                                                                   title="Fresh Organic Mustard Leaves "
                                                                   class="product-image"><img
-                                            src="images/flower/5.jpg" alt="Fresh Organic Mustard Leaves"></a>
+                                                    src="images/flower/5.jpg" alt="Fresh Organic Mustard Leaves"></a>
                                         <div class="new-label new-top-left">Hot</div>
                                         <div class="sale-label sale-top-left">-15%</div>
                                     </div>
@@ -709,7 +189,7 @@
                                     <div class="info-inner">
                                         <div class="item-title"><a href="product-detail.html"
                                                                    title="Fresh Organic Mustard Leaves ">Test
-                                            Flowers </a></div>
+                                                Flowers </a></div>
                                         <div class="item-content">
                                             <div class="item-price">
                                                 <div class="price-box"><span class="regular-price"><span class="price">125.00 HKD</span> </span>
@@ -726,7 +206,7 @@
                                     <div class="item-img-info"><a href="product-detail.html"
                                                                   title="Fresh Organic Mustard Leaves "
                                                                   class="product-image"><img
-                                            src="images/flower/6.jpg" alt="Fresh Organic Mustard Leaves"></a>
+                                                    src="images/flower/6.jpg" alt="Fresh Organic Mustard Leaves"></a>
                                         <div class="new-label new-top-left">Hot</div>
                                         <div class="sale-label sale-top-left">-15%</div>
                                     </div>
@@ -738,7 +218,7 @@
                                     <div class="info-inner">
                                         <div class="item-title"><a href="product-detail.html"
                                                                    title="Fresh Organic Mustard Leaves ">Test
-                                            Flowers </a></div>
+                                                Flowers </a></div>
                                         <div class="item-content">
                                             <div class="item-price">
                                                 <div class="price-box"><span class="regular-price"><span class="price">125.00 HKD</span> </span>
@@ -755,7 +235,7 @@
                                     <div class="item-img-info"><a href="product-detail.html"
                                                                   title="Fresh Organic Mustard Leaves "
                                                                   class="product-image"><img
-                                            src="images/flower/7.jpg" alt="Fresh Organic Mustard Leaves"></a>
+                                                    src="images/flower/7.jpg" alt="Fresh Organic Mustard Leaves"></a>
                                         <div class="new-label new-top-left">Hot</div>
                                         <div class="sale-label sale-top-left">-15%</div>
                                     </div>
@@ -767,7 +247,7 @@
                                     <div class="info-inner">
                                         <div class="item-title"><a href="product-detail.html"
                                                                    title="Fresh Organic Mustard Leaves ">Test
-                                            Flowers </a></div>
+                                                Flowers </a></div>
                                         <div class="item-content">
                                             <div class="item-price">
                                                 <div class="price-box"><span class="regular-price"><span class="price">125.00 HKD</span> </span>
@@ -784,7 +264,7 @@
                                     <div class="item-img-info"><a href="product-detail.html"
                                                                   title="Fresh Organic Mustard Leaves "
                                                                   class="product-image"><img
-                                            src="images/flower/8.jpg" alt="Fresh Organic Mustard Leaves"></a>
+                                                    src="images/flower/8.jpg" alt="Fresh Organic Mustard Leaves"></a>
                                         <div class="new-label new-top-left">Hot</div>
                                         <div class="sale-label sale-top-left">-15%</div>
                                     </div>
@@ -796,7 +276,7 @@
                                     <div class="info-inner">
                                         <div class="item-title"><a href="product-detail.html"
                                                                    title="Fresh Organic Mustard Leaves ">Test
-                                            Flowers </a></div>
+                                                Flowers </a></div>
                                         <div class="item-content">
                                             <div class="item-price">
                                                 <div class="price-box"><span class="regular-price"><span class="price">125.00 HKD</span> </span>
@@ -813,7 +293,7 @@
                                     <div class="item-img-info"><a href="product-detail.html"
                                                                   title="Fresh Organic Mustard Leaves "
                                                                   class="product-image"><img
-                                            src="images/flower/9.jpg" alt="Fresh Organic Mustard Leaves"></a>
+                                                    src="images/flower/9.jpg" alt="Fresh Organic Mustard Leaves"></a>
                                         <div class="new-label new-top-left">Hot</div>
                                         <div class="sale-label sale-top-left">-15%</div>
                                     </div>
@@ -825,7 +305,7 @@
                                     <div class="info-inner">
                                         <div class="item-title"><a href="product-detail.html"
                                                                    title="Fresh Organic Mustard Leaves ">Test
-                                            Flowers </a></div>
+                                                Flowers </a></div>
                                         <div class="item-content">
                                             <div class="item-price">
                                                 <div class="price-box"><span class="regular-price"><span class="price">125.00 HKD</span> </span>
@@ -842,7 +322,7 @@
                                     <div class="item-img-info"><a href="product-detail.html"
                                                                   title="Fresh Organic Mustard Leaves "
                                                                   class="product-image"><img
-                                            src="images/flower/10.jpg" alt="Fresh Organic Mustard Leaves"></a>
+                                                    src="images/flower/10.jpg" alt="Fresh Organic Mustard Leaves"></a>
                                         <div class="new-label new-top-left">Hot</div>
                                         <div class="sale-label sale-top-left">-15%</div>
                                     </div>
@@ -854,7 +334,7 @@
                                     <div class="info-inner">
                                         <div class="item-title"><a href="product-detail.html"
                                                                    title="Fresh Organic Mustard Leaves ">Test
-                                            Flowers </a></div>
+                                                Flowers </a></div>
                                         <div class="item-content">
                                             <div class="item-price">
                                                 <div class="price-box"><span class="regular-price"><span class="price">125.00 HKD</span> </span>
@@ -875,9 +355,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><a href="#" data-scroll-goto="1"> <img
-                            src="images/ads/1.png" alt="promotion-banner1"> </a></div>
+                                    src="images/ads/1.png" alt="promotion-banner1"> </a></div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><a href="#" data-scroll-goto="2"> <img
-                            src="images/ads/2.png" alt="promotion-banner2"> </a></div>
+                                    src="images/ads/2.png" alt="promotion-banner2"> </a></div>
                 </div>
             </div>
         </div>
@@ -897,7 +377,7 @@
                                     <div class="item-img-info"><a href="product-detail.html"
                                                                   title="Fresh Organic Mustard Leaves "
                                                                   class="product-image"><img
-                                            src="images/flower/11.jpg" alt="Fresh Organic Mustard Leaves"></a>
+                                                    src="images/flower/11.jpg" alt="Fresh Organic Mustard Leaves"></a>
                                         <div class="new-label new-top-left">Hot</div>
                                         <div class="sale-label sale-top-left">-15%</div>
                                     </div>
@@ -909,7 +389,7 @@
                                     <div class="info-inner">
                                         <div class="item-title"><a href="product-detail.html"
                                                                    title="Fresh Organic Mustard Leaves ">Test
-                                            Flowers </a></div>
+                                                Flowers </a></div>
                                         <div class="item-content">
                                             <div class="item-price">
                                                 <div class="price-box"><span class="regular-price"><span class="price">125.00 HKD</span> </span>
@@ -926,7 +406,7 @@
                                     <div class="item-img-info"><a href="product-detail.html"
                                                                   title="Fresh Organic Mustard Leaves "
                                                                   class="product-image"><img
-                                            src="images/flower/12.jpg" alt="Fresh Organic Mustard Leaves"></a>
+                                                    src="images/flower/12.jpg" alt="Fresh Organic Mustard Leaves"></a>
                                         <div class="new-label new-top-left">Hot</div>
                                         <div class="sale-label sale-top-left">-15%</div>
                                     </div>
@@ -938,7 +418,7 @@
                                     <div class="info-inner">
                                         <div class="item-title"><a href="product-detail.html"
                                                                    title="Fresh Organic Mustard Leaves ">Test
-                                            Flowers </a></div>
+                                                Flowers </a></div>
                                         <div class="item-content">
                                             <div class="item-price">
                                                 <div class="price-box"><span class="regular-price"><span class="price">125.00 HKD</span> </span>
@@ -955,7 +435,7 @@
                                     <div class="item-img-info"><a href="product-detail.html"
                                                                   title="Fresh Organic Mustard Leaves "
                                                                   class="product-image"><img
-                                            src="images/flower/13.jpg" alt="Fresh Organic Mustard Leaves"></a>
+                                                    src="images/flower/13.jpg" alt="Fresh Organic Mustard Leaves"></a>
                                         <div class="new-label new-top-left">Hot</div>
                                         <div class="sale-label sale-top-left">-15%</div>
                                     </div>
@@ -967,7 +447,7 @@
                                     <div class="info-inner">
                                         <div class="item-title"><a href="product-detail.html"
                                                                    title="Fresh Organic Mustard Leaves ">Test
-                                            Flowers </a></div>
+                                                Flowers </a></div>
                                         <div class="item-content">
                                             <div class="item-price">
                                                 <div class="price-box"><span class="regular-price"><span class="price">125.00 HKD</span> </span>
@@ -984,7 +464,7 @@
                                     <div class="item-img-info"><a href="product-detail.html"
                                                                   title="Fresh Organic Mustard Leaves "
                                                                   class="product-image"><img
-                                            src="images/flower/14.jpg" alt="Fresh Organic Mustard Leaves"></a>
+                                                    src="images/flower/14.jpg" alt="Fresh Organic Mustard Leaves"></a>
                                         <div class="new-label new-top-left">Hot</div>
                                         <div class="sale-label sale-top-left">-15%</div>
                                     </div>
@@ -996,7 +476,7 @@
                                     <div class="info-inner">
                                         <div class="item-title"><a href="product-detail.html"
                                                                    title="Fresh Organic Mustard Leaves ">Test
-                                            Flowers </a></div>
+                                                Flowers </a></div>
                                         <div class="item-content">
                                             <div class="item-price">
                                                 <div class="price-box"><span class="regular-price"><span class="price">125.00 HKD</span> </span>
@@ -1013,7 +493,7 @@
                                     <div class="item-img-info"><a href="product-detail.html"
                                                                   title="Fresh Organic Mustard Leaves "
                                                                   class="product-image"><img
-                                            src="images/flower/15.jpg" alt="Fresh Organic Mustard Leaves"></a>
+                                                    src="images/flower/15.jpg" alt="Fresh Organic Mustard Leaves"></a>
                                         <div class="new-label new-top-left">Hot</div>
                                         <div class="sale-label sale-top-left">-15%</div>
                                     </div>
@@ -1025,7 +505,7 @@
                                     <div class="info-inner">
                                         <div class="item-title"><a href="product-detail.html"
                                                                    title="Fresh Organic Mustard Leaves ">Test
-                                            Flowers </a></div>
+                                                Flowers </a></div>
                                         <div class="item-content">
                                             <div class="item-price">
                                                 <div class="price-box"><span class="regular-price"><span class="price">125.00 HKD</span> </span>
@@ -1042,7 +522,7 @@
                                     <div class="item-img-info"><a href="product-detail.html"
                                                                   title="Fresh Organic Mustard Leaves "
                                                                   class="product-image"><img
-                                            src="images/flower/16.jpg" alt="Fresh Organic Mustard Leaves"></a>
+                                                    src="images/flower/16.jpg" alt="Fresh Organic Mustard Leaves"></a>
                                         <div class="new-label new-top-left">Hot</div>
                                         <div class="sale-label sale-top-left">-15%</div>
                                     </div>
@@ -1054,7 +534,7 @@
                                     <div class="info-inner">
                                         <div class="item-title"><a href="product-detail.html"
                                                                    title="Fresh Organic Mustard Leaves ">Test
-                                            Flowers </a></div>
+                                                Flowers </a></div>
                                         <div class="item-content">
                                             <div class="item-price">
                                                 <div class="price-box"><span class="regular-price"><span class="price">125.00 HKD</span> </span>
@@ -1071,7 +551,7 @@
                                     <div class="item-img-info"><a href="product-detail.html"
                                                                   title="Fresh Organic Mustard Leaves "
                                                                   class="product-image"><img
-                                            src="images/flower/17.jpg" alt="Fresh Organic Mustard Leaves"></a>
+                                                    src="images/flower/17.jpg" alt="Fresh Organic Mustard Leaves"></a>
                                         <div class="new-label new-top-left">Hot</div>
                                         <div class="sale-label sale-top-left">-15%</div>
                                     </div>
@@ -1083,7 +563,7 @@
                                     <div class="info-inner">
                                         <div class="item-title"><a href="product-detail.html"
                                                                    title="Fresh Organic Mustard Leaves ">Test
-                                            Flowers </a></div>
+                                                Flowers </a></div>
                                         <div class="item-content">
                                             <div class="item-price">
                                                 <div class="price-box"><span class="regular-price"><span class="price">125.00 HKD</span> </span>
@@ -1100,7 +580,7 @@
                                     <div class="item-img-info"><a href="product-detail.html"
                                                                   title="Fresh Organic Mustard Leaves "
                                                                   class="product-image"><img
-                                            src="images/flower/18.jpg" alt="Fresh Organic Mustard Leaves"></a>
+                                                    src="images/flower/18.jpg" alt="Fresh Organic Mustard Leaves"></a>
                                         <div class="new-label new-top-left">Hot</div>
                                         <div class="sale-label sale-top-left">-15%</div>
                                     </div>
@@ -1112,7 +592,7 @@
                                     <div class="info-inner">
                                         <div class="item-title"><a href="product-detail.html"
                                                                    title="Fresh Organic Mustard Leaves ">Test
-                                            Flowers </a></div>
+                                                Flowers </a></div>
                                         <div class="item-content">
                                             <div class="item-price">
                                                 <div class="price-box"><span class="regular-price"><span class="price">125.00 HKD</span> </span>
@@ -1129,7 +609,7 @@
                                     <div class="item-img-info"><a href="product-detail.html"
                                                                   title="Fresh Organic Mustard Leaves "
                                                                   class="product-image"><img
-                                            src="images/flower/19.jpg" alt="Fresh Organic Mustard Leaves"></a>
+                                                    src="images/flower/19.jpg" alt="Fresh Organic Mustard Leaves"></a>
                                         <div class="new-label new-top-left">Hot</div>
                                         <div class="sale-label sale-top-left">-15%</div>
                                     </div>
@@ -1141,7 +621,7 @@
                                     <div class="info-inner">
                                         <div class="item-title"><a href="product-detail.html"
                                                                    title="Fresh Organic Mustard Leaves ">Test
-                                            Flowers </a></div>
+                                                Flowers </a></div>
                                         <div class="item-content">
                                             <div class="item-price">
                                                 <div class="price-box"><span class="regular-price"><span class="price">125.00 HKD</span> </span>
@@ -1158,7 +638,7 @@
                                     <div class="item-img-info"><a href="product-detail.html"
                                                                   title="Fresh Organic Mustard Leaves "
                                                                   class="product-image"><img
-                                            src="images/flower/20.jpg" alt="Fresh Organic Mustard Leaves"></a>
+                                                    src="images/flower/20.jpg" alt="Fresh Organic Mustard Leaves"></a>
                                         <div class="new-label new-top-left">Hot</div>
                                         <div class="sale-label sale-top-left">-15%</div>
                                     </div>
@@ -1170,7 +650,7 @@
                                     <div class="info-inner">
                                         <div class="item-title"><a href="product-detail.html"
                                                                    title="Fresh Organic Mustard Leaves ">Test
-                                            Flowers </a></div>
+                                                Flowers </a></div>
                                         <div class="item-content">
                                             <div class="item-price">
                                                 <div class="price-box"><span class="regular-price"><span class="price">125.00 HKD</span> </span>
@@ -1271,7 +751,7 @@
                 <div class="col-xs-12 col-sm-4">
                     <div class="payment-accept"><img src="images/payment-1.png" alt=""> <img src="images/payment-2.png"
                                                                                              alt=""> <img
-                            src="images/payment-3.png" alt=""> <img src="images/payment-4.png" alt=""></div>
+                                src="images/payment-3.png" alt=""> <img src="images/payment-4.png" alt=""></div>
                 </div>
             </div>
         </div>
@@ -1291,9 +771,10 @@
                 <form id="search1" name="search">
                     <div class="input-group">
 
-                        <input type="text" class="form-control simple" placeholder="Search ..." name="srch-term" id="srch-term">
+                        <input type="text" class="form-control simple" placeholder="Search ..." name="srch-term"
+                               id="srch-term">
                         <div class="input-group-btn">
-                            <button class="btn btn-default" type="submit"><i class="fa fa-search"></i> </button>
+                            <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
                         </div>
                     </div>
                 </form>
@@ -1309,73 +790,73 @@
             <ul>
                 <li><a href="category.html">bouquet of flowers</a>
                     <ul>
-                        <li> <a href="category.html">Rose</a> </li>
-                        <li> <a href="category.html">hydrangea</a> </li>
-                        <li> <a href="category.html">sunflower</a> </li>
-                        <li> <a href="category.html">starry sky</a> </li>
-                        <li> <a href="category.html">tulip</a> </li>
-                        <li> <a href="category.html">carnation</a> </li>
-                        <li> <a href="category.html">calla lily</a> </li>
+                        <li><a href="category.html">Rose</a></li>
+                        <li><a href="category.html">hydrangea</a></li>
+                        <li><a href="category.html">sunflower</a></li>
+                        <li><a href="category.html">starry sky</a></li>
+                        <li><a href="category.html">tulip</a></li>
+                        <li><a href="category.html">carnation</a></li>
+                        <li><a href="category.html">calla lily</a></li>
                     </ul>
                 </li>
-                <li> <a href="category.html">immortal bouquet</a>
+                <li><a href="category.html">immortal bouquet</a>
                     <ul>
-                        <li> <a href="category.html">standard</a> </li>
-                        <li> <a href="category.html">mini</a> </li>
-                        <li> <a href="category.html">single bouquet</a> </li>
+                        <li><a href="category.html">standard</a></li>
+                        <li><a href="category.html">mini</a></li>
+                        <li><a href="category.html">single bouquet</a></li>
                     </ul>
                 </li>
             </ul>
         </li>
         <li><a href="category.html">rose bear</a>
             <ul>
-                <li> <a href="category.html">standard</a>
+                <li><a href="category.html">standard</a>
                 </li>
-                <li> <a href="category.html">mini</a>
+                <li><a href="category.html">mini</a>
                 </li>
-                <li> <a href="category.html">giant</a>
+                <li><a href="category.html">giant</a>
                 </li>
             </ul>
         </li>
         <li><a href="category.html">Flowers</a>
             <ul>
-                <li> <a href="category.html">bouquet of flowers</a>
+                <li><a href="category.html">bouquet of flowers</a>
                     <ul>
-                        <li> <a href="category.html">Rose</a> </li>
-                        <li> <a href="category.html">hydrangea</a> </li>
-                        <li> <a href="category.html">sunflower</a> </li>
-                        <li> <a href="category.html">starry sky</a> </li>
-                        <li> <a href="category.html">tulip</a> </li>
-                        <li> <a href="category.html">carnation</a> </li>
-                        <li> <a href="category.html">calla lily</a> </li>
+                        <li><a href="category.html">Rose</a></li>
+                        <li><a href="category.html">hydrangea</a></li>
+                        <li><a href="category.html">sunflower</a></li>
+                        <li><a href="category.html">starry sky</a></li>
+                        <li><a href="category.html">tulip</a></li>
+                        <li><a href="category.html">carnation</a></li>
+                        <li><a href="category.html">calla lily</a></li>
                     </ul>
                 </li>
-                <li> <a href="category.html">flower box</a>
+                <li><a href="category.html">flower box</a>
                 </li>
-                <li> <a href="category.html">table flower</a>
+                <li><a href="category.html">table flower</a>
                 </li>
 
-                <li> <a href="category.html">bottle flower</a>
+                <li><a href="category.html">bottle flower</a>
                 </li>
             </ul>
         </li>
         <li><a href="category.html">preserved flower</a>
             <ul>
-                <li> <a href="category.html">Glass Cover</a>
+                <li><a href="category.html">Glass Cover</a>
                 </li>
-                <li> <a href="category.html">immortal bouquet</a>
+                <li><a href="category.html">immortal bouquet</a>
                     <ul>
-                        <li> <a href="category.html">standard</a> </li>
-                        <li> <a href="category.html">mini</a> </li>
-                        <li> <a href="category.html">single bouquet</a> </li>
+                        <li><a href="category.html">standard</a></li>
+                        <li><a href="category.html">mini</a></li>
+                        <li><a href="category.html">single bouquet</a></li>
                     </ul>
                 </li>
-                <li> <a href="category.html">Preserved Flower × Bluetooth Speaker</a>
+                <li><a href="category.html">Preserved Flower × Bluetooth Speaker</a>
                 </li>
 
-                <li> <a href="category.html">fantasy series</a>
+                <li><a href="category.html">fantasy series</a>
                 </li>
-                <li> <a href="category.html">flower box</a>
+                <li><a href="category.html">flower box</a>
                 </li>
             </ul>
         </li>
@@ -1384,9 +865,9 @@
     </ul>
     <div class="top-links">
         <ul class="links">
-            <li><a title="My Account" href="account.html">My Account</a> </li>
-            <li><a title="Checkout" href="checkout.html">Checkout</a> </li>
-            <li class="last"><a title="Login" href="login.html">Login</a> </li>
+            <li><a title="My Account" href="account.html">My Account</a></li>
+            <li><a title="Checkout" href="checkout.html">Checkout</a></li>
+            <li class="last"><a title="Login" href="login.html">Login</a></li>
         </ul>
     </div>
 </div>
@@ -1483,12 +964,12 @@
 <!-- Hot Deals Timer 1-->
 
 <script>
-    function change_image(){
+    function change_image() {
         document.getElementById('menu_icon').style.display = 'none';
         document.getElementById('menu_icon_cross').style.display = 'block';
     }
 
-    function change_image_rep (){
+    function change_image_rep() {
         document.getElementById('menu_icon').style.display = 'block';
         document.getElementById('menu_icon_cross').style.display = 'none';
     }
