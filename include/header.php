@@ -39,7 +39,7 @@
                                 for($i = 0; $i<$no_cat; $i++){
                                     $cat_id = $cat[$i]['id'];
                                     ?>
-                                    <li class="mega-menu"><a class="level-top" href="category.html"><span><?php echo $cat[$i]['c_name'];?></span></a>
+                                    <li class="mega-menu"><a class="level-top" href="category.php?cat_id=<?php echo $cat_id?>"><span><?php echo $cat[$i]['c_name'];?></span></a>
                                         <?php
                                         $sub_cat = $db_handle->runQuery("SELECT * FROM `sub_category` where cat_id = '$cat_id'");
                                         $no_sub_cat = $db_handle->numRows("SELECT * FROM `sub_category` where cat_id = '$cat_id'");

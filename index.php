@@ -786,82 +786,82 @@ $db_handle = new DBController();
                 <li> <a href="#">valentine's day gift</a></li>
             </ul>
         </li>-->
-        <li><a href="category.html">bouquet</a>
+        <li><a href="category.php">bouquet</a>
             <ul>
-                <li><a href="category.html">bouquet of flowers</a>
+                <li><a href="category.php">bouquet of flowers</a>
                     <ul>
-                        <li><a href="category.html">Rose</a></li>
-                        <li><a href="category.html">hydrangea</a></li>
-                        <li><a href="category.html">sunflower</a></li>
-                        <li><a href="category.html">starry sky</a></li>
-                        <li><a href="category.html">tulip</a></li>
-                        <li><a href="category.html">carnation</a></li>
-                        <li><a href="category.html">calla lily</a></li>
+                        <li><a href="category.php">Rose</a></li>
+                        <li><a href="category.php">hydrangea</a></li>
+                        <li><a href="category.php">sunflower</a></li>
+                        <li><a href="category.php">starry sky</a></li>
+                        <li><a href="category.php">tulip</a></li>
+                        <li><a href="category.php">carnation</a></li>
+                        <li><a href="category.php">calla lily</a></li>
                     </ul>
                 </li>
-                <li><a href="category.html">immortal bouquet</a>
+                <li><a href="category.php">immortal bouquet</a>
                     <ul>
-                        <li><a href="category.html">standard</a></li>
-                        <li><a href="category.html">mini</a></li>
-                        <li><a href="category.html">single bouquet</a></li>
+                        <li><a href="category.php">standard</a></li>
+                        <li><a href="category.php">mini</a></li>
+                        <li><a href="category.php">single bouquet</a></li>
                     </ul>
                 </li>
             </ul>
         </li>
-        <li><a href="category.html">rose bear</a>
+        <li><a href="category.php">rose bear</a>
             <ul>
-                <li><a href="category.html">standard</a>
+                <li><a href="category.php">standard</a>
                 </li>
-                <li><a href="category.html">mini</a>
+                <li><a href="category.php">mini</a>
                 </li>
-                <li><a href="category.html">giant</a>
+                <li><a href="category.php">giant</a>
                 </li>
             </ul>
         </li>
-        <li><a href="category.html">Flowers</a>
+        <li><a href="category.php">Flowers</a>
             <ul>
-                <li><a href="category.html">bouquet of flowers</a>
+                <li><a href="category.php">bouquet of flowers</a>
                     <ul>
-                        <li><a href="category.html">Rose</a></li>
-                        <li><a href="category.html">hydrangea</a></li>
-                        <li><a href="category.html">sunflower</a></li>
-                        <li><a href="category.html">starry sky</a></li>
-                        <li><a href="category.html">tulip</a></li>
-                        <li><a href="category.html">carnation</a></li>
-                        <li><a href="category.html">calla lily</a></li>
+                        <li><a href="category.php">Rose</a></li>
+                        <li><a href="category.php">hydrangea</a></li>
+                        <li><a href="category.php">sunflower</a></li>
+                        <li><a href="category.php">starry sky</a></li>
+                        <li><a href="category.php">tulip</a></li>
+                        <li><a href="category.php">carnation</a></li>
+                        <li><a href="category.php">calla lily</a></li>
                     </ul>
                 </li>
-                <li><a href="category.html">flower box</a>
+                <li><a href="category.php">flower box</a>
                 </li>
-                <li><a href="category.html">table flower</a>
+                <li><a href="category.php">table flower</a>
                 </li>
 
-                <li><a href="category.html">bottle flower</a>
+                <li><a href="category.php">bottle flower</a>
                 </li>
             </ul>
         </li>
-        <li><a href="category.html">preserved flower</a>
+        <li><a href="category.php">preserved flower</a>
             <ul>
-                <li><a href="category.html">Glass Cover</a>
+                <li><a href="category.php">Glass Cover</a>
                 </li>
-                <li><a href="category.html">immortal bouquet</a>
+                <li><a href="category.php">immortal bouquet</a>
                     <ul>
-                        <li><a href="category.html">standard</a></li>
-                        <li><a href="category.html">mini</a></li>
-                        <li><a href="category.html">single bouquet</a></li>
+                        <li><a href="category.php">standard</a></li>
+                        <li><a href="category.php">mini</a></li>
+                        <li><a href="category.php">single bouquet</a></li>
                     </ul>
                 </li>
-                <li><a href="category.html">Preserved Flower × Bluetooth Speaker</a>
+                <li><a href="category.php">Preserved Flower × Bluetooth Speaker</a>
                 </li>
 
-                <li><a href="category.html">fantasy series</a>
+                <li><a href="category.php">fantasy series</a>
                 </li>
-                <li><a href="category.html">flower box</a>
+                <li><a href="category.php">flower box</a>
                 </li>
             </ul>
         </li>
-        <li><a href="category.html">orchid</a></li>
-        <li><a href="category.html">flower box</a></li>
+        <li><a href="category.php">orchid</a></li>
+        <li><a href="category.php">flower box</a></li>
     </ul>
     <div class="top-links">
         <ul class="links">

@@ -20,6 +20,17 @@
 
             <li>
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                    <i class="flaticon-381-target"></i>
+                    <span class="nav-text">Flower Colors</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="Add-Color">Add Color</a></li>
+                    <li><a href="Color">Color List</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                     <i class="flaticon-381-television"></i>
                     <span class="nav-text">Category</span>
                 </a>

@@ -68,3 +68,7 @@ RewriteRule ^Add-Stock addStock.php [NE,L]
 
 RewriteRule ^Stock stock.php [NE,L]
 
+RewriteRule ^Add-Color add_color.php [NE,L]
+
+RewriteRule ^Color color.php [NE,L]
+

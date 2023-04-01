@@ -220,3 +220,17 @@ if (isset($_POST['updateHomeBanner'])) {
 
 }
 
+
+if(isset($_POST['updateColor'])){
+    $id = $db_handle->checkValue($_POST['id']);
+    $color_name = $db_handle->checkValue($_POST['color_name']);
+    $updated_at = date("Y-m-d H:i:s");
+
+    $data = $db_handle->insertQuery("UPDATE `flower_color` SET `color`='$color_name',`updated_at`='$updated_at' WHERE color_id = '$id'");
+    echo "<script>
+                document.cookie = 'alert = 3;';
+                window.location.href='Color';
+                </script>";
+
+}
+

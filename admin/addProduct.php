@@ -95,6 +95,30 @@ if (!isset($_SESSION['userid'])) {
                                             </select>
                                         </div>
                                         <div class="form-group col-md-12">
+                                            <label>Select Product Color *</label>
+                                            <select class="form-control default-select"
+                                                    name="product_color" required>
+                                                <option>Choose Color</option>
+                                                <?php
+                                                $color = $db_handle->runQuery("SELECT * FROM `flower_color` order by color_id desc");
+                                                $row_count = $db_handle->numRows("SELECT * FROM `flower_color` order by color_id desc");
+                                                for ($i = 0; $i < $row_count; $i++) {
+                                                    ?>
+                                                    <option value="<?php echo $color[$i]["color_id"]; ?>"><?php echo $color[$i]["color"]; ?></option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label>Hot Product? *</label>
+                                            <select class="form-control default-select" id="category"
+                                                    name="hot_product" required>
+                                                <option value="0">No</option>
+                                                <option value="1">Yes</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-12">
                                             <label>Product Selling Price *</label>
                                             <input type="number" class="form-control" placeholder=""
                                                    name="selling_price" required>
