@@ -84,13 +84,18 @@ if (isset($_POST['updateProduct'])) {
     $product_code = $db_handle->checkValue($_POST['p_code']);
     $product_description = $db_handle->checkValue($_POST['product_description']);
     $product_category = $db_handle->checkValue($_POST['product_category']);
+    $subcategory = $db_handle->checkValue($_POST['subcategory']);
+    $product_type = $db_handle->checkValue($_POST['product_type']);
+    $product_color = $db_handle->checkValue($_POST['product_color']);
+    $hot_product = $db_handle->checkValue($_POST['hot_product']);
     $status = $db_handle->checkValue($_POST['status']);
     $product_price = $db_handle->checkValue($_POST['product_price']);
 
     $updated_at = date("Y-m-d H:i:s");
 
     $data = $db_handle->insertQuery("UPDATE `product` SET `category_id`='$product_category',`product_code`='$product_code',`p_name`='$p_name',`description`='$product_description',
-                     `status`='$status',`updated_at`='$updated_at',`product_price`='$product_price' WHERE id={$id}");
+                     `status`='$status',`updated_at`='$updated_at',`product_price`='$product_price', `sub_category` = '$subcategory', `product_type` = '$product_type', `product_color` = '$product_color', 
+                     `hot_product` = '$hot_product' WHERE id={$id}");
     echo "<script>
                 document.cookie = 'alert = 3;';
                 window.location.href='Product';

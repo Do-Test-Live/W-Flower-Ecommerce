@@ -89,22 +89,20 @@ if (!isset($_SESSION['userid'])) {
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label>Product Description *</label>
-                                            <textarea class="form-control" rows="4" id="comment" name="product_description" required><?php echo $data[0]["description"]; ?></textarea>
+                                            <textarea class="form-control" rows="4" id="comment"
+                                                      name="product_description"
+                                                      required><?php echo $data[0]["description"]; ?></textarea>
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label>Select Product Category *</label>
-                                            <select class="form-control default-select" id="sel1"
+                                            <select class="form-control default-select" id="category"
                                                     name="product_category" required>
                                                 <?php
                                                 $cat_id = $data[0]["category_id"];
                                                 $cat_new = $db_handle->runQuery("SELECT * FROM `category` where id= $cat_id");
-                                                $row = $db_handle->numRows("SELECT * FROM `category` where id= $cat_id");
-                                                for ($j = 0; $j < $row; $j++) {
-                                                    ?>
-                                                    <option value="<?php echo $cat_new[$j]["id"]; ?>"><?php echo $cat_new[$j]["c_name"]; ?></option>
-                                                    <?php
-                                                }
                                                 ?>
+                                                <option value="<?php echo $cat_new[0]["id"]; ?>"><?php echo $cat_new[0]["c_name"]; ?></option>
+
                                                 <?php
                                                 $cat = $db_handle->runQuery("SELECT * FROM `category`");
                                                 $row_count = $db_handle->numRows("SELECT * FROM `category`");
@@ -114,6 +112,64 @@ if (!isset($_SESSION['userid'])) {
                                                     <?php
                                                 }
                                                 ?>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label>Select Product Sub-Category *</label>
+                                            <select class="form-control" id="subcategory" name="subcategory">
+                                                <?php
+                                                $sub_cat = $data[0]['sub_category'];
+                                                $sub_cat_new = $db_handle->runQuery("select * from sub_category where sub_cat_id = '$sub_cat'");
+                                                $no_sub_cat_new = $db_handle->numRows("select * from sub_category where sub_cat_id = '$sub_cat'");
+                                                if ($no_sub_cat_new > 0) {
+                                                    ?>
+                                                    <option value="<?php echo $sub_cat_new[0]['sub_cat_id']; ?>"><?php echo $sub_cat_new[0]['sub_cat_name']; ?></option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label>Select Product Type *</label>
+                                            <select class="form-control" id="product_type" name="product_type">
+                                                <?php
+                                                $product_type = $data[0]['product_type_id'];
+                                                $product_type = $db_handle->runQuery("select * from product_type where product_type_id = '$product_type'");
+                                                $no_product_type = $db_handle->numRows("select * from product_type where product_type_id = '$product_type'");
+                                                if ($no_product_type) {
+                                                    ?>
+                                                    <option value="<?php echo $product_type[0]['product_type_id']; ?>"><?php echo $product_type[0]['product_type']; ?></option>
+                                                <?php }
+                                                ?>
+
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label>Select Product Color *</label>
+                                            <select class="form-control default-select"
+                                                    name="product_color" required>
+                                                <?php
+                                                $product_color = $data[0]['product_color'];
+                                                $product_color_new = $db_handle->runQuery("select * from flower_color where color_id = '$product_color'");
+                                                ?>
+                                                <option value="<?php echo $product_color_new[0]['color_id'];?>"><?php echo $product_color_new[0]['color'];?></option>
+                                                <?php
+                                                $color = $db_handle->runQuery("SELECT * FROM `flower_color` order by color_id desc");
+                                                $row_count = $db_handle->numRows("SELECT * FROM `flower_color` order by color_id desc");
+                                                for ($i = 0; $i < $row_count; $i++) {
+                                                    ?>
+                                                    <option value="<?php echo $color[$i]["color_id"]; ?>"><?php echo $color[$i]["color"]; ?></option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label>Hot Product? *</label>
+                                            <select class="form-control default-select" id="category"
+                                                    name="hot_product" required>
+                                                <option value="0">No</option>
+                                                <option value="1">Yes</option>
                                             </select>
                                         </div>
                                         <div class="mb-3 row">
@@ -289,5 +345,65 @@ if (!isset($_SESSION['userid'])) {
 <!-- Datatable -->
 <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
 <script src="js/plugins-init/datatables.init.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Bind an event listener to the first select field
+        $('#category').on('change', function () {
+            // Get the selected value from the first select field
+            var selectedValue = $(this).val();
+
+            // Make an AJAX request to fetch the data based on the selected value
+            $.ajax({
+                url: 'fetch-sub-cat.php', // change this to the URL of your PHP script
+                method: 'GET', // or 'GET', depending on how you want to send the data
+                data: {selectedValue: selectedValue},
+                dataType: 'json', // or 'html', depending on how you're returning the data
+                success: function (data) {
+                    // Clear the current options in the second select field
+                    $('#subcategory').empty();
+
+                    // Add the new options based on the fetched data
+                    $.each(data, function (index, value) {
+                        $('#subcategory').append('<option value="' + value.sub_cat_id + '">' + value.sub_cat_name + '</option>');
+                    });
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.error(textStatus, errorThrown);
+                }
+            });
+        });
+    });
+
+    $(document).ready(function () {
+        // Bind an event listener to the first select field
+        $('#subcategory').on('change', function () {
+            // Get the selected value from the first select field
+            var selectedValue = $(this).val();
+
+            // Make an AJAX request to fetch the data based on the selected value
+            $.ajax({
+                url: 'fetch-product-type.php', // change this to the URL of your PHP script
+                method: 'GET', // or 'GET', depending on how you want to send the data
+                data: {selectedValue: selectedValue},
+                dataType: 'json', // or 'html', depending on how you're returning the data
+                success: function (data) {
+                    console.log(data);
+                    // Clear the current options in the second select field
+                    $('#product_type').empty();
+
+                    // Add the new options based on the fetched data
+                    $.each(data, function (index, value) {
+                        $('#product_type').append('<option value="' + value.product_type_id + '">' + value.product_type + '</option>');
+                    });
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.error(textStatus, errorThrown);
+                }
+            });
+        });
+    });
+
+</script>
 </body>
 </html>
