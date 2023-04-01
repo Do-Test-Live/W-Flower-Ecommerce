@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 01, 2023 at 01:46 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.0.25
+-- Generation Time: Apr 01, 2023 at 08:53 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -37,7 +37,7 @@ CREATE TABLE `admin_login` (
   `role` varchar(15) NOT NULL DEFAULT 'sales',
   `status` int(11) NOT NULL DEFAULT 1,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `admin_login`
@@ -58,7 +58,7 @@ CREATE TABLE `banner` (
   `banner_size` varchar(255) NOT NULL,
   `banner_img` varchar(500) NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `banner`
@@ -88,7 +88,7 @@ CREATE TABLE `billing_details` (
   `approve` int(11) NOT NULL DEFAULT 3,
   `purchase_points` int(11) NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -103,7 +103,7 @@ CREATE TABLE `category` (
   `status` int(11) NOT NULL DEFAULT 1,
   `inserted_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `category`
@@ -133,7 +133,7 @@ CREATE TABLE `course` (
   `status` int(11) NOT NULL DEFAULT 1,
   `inserted_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -151,7 +151,7 @@ CREATE TABLE `customer` (
   `membership_point` int(10) NOT NULL,
   `inserted_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -164,7 +164,7 @@ CREATE TABLE `flower_color` (
   `color` varchar(255) NOT NULL,
   `inserted_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `flower_color`
@@ -189,7 +189,7 @@ CREATE TABLE `inventory` (
   `stock_in` int(11) NOT NULL,
   `stock_out` int(11) NOT NULL,
   `stock_date` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -206,7 +206,7 @@ CREATE TABLE `invoice_details` (
   `product_unit_price` double(10,2) NOT NULL,
   `product_total_price` double(10,2) NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -217,8 +217,8 @@ CREATE TABLE `invoice_details` (
 CREATE TABLE `product` (
   `id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
-  `sub_category` int(10) NOT NULL,
-  `product_type` int(10) NOT NULL,
+  `sub_category` int(10) NOT NULL DEFAULT 0,
+  `product_type` int(10) NOT NULL DEFAULT 0,
   `product_color` int(10) NOT NULL,
   `hot_product` int(10) NOT NULL,
   `store_id` int(11) NOT NULL DEFAULT 0,
@@ -231,16 +231,18 @@ CREATE TABLE `product` (
   `status` int(10) NOT NULL,
   `inserted_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `product`
 --
 
 INSERT INTO `product` (`id`, `category_id`, `sub_category`, `product_type`, `product_color`, `hot_product`, `store_id`, `product_code`, `product_weight`, `p_name`, `product_price`, `description`, `p_image`, `status`, `inserted_at`, `updated_at`) VALUES
-(1, 8, 0, 0, 0, 0, 0, 'F-001', '', 'Test Flower', '100.00', 'This is a test flower product upload.', 'assets/products_image/38360_1.jpg,assets/products_image/38361_2.jpg,assets/products_image/38362_3.jpg', 1, '2023-03-30 16:21:35', '0000-00-00 00:00:00'),
-(2, 1, 3, 0, 0, 5, 0, '002', '', 'Test Product', '120.00', 'Test Description', 'assets/products_image/949570_18.jpg,assets/products_image/949571_20.jpg,assets/products_image/949572_26.jpg', 1, '2023-04-01 19:04:59', '0000-00-00 00:00:00'),
-(3, 11, 11, 18, 3, 1, 0, '003', '', 'Test 3', '50.00', 'Test Description ', 'assets/products_image/689850_10.jpg,assets/products_image/689851_11.jpg,assets/products_image/689852_12.jpg', 1, '2023-04-01 19:07:23', '0000-00-00 00:00:00');
+(1, 8, 2, 8, 2, 1, 0, '001', '', 'Test Flower 1', '100.00', 'Test Description', 'assets/products_image/52270_1.jpg,assets/products_image/52271_2.jpg,assets/products_image/52272_3.jpg', 1, '2023-04-02 01:44:15', '0000-00-00 00:00:00'),
+(2, 9, 4, 0, 5, 1, 0, '002', '', 'Test Flower 2', '125.00', 'Test Description', 'assets/products_image/445040_4.jpg,assets/products_image/445041_5.jpg,assets/products_image/445042_6.jpg', 1, '2023-04-02 01:45:07', '0000-00-00 00:00:00'),
+(3, 10, 6, 13, 4, 1, 0, '003', '', 'Test Flower 3', '50.00', 'Test Description', 'assets/products_image/373470_7.jpg,assets/products_image/373471_8.jpg,assets/products_image/373472_9.jpg', 1, '2023-04-02 01:47:03', '0000-00-00 00:00:00'),
+(4, 11, 11, 17, 3, 1, 0, '004', '', 'Test Flower 4', '54.00', 'Test Description', 'assets/products_image/997640_10.jpg,assets/products_image/997641_11.jpg,assets/products_image/997642_12.jpg', 1, '2023-04-02 01:47:52', '0000-00-00 00:00:00'),
+(5, 12, 0, 0, 1, 1, 0, '005', '', 'Test Flower 5', '99.00', 'Test Description', 'assets/products_image/241730_13.jpg,assets/products_image/241731_14.jpg,assets/products_image/241732_15.jpg', 1, '2023-04-02 01:54:23', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -255,7 +257,7 @@ CREATE TABLE `product_type` (
   `sub_cat_id` int(10) NOT NULL,
   `inserted_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `product_type`
@@ -300,7 +302,7 @@ CREATE TABLE `promo_code` (
   `status` int(10) NOT NULL DEFAULT 1,
   `inserted_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -314,7 +316,7 @@ CREATE TABLE `stock` (
   `product_id` int(10) NOT NULL,
   `quantity` int(10) NOT NULL,
   `inserted_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -329,7 +331,7 @@ CREATE TABLE `store` (
   `s_image` varchar(200) NOT NULL,
   `inserted_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -344,7 +346,7 @@ CREATE TABLE `sub_category` (
   `sub_cat_image` varchar(500) NOT NULL,
   `inserted_at` datetime NOT NULL,
   `updated_at` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `sub_category`
@@ -377,7 +379,7 @@ CREATE TABLE `wishlist` (
   `customer_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `inserted_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -541,7 +543,7 @@ ALTER TABLE `invoice_details`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `product_type`
