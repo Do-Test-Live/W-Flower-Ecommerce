@@ -1,0 +1,13 @@
+ErrorDocument 404 http://localhost/W-Wayshk-Admin/404.php
+
+RewriteEngine on
+
+RewriteRule ^Home index.php [NE,L]
+
+RewriteRule ^Category category.php [NE,L]
+
+RewriteRule ^Sub-Category sub_category.php [NE,L]
+
+RewriteRule ^Product-Type product_type.php [NE,L]
+
+RewriteRule ^Product-Details product_details.php [NE,L]

@@ -8,7 +8,7 @@ $db_handle = new DBController();
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Four Seasons Florist</title>
+    <title>Home - Four Seasons Florist</title>
     <?php include ('include/css.php');?>
 </head>
 <body>
@@ -43,7 +43,7 @@ $db_handle = new DBController();
                             <div class="item">
                                 <div class="item-inner">
                                     <div class="item-img">
-                                        <div class="item-img-info"><a href="product-detail.html"
+                                        <div class="item-img-info"><a href="product-detail.php"
                                                                       title="Four Season Flowers"
                                                                       class="product-image"><img
                                                         src="admin/<?php echo $image[0];?>" alt="Four Season Flowers"></a>
@@ -55,7 +55,7 @@ $db_handle = new DBController();
                                     </div>
                                     <div class="item-info">
                                         <div class="info-inner">
-                                            <div class="item-title"><a href="product-detail.html"
+                                            <div class="item-title"><a href="product-detail.php"
                                                                        title="Four Season Flowers"><?php echo $hot_products[$x]['p_name'];?></a></div>
                                             <div class="item-content">
                                                 <div class="item-price">
@@ -109,7 +109,7 @@ $db_handle = new DBController();
                             <div class="item">
                                 <div class="item-inner">
                                     <div class="item-img">
-                                        <div class="item-img-info"><a href="product-detail.html"
+                                        <div class="item-img-info"><a href="product-detail.php"
                                                                       title="Four Season Flowers"
                                                                       class="product-image"><img
                                                         src="admin/<?php echo $image[0];?>" alt="Four Season Flowers"></a>
@@ -128,7 +128,7 @@ $db_handle = new DBController();
                                     </div>
                                     <div class="item-info">
                                         <div class="info-inner">
-                                            <div class="item-title"><a href="product-detail.html"
+                                            <div class="item-title"><a href="product-detail.php"
                                                                        title="Four Season Flowers"><?php echo $hot_products[$x]['p_name'];?></a></div>
                                             <div class="item-content">
                                                 <div class="item-price">

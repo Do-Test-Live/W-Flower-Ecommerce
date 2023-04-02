@@ -18,7 +18,7 @@
     <div id="header">
         <div class="container">
             <div class="header-container row">
-                <div class="logo"><a href="index.php" title="index">
+                <div class="logo"><a href="Home" title="index">
                         <div><img src="images/logo.png" alt="logo"></div>
                     </a></div>
                 <div class="fl-nav-menu">
@@ -39,7 +39,7 @@
                                 for($i = 0; $i<$no_cat; $i++){
                                     $cat_id = $cat[$i]['id'];
                                     ?>
-                                    <li class="mega-menu"><a class="level-top" href="category.php?cat_id=<?php echo $cat_id?>"><span><?php echo $cat[$i]['c_name'];?></span></a>
+                                    <li class="mega-menu"><a class="level-top" href="Category?id=<?php echo $cat_id?>"><span><?php echo $cat[$i]['c_name'];?></span></a>
                                         <?php
                                         $sub_cat = $db_handle->runQuery("SELECT * FROM `sub_category` where cat_id = '$cat_id'");
                                         $no_sub_cat = $db_handle->numRows("SELECT * FROM `sub_category` where cat_id = '$cat_id'");
@@ -57,7 +57,7 @@
                                                                         $sub_cat_id = $sub_cat[$j]['sub_cat_id'];
                                                                         ?>
                                                                         <li class="level3 nav-6-1 parent item"><a
-                                                                                href="sub_category.php"><span><?php echo $sub_cat[$j]['sub_cat_name'];?></span></a>
+                                                                                href="Sub-Category?id=<?php echo $sub_cat_id?>"><span><?php echo $sub_cat[$j]['sub_cat_name'];?></span></a>
                                                                             <!--sub sub category-->
                                                                             <?php
                                                                             $product_type = $db_handle->runQuery("SELECT * FROM `product_type` WHERE cat_id = '$cat_id' AND sub_cat_id = '$sub_cat_id'");
@@ -68,7 +68,7 @@
                                                                                 ?>
                                                                                 <ul class="level1">
                                                                                     <li class="level2 nav-6-1-1"><a
-                                                                                            href="product_type.php"><span><?php echo $product_type[$k]['product_type'];?></span></a>
+                                                                                            href="Product-Type?id=<?php echo $product_type_id?>"><span><?php echo $product_type[$k]['product_type'];?></span></a>
                                                                                     </li>
                                                                                 </ul>
                                                                                 <?php
@@ -121,11 +121,11 @@
                                 <div class="language-currency">
                                     <div class="fl-language">
                                         <ul class="lang">
-                                            <li><a href="category.html"> <img src="images/english.png" alt="English"> <span>English</span>
+                                            <li><a href="#"> <img src="images/english.png" alt="English"> <span>English</span>
                                                 </a></li>
-                                            <li><a href="category.html"> <img src="images/francais.png" alt="French"> <span>French</span>
+                                            <li><a href="#"> <img src="images/francais.png" alt="French"> <span>French</span>
                                                 </a></li>
-                                            <li><a href="category.html"> <img src="images/german.png" alt="German">
+                                            <li><a href="#"> <img src="images/german.png" alt="German">
                                                     <span>German</span> </a></li>
                                         </ul>
                                     </div>
@@ -134,9 +134,9 @@
                                     <!-- For version 1,2,3,4,6 -->
                                     <div class="fl-currency">
                                         <ul class="currencies_list">
-                                            <li><a href="category.html" title="EGP"> £</a></li>
-                                            <li><a href="category.html" title="EUR"> €</a></li>
-                                            <li><a href="category.html" title="USD"> $</a></li>
+                                            <li><a href="#" title="EGP"> £</a></li>
+                                            <li><a href="#" title="EUR"> €</a></li>
+                                            <li><a href="#" title="USD"> $</a></li>
                                         </ul>
                                     </div>
                                     <!--fl-currency-->

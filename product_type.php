@@ -2,12 +2,12 @@
 session_start();
 require_once("admin/include/dbController.php");
 $db_handle = new DBController();
-$category = $_GET['id'];
+echo $id_product_type = $_GET['id'];
 $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
 // calculate the offset for the SQL query
 $offset = ($current_page - 1) * 9;
-$fetch_product = $db_handle->runQuery("SELECT * FROM product where category_id='$category' LIMIT 9 OFFSET $offset");
-$no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id='$category' LIMIT 9 OFFSET $offset");
+$fetch_product = $db_handle->runQuery("SELECT * FROM product where product_type='$id_product_type' LIMIT 9 OFFSET $offset");
+$no_fetch_product = $db_handle->numRows("SELECT * FROM product where product_type='$id_product_type' LIMIT 9 OFFSET $offset");
 ?>
 
 <!DOCTYPE html>
@@ -33,9 +33,10 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                             <li class="home"><a href="index.php" title="Go to Home Page">Home</a>
                                 <span>&rsaquo; </span></li>
                             <li style="color: white"><?php
-                                $cat_name = $db_handle->runQuery("select * from category where id = '$category'");
-                                echo $cat_name[0]['c_name'];
-                                ?></li>
+                                $cat_name = $db_handle->runQuery("select * from product_type where product_type_id = '$id_product_type'");
+                                echo $cat_name[0]['product_type'];
+                                ?>
+                            </li>
                         </ul>
                     </div>
                     <!--col-xs-12-->
@@ -67,8 +68,8 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                     <ul class="products-grid">
                                         <?php
                                         $color_id = $_GET['color'];
-                                        $product_color = $db_handle->runQuery("SELECT * FROM product where category_id='$category' and product_color = '$color_id' LIMIT 9 OFFSET $offset");
-                                        $no_product_color = $db_handle->numRows("SELECT * FROM product where category_id='$category' and product_color = '$color_id' LIMIT 9 OFFSET $offset");
+                                        $product_color = $db_handle->runQuery("SELECT * FROM product where product_type='$id_product_type' and product_color = '$color_id' LIMIT 9 OFFSET $offset");
+                                        $no_product_color = $db_handle->numRows("SELECT * FROM product where product_type='$id_product_type' and product_color = '$color_id' LIMIT 9 OFFSET $offset");
                                         for ($k = 0; $k < $no_product_color; $k++) {
                                             $image = explode(',', $product_color[$k]['p_image']);
                                             ?>
@@ -76,11 +77,11 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                                 <div class="item-inner">
                                                     <div class="item-img">
                                                         <div class="item-img-info"><a
-                                                                    href="product-detail.php?product=<?php echo $product_color[$k]['id']; ?>"
-                                                                    title="Test Flower"
-                                                                    class="product-image"><img
-                                                                        src="admin/<?php echo $image[0]; ?>"
-                                                                        alt="Test Flower"></a>
+                                                                href="product-detail.php?product=<?php echo $product_color[$k]['id']; ?>"
+                                                                title="Test Flower"
+                                                                class="product-image"><img
+                                                                    src="admin/<?php echo $image[0];?>"
+                                                                    alt="Test Flower"></a>
                                                         </div>
                                                         <?php
                                                         if ($product_color[$k]['hot_product'] == '1') {
@@ -97,14 +98,14 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                                     <div class="item-info">
                                                         <div class="info-inner">
                                                             <div class="item-title"><a
-                                                                        href="Product-Details?product=<?php echo $product_color[$k]['id']; ?>"
-                                                                        title="Test Flower"><?php echo $product_color[$k]['p_name']; ?></a>
+                                                                    href="Product-Details?product=<?php echo $product_color[$k]['id']; ?>"
+                                                                    title="Test Flower"><?php echo $product_color[$k]['p_name']; ?></a>
                                                             </div>
                                                             <div class="item-content">
                                                                 <div class="item-price">
                                                                     <div class="price-box"><span
-                                                                                class="regular-price"><span
-                                                                                    class="price"><?php echo $product_color[$k]['product_price']; ?></span> </span>
+                                                                            class="regular-price"><span
+                                                                                class="price"><?php echo $product_color[$k]['product_price']; ?></span> </span>
                                                                     </div>
                                                                 </div>
 
@@ -125,14 +126,14 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                                 <ul class="pagination">
                                                     <?php
                                                     // calculate the total number of pages
-                                                    $new = $db_handle->runQuery("SELECT COUNT('id') as c FROM product where category_id='$category' and product_color = '$color_id'");
-                                                    $no_new = $db_handle->numRows("SELECT COUNT('id') as c FROM product where category_id='$category' and product_color = '$color_id'");
+                                                    $new = $db_handle->runQuery("SELECT COUNT('id') as c FROM product where product_type='$id_product_type' and product_color = '$color_id'");
+                                                    $no_new = $db_handle->numRows("SELECT COUNT('id') as c FROM product where product_type='$id_product_type' and product_color = '$color_id'");
 
                                                     $total_pages = ceil($new[0]['c'] / 9);
                                                     for ($i = 1; $i <= $total_pages; $i++) {
                                                         ?>
                                                         <li>
-                                                            <a href="Category?id=<?php echo $category; ?>&color=<?php echo $color_id; ?>&page=<?php echo $i; ?>"><?php echo $i ?></a>
+                                                            <a href="Product-Type?id=<?php echo $id_product_type; ?>&color=<?php echo $color_id; ?>&page=<?php echo $i; ?>"><?php echo $i ?></a>
                                                         </li>
                                                         <?php
                                                     }
@@ -147,8 +148,8 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                         ?>
                                         <ul class="products-grid">
                                             <?php
-                                            $product_price = $db_handle->runQuery("SELECT * FROM product where category_id='$category' and product_price < 100 LIMIT 9 OFFSET $offset");
-                                            $no_product_price = $db_handle->numRows("SELECT * FROM product where category_id='$category' and product_price < 100 LIMIT 9 OFFSET $offset");
+                                            $product_price = $db_handle->runQuery("SELECT * FROM product where product_type='$id_product_type' and product_price < 100 LIMIT 9 OFFSET $offset");
+                                            $no_product_price = $db_handle->numRows("SELECT * FROM product where product_type='$id_product_type' and product_price < 100 LIMIT 9 OFFSET $offset");
                                             for ($k = 0; $k < $no_product_price; $k++) {
                                                 $image = explode(',', $product_price[$k]['p_image']);
                                                 ?>
@@ -156,11 +157,11 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                                     <div class="item-inner">
                                                         <div class="item-img">
                                                             <div class="item-img-info"><a
-                                                                        href="product-detail.php?product=<?php echo $product_price[$k]['id']; ?>"
-                                                                        title="Test Flower"
-                                                                        class="product-image"><img
-                                                                            src="admin/<?php echo $image[0]; ?>"
-                                                                            alt="Test Flower"></a>
+                                                                    href="product-detail.php?product=<?php echo $product_price[$k]['id']; ?>"
+                                                                    title="Test Flower"
+                                                                    class="product-image"><img
+                                                                        src="admin/<?php echo $image[0]; ?>"
+                                                                        alt="Test Flower"></a>
                                                             </div>
                                                             <?php
                                                             if ($product_price[$k]['hot_product'] == '1') {
@@ -177,14 +178,14 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                                         <div class="item-info">
                                                             <div class="info-inner">
                                                                 <div class="item-title"><a
-                                                                            href="Product-Details?product=<?php echo $product_price[$k]['id']; ?>"
-                                                                            title="Test Flower"><?php echo $product_price[$k]['p_name']; ?></a>
+                                                                        href="Product-Details?product=<?php echo $product_price[$k]['id']; ?>"
+                                                                        title="Test Flower"><?php echo $product_price[$k]['p_name']; ?></a>
                                                                 </div>
                                                                 <div class="item-content">
                                                                     <div class="item-price">
                                                                         <div class="price-box"><span
-                                                                                    class="regular-price"><span
-                                                                                        class="price"><?php echo $product_price[$k]['product_price']; ?></span> </span>
+                                                                                class="regular-price"><span
+                                                                                    class="price"><?php echo $product_price[$k]['product_price']; ?></span> </span>
                                                                         </div>
                                                                     </div>
 
@@ -205,14 +206,14 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                                     <ul class="pagination">
                                                         <?php
                                                         // calculate the total number of pages
-                                                        $new = $db_handle->runQuery("SELECT COUNT('id') as c FROM product where category_id='$category' and product_price < '100'");
-                                                        $no_new = $db_handle->numRows("SELECT COUNT('id') as c FROM product where category_id='$category' and product_price < '100'");
+                                                        $new = $db_handle->runQuery("SELECT COUNT('id') as c FROM product where product_type='$id_product_type' and product_price < '100'");
+                                                        $no_new = $db_handle->numRows("SELECT COUNT('id') as c FROM product where product_type='$id_product_type' and product_price < '100'");
 
                                                         $total_pages = ceil($new[0]['c'] / 9);
                                                         for ($i = 1; $i <= $total_pages; $i++) {
                                                             ?>
                                                             <li>
-                                                                <a href="Category?id=<?php echo $category; ?>&price=1&page=<?php echo $i; ?>"><?php echo $i ?></a>
+                                                                <a href="Product-Type?id=<?php echo $id_product_type; ?>&price=1&page=<?php echo $i; ?>"><?php echo $i ?></a>
                                                             </li>
                                                             <?php
                                                         }
@@ -226,8 +227,8 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                         ?>
                                         <ul class="products-grid">
                                             <?php
-                                            $product_price = $db_handle->runQuery("SELECT * FROM product where category_id='$category' and product_price >= '100' LIMIT 9 OFFSET $offset");
-                                            $no_product_price = $db_handle->numRows("SELECT * FROM product where category_id='$category' and product_price >= '100' LIMIT 9 OFFSET $offset");
+                                            $product_price = $db_handle->runQuery("SELECT * FROM product where product_type='$id_product_type' and product_price >= '100' LIMIT 9 OFFSET $offset");
+                                            $no_product_price = $db_handle->numRows("SELECT * FROM product where product_type='$id_product_type' and product_price >= '100' LIMIT 9 OFFSET $offset");
                                             for ($k = 0; $k < $no_product_price; $k++) {
                                                 $image = explode(',', $product_price[$k]['p_image']);
                                                 ?>
@@ -235,11 +236,11 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                                     <div class="item-inner">
                                                         <div class="item-img">
                                                             <div class="item-img-info"><a
-                                                                        href="product-detail.php?product=<?php echo $product_price[$k]['id']; ?>"
-                                                                        title="Test Flower"
-                                                                        class="product-image"><img
-                                                                            src="admin/<?php echo $image[0]; ?>"
-                                                                            alt="Test Flower"></a>
+                                                                    href="product-detail.php?product=<?php echo $product_price[$k]['id']; ?>"
+                                                                    title="Test Flower"
+                                                                    class="product-image"><img
+                                                                        src="admin/<?php echo $image[0]; ?>"
+                                                                        alt="Test Flower"></a>
                                                             </div>
                                                             <?php
                                                             if ($product_price[$k]['hot_product'] == '1') {
@@ -256,14 +257,14 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                                         <div class="item-info">
                                                             <div class="info-inner">
                                                                 <div class="item-title"><a
-                                                                            href="Product-Details?product=<?php echo $product_price[$k]['id']; ?>"
-                                                                            title="Test Flower"><?php echo $product_price[$k]['p_name']; ?></a>
+                                                                        href="Product-Details?product=<?php echo $product_price[$k]['id']; ?>"
+                                                                        title="Test Flower"><?php echo $product_price[$k]['p_name']; ?></a>
                                                                 </div>
                                                                 <div class="item-content">
                                                                     <div class="item-price">
                                                                         <div class="price-box"><span
-                                                                                    class="regular-price"><span
-                                                                                        class="price"><?php echo $product_price[$k]['product_price']; ?></span> </span>
+                                                                                class="regular-price"><span
+                                                                                    class="price"><?php echo $product_price[$k]['product_price']; ?></span> </span>
                                                                         </div>
                                                                     </div>
 
@@ -284,14 +285,14 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                                     <ul class="pagination">
                                                         <?php
                                                         // calculate the total number of pages
-                                                        $new = $db_handle->runQuery("SELECT COUNT('id') as c FROM product where category_id='$category' and product_price >= '100'");
-                                                        $no_new = $db_handle->numRows("SELECT COUNT('id') as c FROM product where category_id='$category' and product_price >= '100'");
+                                                        $new = $db_handle->runQuery("SELECT COUNT('id') as c FROM product where product_type='$id_product_type' and product_price >= '100'");
+                                                        $no_new = $db_handle->numRows("SELECT COUNT('id') as c FROM product where product_type='$id_product_type' and product_price >= '100'");
 
                                                         $total_pages = ceil($new[0]['c'] / 9);
                                                         for ($i = 1; $i <= $total_pages; $i++) {
                                                             ?>
                                                             <li>
-                                                                <a href="Category?id=<?php echo $category; ?>&price=1&page=<?php echo $i; ?>"><?php echo $i ?></a>
+                                                                <a href="Product-Type?id=<?php echo $id_product_type; ?>&price=1&page=<?php echo $i; ?>"><?php echo $i ?></a>
                                                             </li>
                                                             <?php
                                                         }
@@ -316,11 +317,11 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                                 <div class="item-inner">
                                                     <div class="item-img">
                                                         <div class="item-img-info"><a
-                                                                    href="product-detail.php?product=<?php echo $fetch_product[$i]['id']; ?>"
-                                                                    title="Test Flower"
-                                                                    class="product-image"><img
-                                                                        src="admin/<?php echo $image[0]; ?>"
-                                                                        alt="Test Flower"></a>
+                                                                href="product-detail.php?product=<?php echo $fetch_product[$i]['id']; ?>"
+                                                                title="Test Flower"
+                                                                class="product-image"><img
+                                                                    src="admin/<?php echo $image[0]; ?>"
+                                                                    alt="Test Flower"></a>
                                                         </div>
                                                         <?php
                                                         if ($fetch_product[$i]['hot_product'] == '1') {
@@ -337,14 +338,14 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                                     <div class="item-info">
                                                         <div class="info-inner">
                                                             <div class="item-title"><a
-                                                                        href="Product-Details?product=<?php echo $fetch_product[$i]['id']; ?>"
-                                                                        title="Test Flower"><?php echo $fetch_product[$i]['p_name']; ?></a>
+                                                                    href="Product-Details?product=<?php echo $fetch_product[$i]['id']; ?>"
+                                                                    title="Test Flower"><?php echo $fetch_product[$i]['p_name']; ?></a>
                                                             </div>
                                                             <div class="item-content">
                                                                 <div class="item-price">
                                                                     <div class="price-box"><span
-                                                                                class="regular-price"><span
-                                                                                    class="price"><?php echo $fetch_product[$i]['product_price']; ?></span> </span>
+                                                                            class="regular-price"><span
+                                                                                class="price"><?php echo $fetch_product[$i]['product_price']; ?></span> </span>
                                                                     </div>
                                                                 </div>
 
@@ -365,14 +366,14 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                                 <ul class="pagination">
                                                     <?php
                                                     // calculate the total number of pages
-                                                    $new = $db_handle->runQuery("SELECT COUNT('id') as c FROM product where category_id='$category'");
-                                                    $no_new = $db_handle->numRows("SELECT COUNT('id') as c FROM product where category_id='$category'");
+                                                    $new = $db_handle->runQuery("SELECT COUNT('id') as c FROM product where product_type ='$id_product_type'");
+                                                    $no_new = $db_handle->numRows("SELECT COUNT('id') as c FROM product where product_type ='$id_product_type'");
 
                                                     $total_pages = ceil($new[0]['c'] / 9);
                                                     for ($i = 1; $i <= $total_pages; $i++) {
                                                         ?>
                                                         <li>
-                                                            <a href="Category?id=<?php echo $category ?>&page=<?php echo $i ?>"><?php echo $i ?></a>
+                                                            <a href="Product-Type?id=<?php echo $id_product_type ?>&page=<?php echo $i ?>"><?php echo $i ?></a>
                                                         </li>
                                                         <?php
                                                     }
@@ -399,12 +400,12 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                 <dt class="odd">Price</dt>
                                 <dd class="odd">
                                     <ol>
-                                        <li><a href="Category?id=<?php echo $category ?>&price=1"><span class="price">$0.00</span>
+                                        <li><a href="Product-Type?id=<?php echo $id_product_type ?>&price=1"><span class="price">$0.00</span>
                                                 - <span
-                                                        class="price">$99.99</span></a> (6)
+                                                    class="price">$99.99</span></a>
                                         </li>
-                                        <li><a href="Category?id=<?php echo $category ?>&price=2"><span class="price">$100.00</span>
-                                                and above</a> (6)
+                                        <li><a href="Product-Type?id=<?php echo $id_product_type ?>&price=2"><span class="price">$100.00</span>
+                                                and above</a>
                                         </li>
                                     </ol>
                                 </dd>
@@ -417,7 +418,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                         for ($i = 0; $i < $no_color; $i++) {
                                             ?>
                                             <li>
-                                                <a href="Category?id=<?php echo $category ?>&color=<?php echo $color[$i]['color_id']; ?>"><?php echo $color[$i]['color']; ?></a>
+                                                <a href="Product-Type?id=<?php echo $id_product_type?>&color=<?php echo $color[$i]['color_id']; ?>"><?php echo $color[$i]['color']; ?></a>
                                             </li>
                                             <?php
                                         }
