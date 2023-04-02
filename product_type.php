@@ -2,7 +2,7 @@
 session_start();
 require_once("admin/include/dbController.php");
 $db_handle = new DBController();
-echo $id_product_type = $_GET['id'];
+$id_product_type = $_GET['id'];
 $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
 // calculate the offset for the SQL query
 $offset = ($current_page - 1) * 9;

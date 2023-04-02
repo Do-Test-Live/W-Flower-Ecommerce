@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 01, 2023 at 08:53 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- Generation Time: Apr 02, 2023 at 01:26 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -37,7 +37,7 @@ CREATE TABLE `admin_login` (
   `role` varchar(15) NOT NULL DEFAULT 'sales',
   `status` int(11) NOT NULL DEFAULT 1,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `admin_login`
@@ -58,7 +58,7 @@ CREATE TABLE `banner` (
   `banner_size` varchar(255) NOT NULL,
   `banner_img` varchar(500) NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `banner`
@@ -88,7 +88,7 @@ CREATE TABLE `billing_details` (
   `approve` int(11) NOT NULL DEFAULT 3,
   `purchase_points` int(11) NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -103,7 +103,7 @@ CREATE TABLE `category` (
   `status` int(11) NOT NULL DEFAULT 1,
   `inserted_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `category`
@@ -133,7 +133,7 @@ CREATE TABLE `course` (
   `status` int(11) NOT NULL DEFAULT 1,
   `inserted_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -151,7 +151,7 @@ CREATE TABLE `customer` (
   `membership_point` int(10) NOT NULL,
   `inserted_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -164,7 +164,7 @@ CREATE TABLE `flower_color` (
   `color` varchar(255) NOT NULL,
   `inserted_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `flower_color`
@@ -189,7 +189,7 @@ CREATE TABLE `inventory` (
   `stock_in` int(11) NOT NULL,
   `stock_out` int(11) NOT NULL,
   `stock_date` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -206,7 +206,7 @@ CREATE TABLE `invoice_details` (
   `product_unit_price` double(10,2) NOT NULL,
   `product_total_price` double(10,2) NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -231,7 +231,7 @@ CREATE TABLE `product` (
   `status` int(10) NOT NULL,
   `inserted_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `product`
@@ -242,7 +242,26 @@ INSERT INTO `product` (`id`, `category_id`, `sub_category`, `product_type`, `pro
 (2, 9, 4, 0, 5, 1, 0, '002', '', 'Test Flower 2', '125.00', 'Test Description', 'assets/products_image/445040_4.jpg,assets/products_image/445041_5.jpg,assets/products_image/445042_6.jpg', 1, '2023-04-02 01:45:07', '0000-00-00 00:00:00'),
 (3, 10, 6, 13, 4, 1, 0, '003', '', 'Test Flower 3', '50.00', 'Test Description', 'assets/products_image/373470_7.jpg,assets/products_image/373471_8.jpg,assets/products_image/373472_9.jpg', 1, '2023-04-02 01:47:03', '0000-00-00 00:00:00'),
 (4, 11, 11, 17, 3, 1, 0, '004', '', 'Test Flower 4', '54.00', 'Test Description', 'assets/products_image/997640_10.jpg,assets/products_image/997641_11.jpg,assets/products_image/997642_12.jpg', 1, '2023-04-02 01:47:52', '0000-00-00 00:00:00'),
-(5, 12, 0, 0, 1, 1, 0, '005', '', 'Test Flower 5', '99.00', 'Test Description', 'assets/products_image/241730_13.jpg,assets/products_image/241731_14.jpg,assets/products_image/241732_15.jpg', 1, '2023-04-02 01:54:23', '0000-00-00 00:00:00');
+(5, 12, 0, 0, 1, 1, 0, '005', '', 'Test Flower 5', '99.00', 'Test Description', 'assets/products_image/241730_13.jpg,assets/products_image/241731_14.jpg,assets/products_image/241732_15.jpg', 1, '2023-04-02 01:54:23', '0000-00-00 00:00:00'),
+(6, 9, 4, 0, 5, 1, 0, '006', '', 'Test Flower 6', '200.00', 'Test Flower booooo', 'assets/products_image/46190_1.jpg,assets/products_image/46191_2.jpg,assets/products_image/46192_3.jpg', 1, '2023-04-02 19:00:15', '0000-00-00 00:00:00'),
+(7, 9, 5, 0, 3, 1, 0, '007', '', 'Test Flower 7', '600.00', 'hfmjaSDjhyv  mz', 'assets/products_image/430710_14.jpg,assets/products_image/430711_19.jpg,assets/products_image/430712_20.jpg', 1, '2023-04-02 19:01:12', '0000-00-00 00:00:00'),
+(8, 13, 0, 0, 1, 0, 0, '008', '', 'Test Flower 8', '200.00', 'cfghxdfgxdfgsdfgxdg', 'assets/products_image/839570_9.jpg,assets/products_image/839571_10.jpg,assets/products_image/839572_13.jpg', 1, '2023-04-02 19:02:36', '0000-00-00 00:00:00'),
+(9, 9, 5, 0, 3, 1, 0, '008', '', 'Test Flower 8', '600.00', ' vghcgfjhfgj', 'assets/products_image/853340_6.jpg,assets/products_image/853341_12.jpg,assets/products_image/853342_17.jpg', 1, '2023-04-02 19:10:45', '0000-00-00 00:00:00'),
+(10, 11, 13, 0, 3, 1, 0, '009', '', 'Test Flower 9', '600.00', 'gcjhghj', 'assets/products_image/946410_24.jpg,assets/products_image/946411_25.jpg,assets/products_image/946412_26.jpg', 1, '2023-04-02 19:12:09', '0000-00-00 00:00:00'),
+(11, 11, 14, 0, 1, 1, 0, '010', '', 'Test Flower 10', '800.00', 'fghfcgh', 'assets/products_image/373260_15.jpg,assets/products_image/373261_16.jpg,assets/products_image/373262_17.jpg', 1, '2023-04-02 19:12:45', '0000-00-00 00:00:00'),
+(12, 9, 4, 0, 5, 1, 0, '011', '', 'Test Flower 11', '220.00', 'ghujrftyft', 'assets/products_image/604910_4.jpg,assets/products_image/604911_5.jpg,assets/products_image/604912_6.jpg', 1, '2023-04-02 19:13:55', '0000-00-00 00:00:00'),
+(13, 13, 0, 0, 1, 1, 0, '012', '', 'Test Flower 12', '90.00', ' cv', 'assets/products_image/845930_14.jpg,assets/products_image/845931_21.jpg,assets/products_image/845932_26.jpg', 1, '2023-04-02 19:15:08', '0000-00-00 00:00:00'),
+(14, 9, 5, 0, 2, 1, 0, '013', '', 'Test Flower 13', '600.00', 'gvhfg', 'assets/products_image/315010_1.jpg,assets/products_image/315011_9.jpg,assets/products_image/315012_17.jpg', 1, '2023-04-02 19:16:19', '0000-00-00 00:00:00'),
+(15, 10, 8, 0, 4, 1, 0, '014', '', 'Test Flower 14', '720.00', ' cvbn c', 'assets/products_image/969710_8.jpg,assets/products_image/969711_9.jpg,assets/products_image/969712_15.jpg', 1, '2023-04-02 19:16:52', '0000-00-00 00:00:00'),
+(16, 9, 5, 0, 1, 1, 0, '015', '', 'Test Flower 15', '125.00', 'xdfgxdfg', 'assets/products_image/779730_11.jpg,assets/products_image/779731_18.jpg,assets/products_image/779732_25.jpg', 1, '2023-04-02 19:17:52', '0000-00-00 00:00:00'),
+(17, 11, 13, 0, 3, 0, 0, '016', '', 'Test Flower 16', '632.00', 'vghfcg', 'assets/products_image/547870_21.jpg,assets/products_image/547871_23.jpg,assets/products_image/547872_24.jpg', 1, '2023-04-02 19:18:28', '0000-00-00 00:00:00'),
+(18, 8, 15, 7, 2, 1, 0, '017', '', 'Test Flower 17', '963.00', ' bnmb n', 'assets/products_image/474320_3.jpg,assets/products_image/474321_9.jpg,assets/products_image/474322_15.jpg', 1, '2023-04-02 19:19:13', '0000-00-00 00:00:00'),
+(19, 8, 15, 5, 3, 0, 0, '018', '', 'Test Flower 18', '632.00', 'gyhfyjnbn', 'assets/products_image/583240_24.jpg,assets/products_image/583241_25.jpg,assets/products_image/583242_26.jpg', 1, '2023-04-02 19:20:12', '0000-00-00 00:00:00'),
+(20, 9, 4, 0, 1, 1, 0, '018', '', 'Test Flower 18', '666.00', 'dfgsdfsd', 'assets/products_image/958950_3.jpg,assets/products_image/958951_10.jpg,assets/products_image/958952_17.jpg', 1, '2023-04-02 19:21:00', '0000-00-00 00:00:00'),
+(21, 8, 15, 2, 5, 0, 0, '019', '', 'Test Flower 19', '456.00', 'gbnvbn', 'assets/products_image/784470_12.jpg,assets/products_image/784471_20.jpg,assets/products_image/784472_26.jpg', 1, '2023-04-02 19:21:52', '0000-00-00 00:00:00'),
+(22, 9, 4, 0, 2, 0, 0, '020', '', 'Test Flower 20', '632.00', 'cxv', 'assets/products_image/267030_10.jpg,assets/products_image/267031_12.jpg,assets/products_image/267032_16.jpg', 1, '2023-04-02 19:22:30', '0000-00-00 00:00:00'),
+(23, 8, 15, 5, 5, 0, 0, '021', '', 'Test Flower 21', '111.00', 'ghjjhb', 'assets/products_image/211540_12.jpg,assets/products_image/211541_13.jpg,assets/products_image/211542_16.jpg', 1, '2023-04-02 19:23:09', '0000-00-00 00:00:00'),
+(24, 13, 0, 0, 5, 0, 0, '022', '', 'Test Flower 22', '222.00', 'fghgh', 'assets/products_image/663980_10.jpg,assets/products_image/663981_11.jpg,assets/products_image/663982_12.jpg', 1, '2023-04-02 19:24:05', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -257,7 +276,7 @@ CREATE TABLE `product_type` (
   `sub_cat_id` int(10) NOT NULL,
   `inserted_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `product_type`
@@ -302,7 +321,7 @@ CREATE TABLE `promo_code` (
   `status` int(10) NOT NULL DEFAULT 1,
   `inserted_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -316,7 +335,7 @@ CREATE TABLE `stock` (
   `product_id` int(10) NOT NULL,
   `quantity` int(10) NOT NULL,
   `inserted_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -331,7 +350,7 @@ CREATE TABLE `store` (
   `s_image` varchar(200) NOT NULL,
   `inserted_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -346,7 +365,7 @@ CREATE TABLE `sub_category` (
   `sub_cat_image` varchar(500) NOT NULL,
   `inserted_at` datetime NOT NULL,
   `updated_at` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `sub_category`
@@ -379,7 +398,7 @@ CREATE TABLE `wishlist` (
   `customer_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `inserted_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -543,7 +562,7 @@ ALTER TABLE `invoice_details`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `product_type`
