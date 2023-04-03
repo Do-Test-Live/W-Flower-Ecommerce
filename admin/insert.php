@@ -264,7 +264,7 @@ VALUES ('$customer_name','$customer_email','$customer_number','$password','$inse
 
 
 if(isset($_POST['add_quantity'])){
-    $category_id = $db_handle->checkValue($_POST['category_id']);
+    $category_id = $db_handle->checkValue($_POST['product_category']);
     $product_id = $db_handle->checkValue($_POST['product_id']);
     $product_quantity = $db_handle->checkValue($_POST['product_quantity']);
 

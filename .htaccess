@@ -10,4 +10,8 @@ RewriteRule ^Sub-Category sub_category.php [NE,L]
 
 RewriteRule ^Product-Type product_type.php [NE,L]
 
-RewriteRule ^Product-Details product_details.php [NE,L]
+RewriteRule ^Product-Details product_detail.php [NE,L]
+
+RewriteRule ^Login login.php [NE,L]
+
+RewriteRule ^Insert insert.php [NE,L]

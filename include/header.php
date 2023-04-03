@@ -123,10 +123,8 @@
                                         <ul class="lang">
                                             <li><a href="#"> <img src="images/english.png" alt="English"> <span>English</span>
                                                 </a></li>
-                                            <li><a href="#"> <img src="images/francais.png" alt="French"> <span>French</span>
+                                            <li><a href="#"> <img src="images/hong-kong.jpg" alt="French"> <span>Chinese</span>
                                                 </a></li>
-                                            <li><a href="#"> <img src="images/german.png" alt="German">
-                                                    <span>German</span> </a></li>
                                         </ul>
                                     </div>
                                     <!--fl-language-->
@@ -134,18 +132,27 @@
                                     <!-- For version 1,2,3,4,6 -->
                                     <div class="fl-currency">
                                         <ul class="currencies_list">
-                                            <li><a href="#" title="EGP"> £</a></li>
-                                            <li><a href="#" title="EUR"> €</a></li>
-                                            <li><a href="#" title="USD"> $</a></li>
+                                            <li><a href="#" title="EGP"> HKD</a></li>
                                         </ul>
                                     </div>
                                     <!--fl-currency-->
                                     <!-- END For version 1,2,3,4,6 -->
                                 </div>
                                 <ul class="links">
-                                    <li><a href="account.html" title="My Account">My Account</a></li>
-                                    <li><a href="checkout.html" title="Checkout">Checkout</a></li>
-                                    <li class="last"><a href="login.html" title="Login"><span>Login</span></a></li>
+                                    <?php
+                                    if(isset($_SESSION['id'])){
+                                        ?>
+                                        <li><a href="account.html" title="My Account">My Account</a></li>
+                                        <li><a href="checkout.html" title="Checkout">Checkout</a></li>
+                                        <li><a href="logout.php" title="Checkout">Logout</a></li>
+                                        <?php
+                                    }else{
+                                        ?>
+                                        <li class="last"><a href="Login" title="Login"><span>Login</span></a></li>
+                                        <?php
+                                    }
+                                    ?>
+
                                 </ul>
                             </div>
                         </div>

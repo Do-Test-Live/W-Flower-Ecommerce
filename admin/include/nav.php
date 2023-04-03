@@ -69,7 +69,7 @@
                     <li><a href="Product">Product List</a></li>
                 </ul>
             </li>
-            <!--<li>
+            <li>
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                     <i class="flaticon-381-controls-3"></i>
                     <span class="nav-text">Stock</span>
@@ -79,6 +79,7 @@
                     <li><a href="Stock">Stock List</a></li>
                 </ul>
             </li>
+            <!--
             <li>
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                     <i class="flaticon-381-database-2"></i>

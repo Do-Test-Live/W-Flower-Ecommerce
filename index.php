@@ -39,11 +39,12 @@ $db_handle = new DBController();
                         $no_hot_products = $db_handle->numRows("select * from product where hot_product = 1 ORDER BY rand () limit 20;");
                         for($x=0; $x<$no_hot_products; $x++){
                             $image = explode(',',$hot_products[$x]['p_image']);
+                            $product_id = $hot_products[$x]['id'];
                             ?>
                             <div class="item">
                                 <div class="item-inner">
                                     <div class="item-img">
-                                        <div class="item-img-info"><a href="product-detail.php"
+                                        <div class="item-img-info"><a href="Product-Details?id=<?php echo $product_id;?>"
                                                                       title="Four Season Flowers"
                                                                       class="product-image"><img
                                                         src="admin/<?php echo $image[0];?>" alt="Four Season Flowers"></a>
@@ -55,7 +56,7 @@ $db_handle = new DBController();
                                     </div>
                                     <div class="item-info">
                                         <div class="info-inner">
-                                            <div class="item-title"><a href="product-detail.php"
+                                            <div class="item-title"><a href="Product-Details?id=<?php echo $product_id;?>"
                                                                        title="Four Season Flowers"><?php echo $hot_products[$x]['p_name'];?></a></div>
                                             <div class="item-content">
                                                 <div class="item-price">
@@ -104,12 +105,13 @@ $db_handle = new DBController();
                         $hot_products = $db_handle->runQuery("select * from product ORDER BY rand () limit 20;");
                         $no_hot_products = $db_handle->numRows("select * from product ORDER BY rand () limit 20;");
                         for($x=0; $x<$no_hot_products; $x++){
+                            $product_id = $hot_products[$x]['id'];
                             $image = explode(',',$hot_products[$x]['p_image']);
                             ?>
                             <div class="item">
                                 <div class="item-inner">
                                     <div class="item-img">
-                                        <div class="item-img-info"><a href="product-detail.php"
+                                        <div class="item-img-info"><a href="Product-Details?id=<?php echo $product_id;?>"
                                                                       title="Four Season Flowers"
                                                                       class="product-image"><img
                                                         src="admin/<?php echo $image[0];?>" alt="Four Season Flowers"></a>
@@ -128,7 +130,7 @@ $db_handle = new DBController();
                                     </div>
                                     <div class="item-info">
                                         <div class="info-inner">
-                                            <div class="item-title"><a href="product-detail.php"
+                                            <div class="item-title"><a href="Product-Details?id=<?php echo $product_id;?>"
                                                                        title="Four Season Flowers"><?php echo $hot_products[$x]['p_name'];?></a></div>
                                             <div class="item-content">
                                                 <div class="item-price">

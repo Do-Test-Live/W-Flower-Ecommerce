@@ -76,7 +76,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                                 <div class="item-inner">
                                                     <div class="item-img">
                                                         <div class="item-img-info"><a
-                                                                    href="product-detail.php?product=<?php echo $product_color[$k]['id']; ?>"
+                                                                    href="Product-Details?id=<?php echo $product_color[$k]['id']; ?>"
                                                                     title="Test Flower"
                                                                     class="product-image"><img
                                                                         src="admin/<?php echo $image[0]; ?>"
@@ -97,7 +97,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                                     <div class="item-info">
                                                         <div class="info-inner">
                                                             <div class="item-title"><a
-                                                                        href="Product-Details?product=<?php echo $product_color[$k]['id']; ?>"
+                                                                        href="Product-Details?id=<?php echo $product_color[$k]['id']; ?>"
                                                                         title="Test Flower"><?php echo $product_color[$k]['p_name']; ?></a>
                                                             </div>
                                                             <div class="item-content">
@@ -156,7 +156,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                                     <div class="item-inner">
                                                         <div class="item-img">
                                                             <div class="item-img-info"><a
-                                                                        href="product-detail.php?product=<?php echo $product_price[$k]['id']; ?>"
+                                                                        href="Product-Details?id=<?php echo $product_price[$k]['id']; ?>"
                                                                         title="Test Flower"
                                                                         class="product-image"><img
                                                                             src="admin/<?php echo $image[0]; ?>"
@@ -177,7 +177,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                                         <div class="item-info">
                                                             <div class="info-inner">
                                                                 <div class="item-title"><a
-                                                                            href="Product-Details?product=<?php echo $product_price[$k]['id']; ?>"
+                                                                            href="Product-Details?id=<?php echo $product_price[$k]['id']; ?>"
                                                                             title="Test Flower"><?php echo $product_price[$k]['p_name']; ?></a>
                                                                 </div>
                                                                 <div class="item-content">
@@ -235,7 +235,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                                     <div class="item-inner">
                                                         <div class="item-img">
                                                             <div class="item-img-info"><a
-                                                                        href="product-detail.php?product=<?php echo $product_price[$k]['id']; ?>"
+                                                                        href="Product-Details?id=<?php echo $product_price[$k]['id']; ?>"
                                                                         title="Test Flower"
                                                                         class="product-image"><img
                                                                             src="admin/<?php echo $image[0]; ?>"
@@ -256,7 +256,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                                         <div class="item-info">
                                                             <div class="info-inner">
                                                                 <div class="item-title"><a
-                                                                            href="Product-Details?product=<?php echo $product_price[$k]['id']; ?>"
+                                                                            href="Product-Details?id=<?php echo $product_price[$k]['id']; ?>"
                                                                             title="Test Flower"><?php echo $product_price[$k]['p_name']; ?></a>
                                                                 </div>
                                                                 <div class="item-content">
@@ -316,7 +316,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                                 <div class="item-inner">
                                                     <div class="item-img">
                                                         <div class="item-img-info"><a
-                                                                    href="product-detail.php?product=<?php echo $fetch_product[$i]['id']; ?>"
+                                                                    href="Product-Details?id=<?php echo $fetch_product[$i]['id']; ?>"
                                                                     title="Test Flower"
                                                                     class="product-image"><img
                                                                         src="admin/<?php echo $image[0]; ?>"
@@ -337,7 +337,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                                     <div class="item-info">
                                                         <div class="info-inner">
                                                             <div class="item-title"><a
-                                                                        href="Product-Details?product=<?php echo $fetch_product[$i]['id']; ?>"
+                                                                        href="Product-Details?id=<?php echo $fetch_product[$i]['id']; ?>"
                                                                         title="Test Flower"><?php echo $fetch_product[$i]['p_name']; ?></a>
                                                             </div>
                                                             <div class="item-content">
@@ -439,7 +439,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                     <div class="item active"><img src="images/flower/1.jpg" alt="slide3">
                                         <div class="carousel-caption">
                                             <h4>Fruit Shop</h4>
-                                            <h3><a title=" Sample Product" href="product-detail.php">Up to 70% Off</a>
+                                            <h3><a title=" Sample Product" href="product_detail.php">Up to 70% Off</a>
                                             </h3>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                             <a class="link" href="#">Buy Now</a></div>
@@ -447,7 +447,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                     <div class="item"><img src="images/flower/2.jpg" alt="slide1">
                                         <div class="carousel-caption">
                                             <h4>Black Grapes</h4>
-                                            <h3><a title=" Sample Product" href="product-detail.php">Mega Sale</a></h3>
+                                            <h3><a title=" Sample Product" href="product_detail.php">Mega Sale</a></h3>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                             <a class="link" href="#">Buy Now</a>
                                         </div>
@@ -455,7 +455,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                     <div class="item"><img src="images/flower/3.jpg" alt="slide2">
                                         <div class="carousel-caption">
                                             <h4>Food Farm</h4>
-                                            <h3><a title=" Sample Product" href="product-detail.php">Up to 50% Off</a>
+                                            <h3><a title=" Sample Product" href="product_detail.php">Up to 50% Off</a>
                                             </h3>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                             <a class="link" href="#">Buy Now</a>

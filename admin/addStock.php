@@ -60,8 +60,9 @@ if (!isset($_SESSION['userid'])) {
                                     <div class="form-row">
                                         <div class="form-group col-md-12">
                                             <label>Select Product Category *</label>
-                                            <select class="form-control default-select" id="sel1"
-                                                    name="category_id" required>
+                                            <select class="form-control default-select" id="category"
+                                                    name="product_category" required>
+                                                <option>Choose Category</option>
                                                 <?php
                                                 $cat = $db_handle->runQuery("SELECT * FROM `category`");
                                                 $row_count = $db_handle->numRows("SELECT * FROM `category`");
@@ -126,7 +127,7 @@ if (!isset($_SESSION['userid'])) {
 </script>
 
 <script>
-    const select1 = document.getElementById('sel1');
+    const select1 = document.getElementById('category');
     const select2 = document.getElementById('single');
 
     select1.addEventListener('change', () => {
@@ -160,6 +161,65 @@ if (!isset($_SESSION['userid'])) {
         };
         xhr.send(`selectedValue=${selectedValue}`);
     });
+</script>
+<script>
+    $(document).ready(function() {
+        // Bind an event listener to the first select field
+        $('#category').on('change', function() {
+            // Get the selected value from the first select field
+            var selectedValue = $(this).val();
+
+            // Make an AJAX request to fetch the data based on the selected value
+            $.ajax({
+                url: 'fetch-sub-cat.php', // change this to the URL of your PHP script
+                method: 'GET', // or 'GET', depending on how you want to send the data
+                data: { selectedValue: selectedValue },
+                dataType: 'json', // or 'html', depending on how you're returning the data
+                success: function(data) {
+                    // Clear the current options in the second select field
+                    $('#subcategory').empty();
+
+                    // Add the new options based on the fetched data
+                    $.each(data, function(index, value) {
+                        $('#subcategory').append('<option value="' + value.sub_cat_id  + '">' + value.sub_cat_name + '</option>');
+                    });
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error(textStatus, errorThrown);
+                }
+            });
+        });
+    });
+
+    $(document).ready(function() {
+        // Bind an event listener to the first select field
+        $('#subcategory').on('change', function() {
+            // Get the selected value from the first select field
+            var selectedValue = $(this).val();
+
+            // Make an AJAX request to fetch the data based on the selected value
+            $.ajax({
+                url: 'fetch-product-type.php', // change this to the URL of your PHP script
+                method: 'GET', // or 'GET', depending on how you want to send the data
+                data: { selectedValue: selectedValue },
+                dataType: 'json', // or 'html', depending on how you're returning the data
+                success: function(data) {
+                    console.log(data);
+                    // Clear the current options in the second select field
+                    $('#product_type').empty();
+
+                    // Add the new options based on the fetched data
+                    $.each(data, function(index, value) {
+                        $('#product_type').append('<option value="' + value.product_type_id  + '">' + value.product_type + '</option>');
+                    });
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error(textStatus, errorThrown);
+                }
+            });
+        });
+    });
+
 </script>
 
 </body>
