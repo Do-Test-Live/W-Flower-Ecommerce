@@ -70,9 +70,19 @@
     </ul>
     <div class="top-links">
         <ul class="links">
-            <li><a title="My Account" href="account.html">My Account</a></li>
-            <li><a title="Checkout" href="checkout.html">Checkout</a></li>
-            <li class="last"><a title="Login" href="login.html">Login</a></li>
+            <?php
+            if(isset($_SESSION['id'])){
+                ?>
+                <li><a href="Account" title="My Account">My Account</a></li>
+                <li><a href="Checkout" title="Checkout">Checkout</a></li>
+                <li><a href="logout.php" title="Checkout">Logout</a></li>
+                <?php
+            }else{
+                ?>
+                <li class="last"><a href="Login" title="Login"><span>Login</span></a></li>
+                <?php
+            }
+            ?>
         </ul>
     </div>
 </div>

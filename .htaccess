@@ -15,3 +15,7 @@ RewriteRule ^Product-Details product_detail.php [NE,L]
 RewriteRule ^Login login.php [NE,L]
 
 RewriteRule ^Insert insert.php [NE,L]
+
+RewriteRule ^Account account.php [NE,L]
+
+RewriteRule ^Checkout checkout.php [NE,L]
