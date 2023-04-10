@@ -52,8 +52,11 @@ if (!isset($_SESSION['userid'])) {
 							<div class="card-body">
 								<div class="media align-items-center">
 									<div class="media-body mr-2">
-										<h2 class="text-white font-w600">459</h2>
-										<span class="text-white">Total Menus</span>
+                                        <?php
+                                        $total_product = $db_handle->runQuery("select count('id') as p from product");
+                                        ?>
+										<h2 class="text-white font-w600"><?php echo $total_product[0]['p'];?></h2>
+										<span class="text-white">Total Products</span>
 									</div>
 									<div class="d-inline-block position-relative donut-chart-sale">
 										<span class="donut1" data-peity='{ "fill": ["rgb(255, 255, 255)", "rgba(255, 255, 255, 0)"],   "innerRadius": 41, "radius": 10}'>6/8</span>
@@ -125,7 +128,10 @@ if (!isset($_SESSION['userid'])) {
 							<div class="card-body">
 								<div class="media align-items-center">
 									<div class="media-body mr-2">
-										<h2 class="text-white font-w600">872</h2>
+                                        <?php
+                                        $total_customer = $db_handle->runQuery("select count('id') as p from customer");
+                                        ?>
+										<h2 class="text-white font-w600"><?php echo $total_customer[0]['p'];?></h2>
 										<span class="text-white">Total Customers</span>
 									</div>
 									<div class="d-inline-block position-relative donut-chart-sale">

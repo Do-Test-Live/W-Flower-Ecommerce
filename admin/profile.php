@@ -46,6 +46,34 @@ if (!isset($_SESSION['userid'])) {
         <!-- row -->
         <div class="container-fluid">
             <!-- Add Order -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Change Password</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="basic-form">
+                                <form action="Update" method="post" enctype="multipart/form-data">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label>Old Password</label>
+                                            <input type="password" class="form-control" placeholder="" name="old_pass" required>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label>New Password</label>
+                                            <input type="password" class="form-control" placeholder="" name="new_pass" required>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary w-50" name="pass_update">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>

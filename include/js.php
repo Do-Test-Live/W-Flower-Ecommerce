@@ -7,6 +7,8 @@
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/jquery.mobile-menu.min.js"></script>
 <script src="js/countdown.js"></script>
+<script src="vendor/toastr/js/toastr.min.js" type="text/javascript"></script>
+<script src="js/toastr-init.js"></script>
 
 <script>
     jQuery(document).ready(function () {

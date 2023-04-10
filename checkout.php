@@ -92,7 +92,7 @@ $db_handle = new DBController();
 
                                     <td class="a-right hidden-table">
                             <span class="cart-price">
-                                                <span class="price">$129.00</span>
+                                                <span class="price">129.00 HKD</span>
             </span>
 
 
@@ -104,7 +104,7 @@ $db_handle = new DBController();
                                     <td class="a-right movewishlist">
                     <span class="cart-price">
 
-                                                <span class="price">$129.00</span>
+                                                <span class="price">129.00 HKD</span>
         </span>
                                     </td>
                                     <td class="a-center last">
@@ -132,7 +132,7 @@ $db_handle = new DBController();
 
                                     <td class="a-right hidden-table">
                             <span class="cart-price">
-                                                <span class="price">$129.00</span>
+                                                <span class="price">129.00 HKD</span>
             </span>
 
 
@@ -144,7 +144,7 @@ $db_handle = new DBController();
                                     <td class="a-right movewishlist">
                     <span class="cart-price">
 
-                                                <span class="price">$129.00</span>
+                                                <span class="price">129.00 HKD</span>
         </span>
                                     </td>
                                     <td class="a-center last">
@@ -184,7 +184,7 @@ $db_handle = new DBController();
                                                 <strong>Grand Total</strong>
                                             </td>
                                             <td style="" class="a-right">
-                                                <strong><span class="price">$129.00</span></strong>
+                                                <strong><span class="price">129.00 HKD</span></strong>
                                             </td>
                                         </tr>
                                         </tfoot>
@@ -194,7 +194,7 @@ $db_handle = new DBController();
                                                 Subtotal
                                             </td>
                                             <td style="" class="a-right">
-                                                <span class="price">$129.00</span></td>
+                                                <span class="price">129.00 HKD</span></td>
                                         </tr>
                                         </tbody>
                                     </table>

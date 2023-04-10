@@ -239,3 +239,21 @@ if(isset($_POST['updateColor'])){
 
 }
 
+if(isset($_POST['pass_update'])){
+    $old_pass = $db_handle->checkValue($_POST['old_pass']);
+    $new_pass = $db_handle->checkValue($_POST['new_pass']);
+
+    $data = $db_handle->runQuery("SELECT password FROM admin_login");
+    if($data[0]['password'] == $old_pass){
+        $data = $db_handle->insertQuery("UPDATE `admin_login` SET `password`='$new_pass'");
+        echo "<script>
+                document.cookie = 'alert = 3;';
+                window.location.href='Profile';
+                </script>";
+    }else{
+        echo "<script>
+                document.cookie = 'alert = 5;';
+                window.location.href='Profile';
+                </script>";
+    }
+}

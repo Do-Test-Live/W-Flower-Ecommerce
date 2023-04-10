@@ -11,7 +11,10 @@ if(isset($_POST['login'])){
     if($login_no == 1){
         session_start();
         $_SESSION['id'] = $login[0]['id'];
-        header('Location: Home');
+        echo "<script>
+                document.cookie = 'alert = 3;';
+                window.location.href='Home';
+                </script>";
     }
 }
 
