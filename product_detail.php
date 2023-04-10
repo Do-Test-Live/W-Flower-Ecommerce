@@ -153,7 +153,7 @@ $product_id = $_GET['id'];
                                         $no_hot_products = $db_handle->numRows("select * from product where category_id = '$cat_id' ORDER BY rand () limit 10;");
                                         for($x=0; $x<$no_hot_products; $x++){
                                             $image = explode(',',$hot_products[$x]['p_image']);
-                                            $product_id = $hot_products[0]['id'];
+                                            $product_id = $hot_products[$x]['id'];
                                             ?>
                                             <div class="item">
                                                 <div class="item-inner">
