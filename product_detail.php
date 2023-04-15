@@ -39,14 +39,13 @@ $product_id = $_GET['id'];
         <div class="main">
             <div class="col-main">
                 <!-- Endif Next Previous Product -->
-                <div class="product-view wow bounceInUp animated" itemscope="" itemtype="http://schema.org/Product"
-                     itemid="#product_base">
+                <div class="product-view wow bounceInUp animated">
                     <div id="messages_product_view"></div>
                     <!--product-next-prev-->
                     <div class="product-essential container">
                         <div class="row">
 
-                            <form action="#" method="post" id="product_addtocart_form">
+                            <form action="" method="post">
                                 <!--End For version 1, 2, 6 -->
                                 <!-- For version 3 -->
                                 <div class="product-img-box col-lg-5 col-sm-5 col-xs-12">
@@ -114,9 +113,12 @@ $product_id = $_GET['id'];
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="add-to-box">
+                                    <div class="form-row">
+                                        <input class="form-control" type="number" value="1" min="1" name="quantity" style="width: 100px;height: 50px;font-size: 25px"/>
+                                    </div>
+                                    <div class="add-to-box" style="margin-top: 2em">
                                         <div class="add-to-cart">
-                                            <button onclick="location.href='https://payme-cashout-secure.hsbc.com.hk/merchantPayCode.html?page=merchantPayCode&url=https://qr.payme.hsbc.com.hk/2/TZ9LwUYAgkjaiEiqvMqLLy'" class="button btn-cart"
+                                            <button class="button btn-cart"
                                                     title="Add to Cart" type="button">Add to Cart
                                             </button>
                                         </div>
@@ -151,19 +153,21 @@ $product_id = $_GET['id'];
                                         $cat_id = $select_product[0]['category_id'];
                                         $hot_products = $db_handle->runQuery("select * from product where category_id = '$cat_id' ORDER BY rand () limit 10;");
                                         $no_hot_products = $db_handle->numRows("select * from product where category_id = '$cat_id' ORDER BY rand () limit 10;");
-                                        for($x=0; $x<$no_hot_products; $x++){
-                                            $image = explode(',',$hot_products[$x]['p_image']);
+                                        for ($x = 0; $x < $no_hot_products; $x++) {
+                                            $image = explode(',', $hot_products[$x]['p_image']);
                                             $product_id = $hot_products[$x]['id'];
                                             ?>
                                             <div class="item">
                                                 <div class="item-inner">
                                                     <div class="item-img">
-                                                        <div class="item-img-info"><a href="Product-Details?id=<?php echo $product_id;?>"
-                                                                                      title="Four Season Flowers"
-                                                                                      class="product-image"><img
-                                                                        src="admin/<?php echo $image[0];?>" alt="Four Season Flowers"></a>
+                                                        <div class="item-img-info"><a
+                                                                    href="Product-Details?id=<?php echo $product_id; ?>"
+                                                                    title="Four Season Flowers"
+                                                                    class="product-image"><img
+                                                                        src="admin/<?php echo $image[0]; ?>"
+                                                                        alt="Four Season Flowers"></a>
                                                             <?php
-                                                            if($hot_products[$x]['hot_product'] == '1'){
+                                                            if ($hot_products[$x]['hot_product'] == '1') {
                                                                 ?>
                                                                 <div class="new-label new-top-left">Hot</div>
                                                                 <?php
@@ -172,16 +176,22 @@ $product_id = $_GET['id'];
 
                                                         </div>
                                                         <div class="add_cart">
-                                                            <button class="button btn-cart" onclick="location.href='Checkout'" type="button"><span>Add to Cart</span></button>
+                                                            <button class="button btn-cart"
+                                                                    onclick="location.href='Checkout'" type="button">
+                                                                <span>Add to Cart</span></button>
                                                         </div>
                                                     </div>
                                                     <div class="item-info">
                                                         <div class="info-inner">
-                                                            <div class="item-title"><a href="Product-Details?id=<?php echo $product_id;?>"
-                                                                                       title="Four Season Flowers"><?php echo $hot_products[$x]['p_name'];?></a></div>
+                                                            <div class="item-title"><a
+                                                                        href="Product-Details?id=<?php echo $product_id; ?>"
+                                                                        title="Four Season Flowers"><?php echo $hot_products[$x]['p_name']; ?></a>
+                                                            </div>
                                                             <div class="item-content">
                                                                 <div class="item-price">
-                                                                    <div class="price-box"><span class="regular-price"><span class="price"><?php echo $hot_products[$x]['product_price'];?> HKD</span> </span>
+                                                                    <div class="price-box"><span
+                                                                                class="regular-price"><span
+                                                                                    class="price"><?php echo $hot_products[$x]['product_price']; ?> HKD</span> </span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -210,14 +220,14 @@ $product_id = $_GET['id'];
     <!--main-container-->
 </div>
 
-<?php include ('include/footer.php');?>
+<?php include('include/footer.php'); ?>
 <!-- End For version 1,2,3,4,6 -->
 
 <!--page-->
 <!-- Mobile Menu-->
-<?php include ('include/mobile_menu.php');?>
+<?php include('include/mobile_menu.php'); ?>
 <!-- JavaScript -->
-<?php include ('include/js.php');?>
+<?php include('include/js.php'); ?>
 
 
 <script>

@@ -143,13 +143,13 @@
                                     if(isset($_SESSION['id'])){
                                         ?>
                                         <li><a href="Account" title="My Account">My Account</a></li>
-                                        <li><a href="cart.php" title="Checkout">Checkout</a></li>
-                                        <li><a href="logout.php" title="Checkout">Logout</a></li>
+                                        <li><a href="Cart" title="Cart">Cart</a></li>
+                                        <li><a href="Logout">Logout</a></li>
                                         <?php
                                     }else{
                                         ?>
                                         <li class="last"><a href="#"><span>帳戶資料</span></a></li>
-                                        <li class="last"><a href="Login" title="Login"><span>登錄</span></a></li>
+                                        <li class="last"><a href="Login"><span>登錄</span></a></li>
                                         <li class="last"><a href="#"><span>查看記錄</span></a></li>
                                         <?php
                                     }
@@ -161,7 +161,7 @@
                     </div>
                     <div class="fl-cart-contain">
                         <div class="mini-cart">
-                            <div class="basket"><a href="category.html"><span> 0 </span></a></div>
+                            <div class="basket"><a href="Cart"><span> 0 </span></a></div>
                             <!--fl-mini-cart-content-->
                         </div>
                     </div>

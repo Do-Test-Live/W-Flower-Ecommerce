@@ -74,8 +74,8 @@
             if(isset($_SESSION['id'])){
                 ?>
                 <li><a href="Account" title="My Account">My Account</a></li>
-                <li><a href="cart.php" title="Checkout">Checkout</a></li>
-                <li><a href="logout.php" title="Checkout">Logout</a></li>
+                <li><a href="Cart" title="Cart">Checkout</a></li>
+                <li><a href="Logout" title="Logout">Logout</a></li>
                 <?php
             }else{
                 ?>
