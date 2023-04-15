@@ -45,96 +45,99 @@ $product_id = $_GET['id'];
                     <div class="product-essential container">
                         <div class="row">
 
-                            <form action="" method="post">
-                                <!--End For version 1, 2, 6 -->
-                                <!-- For version 3 -->
-                                <div class="product-img-box col-lg-5 col-sm-5 col-xs-12">
-                                    <?php
-                                    $select_product = $db_handle->runQuery("select * from product where id = '$product_id'");
-                                    $image = explode(',', $select_product[0]['p_image']);
+
+                            <!--End For version 1, 2, 6 -->
+                            <!-- For version 3 -->
+                            <div class="product-img-box col-lg-5 col-sm-5 col-xs-12">
+                                <?php
+                                $select_product = $db_handle->runQuery("select * from product where id = '$product_id'");
+                                $image = explode(',', $select_product[0]['p_image']);
+                                ?>
+                                <?php
+                                if ($select_product[0]['hot_product'] == 1) {
                                     ?>
+                                    <div class="new-label new-top-left">Hot</div>
                                     <?php
-                                    if ($select_product[0]['hot_product'] == 1) {
-                                        ?>
-                                        <div class="new-label new-top-left">Hot</div>
-                                        <?php
-                                    }
-                                    ?>
-                                    <div class="product-image">
-                                        <div class="product-full"><img id="product-zoom"
-                                                                       src="admin/<?php echo $image[0]; ?>"
-                                                                       data-zoom-image="admin/<?php echo $image[0]; ?>"
-                                                                       alt="product-image"/></div>
-                                        <div class="more-views">
-                                            <div class="slider-items-products">
-                                                <div id="gallery_01"
-                                                     class="product-flexslider hidden-buttons product-img-thumb">
-                                                    <div class="slider-items slider-width-col4 block-content">
-                                                        <div class="more-views-items"><a href="#"
-                                                                                         data-image="admin/<?php echo $image[0]; ?>"
-                                                                                         data-zoom-image="admin/<?php echo $image[0]; ?>">
-                                                                <img id="product-zoom0"
-                                                                     src="admin/<?php echo $image[0]; ?>"
-                                                                     onclick="related_image(this);"
-                                                                     alt="product-image"/> </a></div>
-                                                        <div class="more-views-items"><a href="#"
-                                                                                         data-image="admin/<?php echo $image[1]; ?>"
-                                                                                         data-zoom-image="admin/<?php echo $image[1]; ?>">
-                                                                <img id="product-zoom1"
-                                                                     src="admin/<?php echo $image[1]; ?>"
-                                                                     alt=" product-image"
-                                                                     onclick="related_image(this);"/> </a></div>
-                                                        <div class="more-views-items"><a href="#"
-                                                                                         data-image="admin/<?php echo $image[2]; ?>"
-                                                                                         data-zoom-image="admin/<?php echo $image[2]; ?>">
-                                                                <img id="product-zoom2"
-                                                                     src="admin/<?php echo $image[2]; ?>"
-                                                                     alt=" product-image"
-                                                                     onclick="related_image(this);"/> </a></div>
-                                                    </div>
+                                }
+                                ?>
+                                <div class="product-image">
+                                    <div class="product-full"><img id="product-zoom"
+                                                                   src="admin/<?php echo $image[0]; ?>"
+                                                                   data-zoom-image="admin/<?php echo $image[0]; ?>"
+                                                                   alt="product-image"/></div>
+                                    <div class="more-views">
+                                        <div class="slider-items-products">
+                                            <div id="gallery_01"
+                                                 class="product-flexslider hidden-buttons product-img-thumb">
+                                                <div class="slider-items slider-width-col4 block-content">
+                                                    <div class="more-views-items"><a href="#"
+                                                                                     data-image="admin/<?php echo $image[0]; ?>"
+                                                                                     data-zoom-image="admin/<?php echo $image[0]; ?>">
+                                                            <img id="product-zoom0"
+                                                                 src="admin/<?php echo $image[0]; ?>"
+                                                                 onclick="related_image(this);"
+                                                                 alt="product-image"/> </a></div>
+                                                    <div class="more-views-items"><a href="#"
+                                                                                     data-image="admin/<?php echo $image[1]; ?>"
+                                                                                     data-zoom-image="admin/<?php echo $image[1]; ?>">
+                                                            <img id="product-zoom1"
+                                                                 src="admin/<?php echo $image[1]; ?>"
+                                                                 alt=" product-image"
+                                                                 onclick="related_image(this);"/> </a></div>
+                                                    <div class="more-views-items"><a href="#"
+                                                                                     data-image="admin/<?php echo $image[2]; ?>"
+                                                                                     data-zoom-image="admin/<?php echo $image[2]; ?>">
+                                                            <img id="product-zoom2"
+                                                                 src="admin/<?php echo $image[2]; ?>"
+                                                                 alt=" product-image"
+                                                                 onclick="related_image(this);"/> </a></div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- end: more-images -->
                                 </div>
-                                <!--End For version 1,2,6-->
-                                <!-- For version 3 -->
-                                <div class="product-shop col-lg- col-sm-7 col-xs-12">
-                                    <div class="product-name">
-                                        <h1><?php echo $select_product[0]['p_name']; ?></h1>
-                                    </div>
-                                    <div class="price-block">
-                                        <div class="price-box">
-                                            <p class="availability in-stock"><span>In Stock</span></p>
-                                            <p class="special-price">
+                                <!-- end: more-images -->
+                            </div>
+                            <!--End For version 1,2,6-->
+                            <!-- For version 3 -->
+                            <div class="product-shop col-lg- col-sm-7 col-xs-12">
+                                <div class="product-name">
+                                    <h1><?php echo $select_product[0]['p_name']; ?></h1>
+                                </div>
+                                <div class="price-block">
+                                    <div class="price-box">
+                                        <p class="availability in-stock"><span>In Stock</span></p>
+                                        <p class="special-price">
                                                 <span id="product-price-48"
                                                       class="price"> <?php echo $select_product[0]['product_price']; ?> HKD</span>
-                                            </p>
-                                        </div>
+                                        </p>
                                     </div>
+                                </div>
+                                <form action="Product-Details?action=add&id=<?php echo $_GET['id']; ?>"
+                                      method="post">
                                     <div class="form-row">
-                                        <input class="form-control" type="number" value="1" min="1" name="quantity" style="width: 100px;height: 50px;font-size: 25px"/>
+                                        <input class="form-control" type="number" value="1" min="1" name="quantity"
+                                               style="width: 100px;height: 50px;font-size: 25px"/>
                                     </div>
                                     <div class="add-to-box" style="margin-top: 2em">
                                         <div class="add-to-cart">
                                             <button class="button btn-cart"
-                                                    title="Add to Cart" type="button">Add to Cart
+                                                    title="Add to Cart" type="submit">Add to Cart
                                             </button>
                                         </div>
-
                                     </div>
-                                    <div class="short-description">
-                                        <p><?php echo $select_product[0]['description']; ?> </p>
-                                    </div>
-
-                                    <ul class="shipping-pro">
-                                        <li>Free Wordwide Shipping</li>
-                                        <li>30 Days Return</li>
-                                        <li>Member Discount</li>
-                                    </ul>
+                                </form>
+                                <div class="short-description">
+                                    <p><?php echo $select_product[0]['description']; ?> </p>
                                 </div>
-                            </form>
+
+                                <ul class="shipping-pro">
+                                    <li>Free Wordwide Shipping</li>
+                                    <li>30 Days Return</li>
+                                    <li>Member Discount</li>
+                                </ul>
+                            </div>
+
                         </div>
                     </div>
 

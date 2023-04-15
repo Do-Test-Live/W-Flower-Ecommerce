@@ -8,12 +8,12 @@ $db_handle = new DBController();
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Four Seasons Florist</title>
-    <?php include ('include/css.php');?>
+    <?php include('include/css.php'); ?>
 </head>
 
 <body>
 <div id="page">
-    <?php include ('include/header.php');?>
+    <?php include('include/header.php'); ?>
 
     <div class="page-heading">
         <div class="container">
@@ -53,108 +53,71 @@ $db_handle = new DBController();
                                 <tr class="first last">
                                     <th rowspan="1">&nbsp;</th>
                                     <th rowspan="1"><span class="nobr">Product Name</span></th>
-                                    <th rowspan="1"></th>
                                     <th class="a-center" colspan="1"><span class="nobr">Unit Price</span></th>
                                     <th rowspan="1" class="a-center">Qty</th>
                                     <th class="a-center" colspan="1">Subtotal</th>
                                     <th rowspan="1" class="a-center">&nbsp;</th>
                                 </tr>
                                 </thead>
+                                <tbody>
+                                <?php
+                                $total_quantity_new = 0;
+                                $total_price_new = 0;
+                                if (isset($_SESSION["cart_item"])) {
+                                foreach ($_SESSION["cart_item"] as $item) {
+                                $item_price = $item["quantity"] * $item["price"];
+                                ?>
+                                <tr class="first last odd">
+                                    <td class="image hidden-table">
+                                        <a href="Product-Details?id=<?php echo $item["id"]; ?>" class="product-image">
+                                            <img src="admin/<?php echo $item["image"]; ?>" width="75" alt="">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <h2 class="product-name">
+                                            <a href="Product-Details?id=<?php echo $item["id"]; ?>"><?php echo $item["name"]; ?></a>
+                                        </h2>
+                                    </td>
+                                    <td class="a-right hidden-table">
+                                        <span class="cart-price">
+                                            <span class="price"><?php echo $item["price"]; ?> HKD</span>
+                                        </span>
+                                    </td>
+                                    <td class="a-center movewishlist">
+                                        <?php echo $item["quantity"]; ?>
+                                    </td>
+                                    <td class="a-right movewishlist">
+                                        <span class="cart-price">
+                                            <span class="price"><?php echo number_format($item_price, 2); ?> HKD</span>
+                                        </span>
+                                    </td>
+                                    <td class="a-center last">
+                                        <a href="Cart?action=remove&id=<?php echo $item["id"]; ?>" title="Remove item" class="button remove-item"><span><span>Remove item</span></span></a>
+                                    </td>
+                                </tr>
+                                    <?php
+                                    $total_quantity_new += $item["quantity"];
+                                    $total_price_new += ($item["price"] * $item["quantity"]);
+                                }
+                                }
+                                ?>
+                                </tbody>
                                 <tfoot>
                                 <tr class="first last">
                                     <td colspan="50" class="a-right last">
-                                        <button type="button" title="Continue Shopping" class="button btn-continue"
-                                                onClick=""><span><span>Continue Shopping</span></span></button>
-                                        <button type="submit" name="update_cart_action" value="empty_cart"
-                                                title="Clear Cart" class="button btn-empty" id="empty_cart_button">
-                                            <span><span>Clear Cart</span></span></button>
-
+                                        <button type="button" title="Continue Shopping" class="button btn-continue" onclick="location.href = 'Home';">
+                                            <span>
+                                                <span>Continue Shopping</span>
+                                            </span>
+                                        </button>
+                                        <a href="Cart?action=empty" class="button btn-danger" style="background: #ff0000">
+                                            <span>
+                                                <span>Clear Cart</span>
+                                            </span>
+                                        </a>
                                     </td>
                                 </tr>
                                 </tfoot>
-                                <tbody>
-
-                                <tr class="first last odd">
-                                    <td class="image hidden-table"><a href="product_detail.php"
-                                                                      title="Women&#39;s Georgette Animal Print"
-                                                                      class="product-image"><img
-                                            src="images/flower/15.jpg" width="75"
-                                            alt="Women&#39;s Georgette Animal Print"></a></td>
-                                    <td>
-                                        <h2 class="product-name">
-                                            <a href="product_detail.php">Test Image</a>
-                                        </h2>
-                                    </td>
-                                    <td class="a-center hidden-table">
-                                        <a href="#" class="edit-bnt" title="Edit item parameters"></a>
-                                    </td>
-
-
-                                    <td class="a-right hidden-table">
-                            <span class="cart-price">
-                                                <span class="price">129.00 HKD</span>
-            </span>
-
-
-                                    </td>
-                                    <td class="a-center movewishlist">
-                                        <input name="cart[26340][qty]" value="1" size="4" title="Qty"
-                                               class="input-text qty" maxlength="12">
-                                    </td>
-                                    <td class="a-right movewishlist">
-                    <span class="cart-price">
-
-                                                <span class="price">129.00 HKD</span>
-        </span>
-                                    </td>
-                                    <td class="a-center last">
-
-                                        <a href="#" title="Remove item" class="button remove-item"><span><span>Remove item</span></span></a>
-                                    </td>
-
-
-                                </tr>
-                                <tr class="first last odd">
-                                    <td class="image hidden-table"><a href="product_detail.php"
-                                                                      title="Women&#39;s Georgette Animal Print"
-                                                                      class="product-image"><img
-                                            src="images/flower/16.jpg" width="75"
-                                            alt="Women&#39;s Georgette Animal Print"></a></td>
-                                    <td>
-                                        <h2 class="product-name">
-                                            <a href="product_detail.php">Test Image</a>
-                                        </h2>
-                                    </td>
-                                    <td class="a-center hidden-table">
-                                        <a href="#" class="edit-bnt" title="Edit item parameters"></a>
-                                    </td>
-
-
-                                    <td class="a-right hidden-table">
-                            <span class="cart-price">
-                                                <span class="price">129.00 HKD</span>
-            </span>
-
-
-                                    </td>
-                                    <td class="a-center movewishlist">
-                                        <input name="cart[26340][qty]" value="1" size="4" title="Qty"
-                                               class="input-text qty" maxlength="12">
-                                    </td>
-                                    <td class="a-right movewishlist">
-                    <span class="cart-price">
-
-                                                <span class="price">129.00 HKD</span>
-        </span>
-                                    </td>
-                                    <td class="a-center last">
-
-                                        <a href="#" title="Remove item" class="button remove-item"><span><span>Remove item</span></span></a>
-                                    </td>
-
-
-                                </tr>
-                                </tbody>
                             </table>
 
                         </fieldset>
@@ -184,7 +147,7 @@ $db_handle = new DBController();
                                                 <strong>Grand Total</strong>
                                             </td>
                                             <td style="" class="a-right">
-                                                <strong><span class="price">129.00 HKD</span></strong>
+                                                <strong><span class="price"><?php echo number_format($total_price_new, 2); ?> HKD</span></strong>
                                             </td>
                                         </tr>
                                         </tfoot>
@@ -194,7 +157,7 @@ $db_handle = new DBController();
                                                 Subtotal
                                             </td>
                                             <td style="" class="a-right">
-                                                <span class="price">129.00 HKD</span></td>
+                                                <span class="price"><?php echo number_format($total_price_new, 2); ?> HKD</span></td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -202,10 +165,9 @@ $db_handle = new DBController();
                                     <ul class="checkout">
                                         <li>
                                             <button type="button" title="Proceed to Checkout"
-                                                    class="button btn-proceed-checkout" onClick=""><span>Proceed to Checkout</span>
+                                                    class="button btn-proceed-checkout" onclick="location.href = 'Checkout';"><span>Proceed to Checkout</span>
                                             </button>
                                         </li>
-                                        <br>
                                     </ul>
                                 </div><!--inner-->
                             </div><!--totals-->
@@ -223,15 +185,15 @@ $db_handle = new DBController();
     </div> <!--col1-layout-->
 
 
-    <?php include ('include/footer.php');?>
+    <?php include('include/footer.php'); ?>
     <!-- End For version 1,2,3,4,6 -->
 
 </div>
 <!--page-->
 <!-- Mobile Menu-->
-<?php include ('include/mobile_menu.php');?>
+<?php include('include/mobile_menu.php'); ?>
 <!-- JavaScript -->
-<?php include ('include/js.php');?>
+<?php include('include/js.php'); ?>
 
 
 </body>
