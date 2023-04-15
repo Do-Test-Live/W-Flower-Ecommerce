@@ -130,9 +130,9 @@
                                     <!--fl-language-->
                                     <!-- END For version 1,2,3,4,6 -->
                                     <!-- For version 1,2,3,4,6 -->
-                                    <div class="fl-currency">
+                                    <div>
                                         <ul class="currencies_list">
-                                            <li><a href="#" title="EGP"> HKD</a></li>
+                                            <li><a href="#" title="EGP"> Language</a></li>
                                         </ul>
                                     </div>
                                     <!--fl-currency-->
@@ -143,12 +143,14 @@
                                     if(isset($_SESSION['id'])){
                                         ?>
                                         <li><a href="Account" title="My Account">My Account</a></li>
-                                        <li><a href="Checkout" title="Checkout">Checkout</a></li>
+                                        <li><a href="cart.php" title="Checkout">Checkout</a></li>
                                         <li><a href="logout.php" title="Checkout">Logout</a></li>
                                         <?php
                                     }else{
                                         ?>
-                                        <li class="last"><a href="Login" title="Login"><span>Login</span></a></li>
+                                        <li class="last"><a href="#"><span>帳戶資料</span></a></li>
+                                        <li class="last"><a href="Login" title="Login"><span>登錄</span></a></li>
+                                        <li class="last"><a href="#"><span>查看記錄</span></a></li>
                                         <?php
                                     }
                                     ?>
@@ -159,7 +161,7 @@
                     </div>
                     <div class="fl-cart-contain">
                         <div class="mini-cart">
-                            <div class="basket"><a href="category.html"><span> 2 </span></a></div>
+                            <div class="basket"><a href="category.html"><span> 0 </span></a></div>
                             <!--fl-mini-cart-content-->
                         </div>
                     </div>

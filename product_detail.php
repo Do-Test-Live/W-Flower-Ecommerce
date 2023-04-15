@@ -116,7 +116,7 @@ $product_id = $_GET['id'];
                                     </div>
                                     <div class="add-to-box">
                                         <div class="add-to-cart">
-                                            <button onclick="productAddToCartForm.submit(this)" class="button btn-cart"
+                                            <button onclick="location.href='https://payme-cashout-secure.hsbc.com.hk/merchantPayCode.html?page=merchantPayCode&url=https://qr.payme.hsbc.com.hk/2/TZ9LwUYAgkjaiEiqvMqLLy'" class="button btn-cart"
                                                     title="Add to Cart" type="button">Add to Cart
                                             </button>
                                         </div>
@@ -172,7 +172,7 @@ $product_id = $_GET['id'];
 
                                                         </div>
                                                         <div class="add_cart">
-                                                            <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
+                                                            <button class="button btn-cart" onclick="location.href='Checkout'" type="button"><span>Add to Cart</span></button>
                                                         </div>
                                                     </div>
                                                     <div class="item-info">

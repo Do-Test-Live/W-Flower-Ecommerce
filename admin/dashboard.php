@@ -83,7 +83,7 @@ if (!isset($_SESSION['userid'])) {
 							<div class="card-body">
 								<div class="media align-items-center">
 									<div class="media-body mr-2">
-										<h2 class="text-white font-w600">$ 87,561</h2>
+										<h2 class="text-white font-w600">$ 0</h2>
 										<span class="text-white">Total Revenue</span>
 									</div>
 									<div class="d-inline-block position-relative donut-chart-sale">
@@ -104,7 +104,7 @@ if (!isset($_SESSION['userid'])) {
 							<div class="card-body">
 								<div class="media align-items-center">
 									<div class="media-body mr-2">
-										<h2 class="text-white font-w600">247</h2>
+										<h2 class="text-white font-w600">0</h2>
 										<span class="text-white">Total Oders</span>
 									</div>
 									<div class="d-inline-block position-relative donut-chart-sale">

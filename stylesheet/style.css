@@ -484,12 +484,10 @@ ul.currencies_list li a {
     color: #a3d659;
     font-size: 14px;
     font-weight: 600;
-    width: 30px;
     display: block;
     height: 30px;
     line-height: 30px;
     text-align: center;
-    background: #131e2c;
     border-radius: 3px
 }
 
