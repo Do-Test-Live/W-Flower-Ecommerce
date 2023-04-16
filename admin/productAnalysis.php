@@ -12,6 +12,8 @@ if (!isset($_SESSION['userid'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Product Analysis | Four Seasons</title>
+    <!-- Datatable -->
+    <link href="vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
     <?php include 'include/css.php'; ?>
 </head>
 <body>
@@ -46,7 +48,44 @@ if (!isset($_SESSION['userid'])) {
         <!-- row -->
         <div class="container-fluid">
             <!-- Add Order -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Products Analysis</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="example3" class="display min-w850">
+                                    <thead>
+                                    <tr>
+                                        <th>SL</th>
+                                        <th>Product Name</th>
+                                        <th>Total Sale</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                    $products = $db_handle->runQuery("SELECT product_name, SUM(product_quantity) as q FROM `invoice_details` group by product_name;");
+                                    $row_count = $db_handle->numRows("SELECT product_name, SUM(product_quantity) as q FROM `invoice_details` group by product_name;");
 
+                                    for ($i = 0; $i < $row_count; $i++) {
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $i + 1; ?></td>
+                                            <td><?php echo $products[$i]["product_name"];?></td>
+                                            <td><?php echo $products[$i]["q"]; ?></td>
+                                        </tr>
+                                        <?php
+                                    }
+                                    ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <!--**********************************
@@ -61,5 +100,8 @@ if (!isset($_SESSION['userid'])) {
 ***********************************-->
 
 <?php include 'include/js.php'; ?>
+<!-- Datatable -->
+<script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script src="js/plugins-init/datatables.init.js"></script>
 </body>
 </html>

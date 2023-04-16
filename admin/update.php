@@ -257,3 +257,35 @@ if(isset($_POST['pass_update'])){
                 </script>";
     }
 }
+
+if(isset($_GET['billing_id'])){
+    $billing_id = $_GET['billing_id'];
+    $update = $db_handle->insertQuery("update billing_details set approve = '2' where id=$billing_id");
+    if($update){
+        echo "<script>
+                document.cookie = 'alert = 3;';
+                window.location.href='Pending-Order';
+                </script>";
+    }else{
+        echo "<script>
+                document.cookie = 'alert = 5;';
+                window.location.href='Pending-Order';
+                </script>";
+    }
+}
+
+if(isset($_GET['confirm_id'])){
+    $billing_id = $_GET['confirm_id'];
+    $update = $db_handle->insertQuery("update billing_details set approve = '1' where id=$billing_id");
+    if($update){
+        echo "<script>
+                document.cookie = 'alert = 3;';
+                window.location.href='Confirm-Order';
+                </script>";
+    }else{
+        echo "<script>
+                document.cookie = 'alert = 5;';
+                window.location.href='Confirm-Order';
+                </script>";
+    }
+}
