@@ -54,3 +54,8 @@ if(isset($_GET['adminId'])){
     echo 'success';
 }
 
+if(isset($_GET['productTypeId'])){
+    $db_handle->insertQuery("delete from product_type where product_type_id  =" . $_GET['productTypeId'] . "");
+    echo 'success';
+}
+

@@ -69,7 +69,7 @@
                     <li><a href="Product">Product List</a></li>
                 </ul>
             </li>
-            <li>
+            <!--<li>
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                     <i class="flaticon-381-controls-3"></i>
                     <span class="nav-text">Stock</span>
@@ -78,7 +78,7 @@
                     <li><a href="Add-Stock">Add Stock</a></li>
                     <li><a href="Stock">Stock List</a></li>
                 </ul>
-            </li>
+            </li>-->
             <!--
             <li>
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
@@ -100,14 +100,15 @@
                     <li><a href="Promo-Code">Promo Code List</a></li>
                 </ul>
             </li>-->
-            <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+            <li>
+                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                     <i class="flaticon-381-layer-1"></i>
                     <span class="nav-text">Analysis</span>
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="Product-Analysis">Product Analysis</a></li>
                     <li><a href="Business-Analysis">Business Analysis</a></li>
-                    <li><a href="Store-Analysis">Store Analysis</a></li>
+                    <!--<li><a href="Store-Analysis">Store Analysis</a></li>-->
                 </ul>
             </li>
             <li>
@@ -120,12 +121,12 @@
                     <li><a href="Confirm-Order">Confirm order</a></li>
                 </ul>
             </li>
-            <li>
+            <!--<li>
                 <a href="Report" class="ai-icon" aria-expanded="false">
                     <i class="flaticon-381-settings-2"></i>
                     <span class="nav-text">Report</span>
                 </a>
-            </li>
+            </li>-->
             <li>
                 <a href="Customer">
                     <i class="flaticon-381-internet"></i>

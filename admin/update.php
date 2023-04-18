@@ -289,3 +289,26 @@ if(isset($_GET['confirm_id'])){
                 </script>";
     }
 }
+
+if(isset($_POST['updateProductType'])){
+    $id = $db_handle->checkValue($_POST['id']);
+    $category = $db_handle->checkValue($_POST['category']);
+    $sub_cat = $db_handle->checkValue($_POST['sub_cat']);
+    $product_type = $db_handle->checkValue($_POST['product_type']);
+    $updated_at = date("Y-m-d H:i:s");
+
+    $update = $db_handle->insertQuery("UPDATE `product_type` SET `product_type`='$product_type',`cat_id`='$category',`sub_cat_id`='$sub_cat',`updated_at`='$updated_at' 
+                      WHERE product_type_id = '$id'");
+    if($update){
+        echo "<script>
+                document.cookie = 'alert = 3;';
+                window.location.href='Product-Type';
+                </script>";
+    }else{
+        echo "<script>
+                document.cookie = 'alert = 5;';
+                window.location.href='Product-Type';
+                </script>";
+    }
+
+}

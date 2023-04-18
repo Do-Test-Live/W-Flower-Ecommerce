@@ -49,23 +49,23 @@ if (!isset($_SESSION['userid'])) {
         <div class="container-fluid">
             <!-- Category List -->
             <div class="row">
-                <?php if (isset($_GET['subcatId'])) { ?>
+                <?php if (isset($_GET['product_type_id'])) { ?>
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Update sub-Category</h4>
+                                <h4 class="card-title">Update Product Type</h4>
                             </div>
                             <div class="card-body">
                                 <div class="basic-form">
                                     <form method="post" action="Update" enctype="multipart/form-data">
 
-                                        <?php $data = $db_handle->runQuery("SELECT p.product_type, c.c_name, s.sub_cat_name, p.inserted_at FROM `product_type` as p, category as c, sub_category as s WHERE p.cat_id = c.id and p.sub_cat_id = s.sub_cat_id and c.id = s.sub_cat_id;");?>
+                                        <?php $data = $db_handle->runQuery("SELECT p.product_type, c.id, c.c_name,s.sub_cat_id, s.sub_cat_name FROM `product_type` as p, category as c, sub_category as s WHERE p.cat_id = c.id and p.sub_cat_id = s.sub_cat_id and p.product_type_id = ".$_GET['product_type_id'].";");?>
 
-                                        <input type="hidden" value="<?php echo $data[0]["sub_cat_id"];?>" name="id" required>
+                                        <input type="hidden" value="<?php echo$_GET['product_type_id'];?>" name="id" required>
 
                                         <div class="mb-3 row">
-                                            <label>Select Product Category *</label>
-                                            <select class="form-control default-select" id="sel1" name="category" required>
+                                            <label>Select Category *</label>
+                                            <select class="form-control default-select" name="category" required>
                                                 <option value="<?php echo $data[0]["id"];?>" selected><?php echo $data[0]["c_name"];?></option>
                                                 <?php
                                                 $cat = $db_handle->runQuery("SELECT * FROM `category`");
@@ -79,33 +79,30 @@ if (!isset($_SESSION['userid'])) {
                                             </select>
                                         </div>
                                         <div class="mb-3 row">
-                                            <label>Sub Category Name *</label>
-                                            <input type="text" class="form-control" name="sub_cat_name"
-                                                   placeholder="Sub-Category Name"
-                                                   value="<?php echo $data[0]["sub_cat_name"]; ?>" required>
+                                            <label>Select Sub-Category *</label>
+                                            <select class="form-control default-select" id="sel1" name="sub_cat" required>
+                                                <option value="<?php echo $data[0]["sub_cat_id"];?>" selected><?php echo $data[0]["sub_cat_name"];?></option>
+                                                <?php
+                                                $cat = $db_handle->runQuery("SELECT * FROM `sub_category`");
+                                                $row_count = $db_handle->numRows("SELECT * FROM `sub_category`");
+                                                for ($i = 0; $i < $row_count; $i++) {
+                                                    ?>
+                                                    <option value="<?php echo $cat[$i]["sub_cat_id"]; ?>"><?php echo $cat[$i]["sub_cat_name"]; ?></option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
                                         <div class="mb-3 row">
-                                            <label class="col-sm-3 col-form-label">Image</label>
-                                            <div class="col-sm-6">
-                                                <div class="input-group mb-3">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text">Upload</span>
-                                                    </div>
-                                                    <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" name="sub_cat_image" accept="image/png, image/jpeg, image/jpg">
-                                                        <label class="custom-file-label">Choose file (png, jpg, jpeg)</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <img src="<?php echo $data[0]["sub_cat_image"]; ?>" class="img-fluid"
-                                                     alt=""/>
-                                            </div>
+                                            <label>Product Type Name</label>
+                                            <input type="text" class="form-control" name="product_type"
+                                                   placeholder="Sub-Category Name"
+                                                   value="<?php echo $data[0]["product_type"]; ?>" required>
                                         </div>
                                         <div class="mb-3 row">
                                             <div class="col-sm-6 mx-auto">
                                                 <button type="submit" class="btn btn-primary w-25"
-                                                        name="updateSubCategory">Submit
+                                                        name="updateProductType">Submit
                                                 </button>
                                             </div>
                                         </div>
@@ -155,7 +152,7 @@ if (!isset($_SESSION['userid'])) {
                                                         <a href="Product-Type?product_type_id=<?php echo $product_type_data[$i]["product_type_id"]; ?>"
                                                            class="btn btn-primary shadow btn-xs sharp mr-1"><i
                                                                 class="fa fa-pencil"></i></a>
-                                                        <a onclick="subcategoryDelete(<?php echo $product_type_data[$i]["product_type_id"]; ?>);"
+                                                        <a onclick="productTypeDelete(<?php echo $product_type_data[$i]["product_type_id"]; ?>);"
                                                            class="btn btn-danger shadow btn-xs sharp"><i
                                                                 class="fa fa-trash"></i></a>
                                                     </div>
@@ -189,7 +186,7 @@ if (!isset($_SESSION['userid'])) {
 
 <?php include 'include/js.php'; ?>
 <script>
-    function subcategoryDelete(id) {
+    function productTypeDelete(id) {
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -204,7 +201,7 @@ if (!isset($_SESSION['userid'])) {
                     type: 'get',
                     url: 'Delete',
                     data: {
-                        subcatId: id
+                        productTypeId: id
                     },
                     success: function (data) {
                         if (data.toString() === 'P') {
