@@ -60,35 +60,43 @@ $db_handle = new DBController();
                                             <div class="col-xxl-12">
                                                 <div class="delivery-address-box">
                                                     <div class="row">
-                                                        <div class="form-group col-md-6 mb-3">
-                                                            <input type="text" class="form-control" name="f_name"
-                                                                   value="" placeholder="First Name" required="">
-                                                        </div>
-                                                        <div class="form-group col-md-6 mb-3">
-                                                            <input type="text" class="form-control" name="l_name"
-                                                                   value="" placeholder="Last Name" required="">
+                                                        <div class="form-group col-md-12 mb-3">
+                                                            <label>聯繫人姓名</label>
+                                                            <input type="text" class="form-control" name="contact_name"
+                                                                   value="" required="">
                                                         </div>
                                                         <div class="form-group col-md-12 mb-3">
-                                                            <input type="text" class="form-control" name="email"
-                                                                   value="" placeholder="Email Address" required="">
+                                                            <label>聯繫人電話</label>
+                                                            <input type="text" class="form-control" name="contact_phone"
+
+                                                        <div class="form-group col-md-12 mb-3">
+                                                            <label>電子郵件</label>
+                                                            <input type="email" class="form-control" name="email"
+                                                                   value="" required="">
                                                         </div>
                                                         <div class="form-group col-md-12 mb-3">
-                                                            <input type="text" class="form-control" name="phone_number"
-                                                                   value="" placeholder="Phone Number" maxlength="10"
-                                                                   minlength="10" required="">
+                                                            <label>收件人姓名</label>
+                                                            <input type="text" class="form-control" name="receiver_name"
+                                                                   value="" required="">
                                                         </div>
                                                         <div class="form-group col-md-12 mb-3">
+                                                            <label>收件人電話</label>
+                                                            <input type="text" class="form-control" name="receiver_phone"
+                                                                   value="" required="">
+                                                        </div>
+                                                        <div class="form-group col-md-12 mb-3">
+                                                            <label>地址</label>
                                                             <input type="text" class="form-control" name="address"
-                                                                   value="" placeholder="Street Address" required="">
+                                                                   value="" required="">
                                                         </div>
                                                         <div class="form-group col-md-6 mb-3">
-                                                            <input type="text" class="form-control" name="city" value=""
-                                                                   placeholder="City" required="">
+                                                            <label>交貨日期</label>
+                                                            <input type="date" class="form-control" name="deliver_date" required="">
                                                         </div>
                                                         <div class="form-group col-md-6 mb-3">
-                                                            <input type="text" class="form-control" name="zip_code"
-                                                                   value="" placeholder="Zip Code" maxlength="5"
-                                                                   minlength="5" required="">
+                                                            <label>交貨時間</label>
+                                                            <input type="time" class="form-control" name="deliver_time"
+                                                                   value="" required="">
                                                         </div>
                                                         <div class="form-group col-md-6 mb-3">
                                                             <input class="form-check-input card-class" name="addInfo"

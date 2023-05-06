@@ -24,13 +24,14 @@ function randomPassword()
 
 if (isset($_POST["placeOrder"])) {
 
-    $f_name = $db_handle->checkValue($_POST['f_name']);
-    $l_name = $db_handle->checkValue($_POST['l_name']);
-    $phone = $db_handle->checkValue($_POST['phone_number']);
+    $contact_name = $db_handle->checkValue($_POST['contact_name']);
+    $contact_phone = $db_handle->checkValue($_POST['contact_phone']);
+    $receiver_name = $db_handle->checkValue($_POST['receiver_name']);
+    $receiver_phone = $db_handle->checkValue($_POST['receiver_phone']);
     $email = $db_handle->checkValue($_POST['email']);
     $address = $db_handle->checkValue($_POST['address']);
-    $city = $db_handle->checkValue($_POST['city']);
-    $zip_code = $db_handle->checkValue($_POST['zip_code']);
+    $deliver_date= $db_handle->checkValue($_POST['deliver_date']);
+    $deliver_time = $db_handle->checkValue($_POST['deliver_time']);
     $addInfo = 0;
 
     if (!empty($_POST['addInfo'])) {
@@ -52,11 +53,11 @@ if (isset($_POST["placeOrder"])) {
     }
 
 
-    $insert_user = $db_handle->insertQuery("INSERT INTO `billing_details`(`customer_id`, `f_name`, `l_name`, 
-                              `email`, `phone`, `address`, `city`, `zip_code`, `payment_type`, 
-                              `total_purchase`, `purchase_points`, `updated_at`) 
-                              VALUES ('$customer_id','$f_name','$l_name','$email','$phone'
-                              ,'$address','$city','$zip_code','$payment','$total_purchase','$purchase_points','$updated_at')");
+    $insert_user = $db_handle->insertQuery("INSERT INTO `billing_details`(`customer_id`,`contact_name`, `contact_phone`, `receiver_name`, 
+                              `receiver_phone`, `deliver_date`,`deliver_time`, `email`, `address`,`payment_type`, 
+                              `total_purchase`, `purchase_points`, `updated_at`) VALUES ('$customer_id','$contact_name','$contact_phone','$receiver_name',
+                                                                                         '$receiver_phone','$deliver_date','$deliver_time','$email','$address',
+                                                                                         '$payment','$total_purchase','$purchase_points','$updated_at')");
 
 
     $billing_id = $db_handle->runQuery("SELECT * FROM billing_details order by id desc limit 1");
@@ -75,16 +76,16 @@ if (isset($_POST["placeOrder"])) {
     }
     unset($_SESSION["cart_item"]);
 
-    $name = $f_name . ' ' . $l_name;
+    $name = $contact_name;
 
     $password = randomPassword();
 
     if ($customer_id != 0) {
         $select = $db_handle->runQuery("SELECT * FROM customer where email='$email'");
         if ($select == 0 && $addInfo == 1) {
-            $info = $db_handle->insertQuery("INSERT INTO `customer`(`customer_name`, `email`, `number`, `address`, 
-                       `city`, `zip_code`, `password`, `membership_point`, `inserted_at`, `updated_at`) 
-                       VALUES ('$name','$email','$phone','$address','$city','$zip_code','$password',
+            $info = $db_handle->insertQuery("INSERT INTO `customer`(`contact_name`, `email`, `contact_phone`, `address`, 
+                       `password`, `membership_point`, `inserted_at`, `updated_at`) 
+                       VALUES ('$contact_name','$email','$contact_phone','$address','$password',
                                '$purchase_points','$updated_at','$updated_at')");
         }
     }

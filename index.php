@@ -10,6 +10,11 @@ $db_handle = new DBController();
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Home - Four Seasons Florist</title>
     <?php include ('include/css.php');?>
+    <script>
+    if (location.protocol !== 'https:') {
+        location.replace(`https:${location.href.substring(location.protocol.length)}`);
+    }
+    </script>
 </head>
 <body>
 <div id="page">

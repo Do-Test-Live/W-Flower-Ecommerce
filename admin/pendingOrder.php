@@ -60,13 +60,14 @@ if (!isset($_SESSION['userid'])) {
                                     <thead>
                                     <tr>
                                         <th>SL</th>
-                                        <th>Customer Name</th>
-                                        <th>Customer Email</th>
-                                        <th>Phone</th>
+                                        <th>C Person Name</th>
+                                        <th>C Person Phone </th>
+                                        <th>R Person Name</th>
+                                        <th>R Person Phone</th>
                                         <th>Address</th>
-                                        <th>City</th>
-                                        <th>Total Amount</th>
-                                        <th>Order Date</th>
+                                        <th>Amount</th>
+                                        <th>Delivery Date</th>
+                                        <th>Delivery Time</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -80,17 +81,18 @@ if (!isset($_SESSION['userid'])) {
                                         ?>
                                         <tr>
                                             <td><?php echo $i + 1; ?></td>
-                                            <td><?php echo $bills[$i]["f_name"].' '. $bills[$i]["l_name"];?></td>
-                                            <td><?php echo $bills[$i]["email"]; ?></td>
-                                            <td><?php echo $bills[$i]["phone"]; ?></td>
+                                            <td><?php echo $bills[$i]["contact_name"].' '. $bills[$i]["l_name"];?></td>
+                                            <td><?php echo $bills[$i]["contact_phone"]; ?></td>
+                                            <td><?php echo $bills[$i]["receiver_name"]; ?></td>
+                                            <td><?php echo $bills[$i]["receiver_phone"]; ?></td>
                                             <td><?php echo $bills[$i]["address"]; ?></td>
-                                            <td><?php echo $bills[$i]["city"]; ?></td>
                                             <td><?php echo $bills[$i]["total_purchase"]; ?></td>
                                             <?php
-                                            $date = date_create($bills[$i]["updated_at"]);
-                                            $date_formatted = date_format($date, "d F y, g:i A");
+                                            $date = date_create($bills[$i]["deliver_date"]);
+                                            $date_formatted = date_format($date, "d F y");
                                             ?>
-                                            <td><?php echo $date_formatted; ?></td>$bills
+                                            <td><?php echo $date_formatted; ?></td>
+                                            <td><?php echo $bills[$i]["deliver_time"]; ?></td>
                                             <td>Pending</td>
                                             <td>
                                                 <div class="d-flex">
