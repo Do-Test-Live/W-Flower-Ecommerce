@@ -7,7 +7,7 @@ $db_handle = new DBController();
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Four Seasons Florist</title>
+    <title>四季花店</title>
     <?php include('include/css.php'); ?>
 </head>
 
@@ -20,7 +20,12 @@ $db_handle = new DBController();
             <div class="row">
                 <div class="col-xs-12">
                     <div class="page-title">
-                        <h2>Shopping Cart</h2>
+                        <h2><?php
+                            if($_COOKIE['language'] == 'CN')
+                                echo '購物車';
+                            else
+                                echo 'Shopping Cart';
+                            ?></h2>
                     </div>
                 </div>
             </div>
@@ -52,10 +57,30 @@ $db_handle = new DBController();
                                 <thead>
                                 <tr class="first last">
                                     <th rowspan="1">&nbsp;</th>
-                                    <th rowspan="1"><span class="nobr">Product Name</span></th>
-                                    <th class="a-center" colspan="1"><span class="nobr">Unit Price</span></th>
-                                    <th rowspan="1" class="a-center">Qty</th>
-                                    <th class="a-center" colspan="1">Subtotal</th>
+                                    <th rowspan="1"><span class="nobr"><?php
+                                            if($_COOKIE['language'] == 'CN')
+                                                echo '產品名稱';
+                                            else
+                                                echo 'Product Name';
+                                            ?></span></th>
+                                    <th class="a-center" colspan="1"><span class="nobr"><?php
+                                            if($_COOKIE['language'] == 'CN')
+                                                echo '單價';
+                                            else
+                                                echo 'Unit Price';
+                                            ?></span></th>
+                                    <th rowspan="1" class="a-center"><?php
+                                        if($_COOKIE['language'] == 'CN')
+                                            echo '數量';
+                                        else
+                                            echo 'Qty';
+                                        ?></th>
+                                    <th class="a-center" colspan="1"><?php
+                                        if($_COOKIE['language'] == 'CN')
+                                            echo '小計';
+                                        else
+                                            echo 'Subtotal';
+                                        ?></th>
                                     <th rowspan="1" class="a-center">&nbsp;</th>
                                 </tr>
                                 </thead>
@@ -92,7 +117,12 @@ $db_handle = new DBController();
                                         </span>
                                     </td>
                                     <td class="a-center last">
-                                        <a href="Cart?action=remove&id=<?php echo $item["id"]; ?>" title="Remove item" class="button remove-item"><span><span>Remove item</span></span></a>
+                                        <a href="Cart?action=remove&id=<?php echo $item["id"]; ?>" title="Remove item" class="button remove-item"><span><span><?php
+                                                    if($_COOKIE['language'] == 'CN')
+                                                        echo '除去項目';
+                                                    else
+                                                        echo 'Remove item';
+                                                    ?></span></span></a>
                                     </td>
                                 </tr>
                                     <?php
@@ -107,12 +137,22 @@ $db_handle = new DBController();
                                     <td colspan="50" class="a-right last">
                                         <button type="button" title="Continue Shopping" class="button btn-continue" onclick="location.href = 'Home';">
                                             <span>
-                                                <span>Continue Shopping</span>
+                                                <span><?php
+                                                    if($_COOKIE['language'] == 'CN')
+                                                        echo '繼續購物';
+                                                    else
+                                                        echo 'Continue Shopping';
+                                                    ?></span>
                                             </span>
                                         </button>
                                         <a href="Cart?action=empty" class="button btn-danger" style="background: #ff0000">
                                             <span>
-                                                <span>Clear Cart</span>
+                                                <span><?php
+                                                    if($_COOKIE['language'] == 'CN')
+                                                        echo '清除購物車';
+                                                    else
+                                                        echo 'Clear Cart';
+                                                    ?></span>
                                             </span>
                                         </a>
                                     </td>
@@ -133,7 +173,12 @@ $db_handle = new DBController();
 
                         <div class="col-sm-12">
                             <div class="totals">
-                                <h3>Shopping Cart Total</h3>
+                                <h3><?php
+                                    if($_COOKIE['language'] == 'CN')
+                                        echo '購物車總計';
+                                    else
+                                        echo 'Shopping Cart Total';
+                                    ?></h3>
                                 <div class="inner">
 
                                     <table id="shopping-cart-totals-table" class="table shopping-cart-table-total">
@@ -144,7 +189,12 @@ $db_handle = new DBController();
                                         <tfoot>
                                         <tr>
                                             <td style="" class="a-left" colspan="1">
-                                                <strong>Grand Total</strong>
+                                                <strong><?php
+                                                    if($_COOKIE['language'] == 'CN')
+                                                        echo '累計';
+                                                    else
+                                                        echo 'Grand Total';
+                                                    ?></strong>
                                             </td>
                                             <td style="" class="a-right">
                                                 <strong><span class="price"><?php echo number_format($total_price_new, 2); ?> HKD</span></strong>
@@ -154,7 +204,13 @@ $db_handle = new DBController();
                                         <tbody>
                                         <tr>
                                             <td style="" class="a-left" colspan="1">
-                                                Subtotal
+                                                <?php
+                                                if($_COOKIE['language'] == 'CN')
+                                                    echo '小計';
+                                                else
+                                                    echo ' Subtotal';
+                                                ?>
+
                                             </td>
                                             <td style="" class="a-right">
                                                 <span class="price"><?php echo number_format($total_price_new, 2); ?> HKD</span></td>
@@ -165,7 +221,12 @@ $db_handle = new DBController();
                                     <ul class="checkout">
                                         <li>
                                             <button type="button" title="Proceed to Checkout"
-                                                    class="button btn-proceed-checkout" onclick="location.href = 'Checkout';"><span>Proceed to Checkout</span>
+                                                    class="button btn-proceed-checkout" onclick="location.href = 'Checkout';"><span> <?php
+                                                    if($_COOKIE['language'] == 'CN')
+                                                        echo '進行結算';
+                                                    else
+                                                        echo ' Proceed to Checkout';
+                                                    ?></span>
                                             </button>
                                         </li>
                                     </ul>

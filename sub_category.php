@@ -15,7 +15,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where sub_categor
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Category - Four Seasons Florist</title>
+    <title>類別 - 四季花店</title>
     <?php include('include/css.php'); ?>
     <!-- BEGIN GOOGLE ANALYTICS CODEs -->
 
@@ -30,7 +30,12 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where sub_categor
                 <div class="row">
                     <div class="col-xs-12">
                         <ul>
-                            <li class="home"><a href="index.php" title="Go to Home Page">Home</a>
+                            <li class="home"><a href="index.php" title="Go to Home Page"><?php
+                                    if($_COOKIE['language'] == 'CN')
+                                        echo '家';
+                                    else
+                                        echo 'Home';
+                                    ?></a>
                                 <span>&rsaquo; </span></li>
                             <li style="color: white"><?php
                                 $cat_name = $db_handle->runQuery("select * from sub_category where sub_cat_id = '$sub_category'");
@@ -46,7 +51,12 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where sub_categor
             <!--container-->
         </div>
         <div class="page-title">
-            <h2>Flowers</h2>
+            <h2><?php
+                if($_COOKIE['language'] == 'CN')
+                    echo '花朵';
+                else
+                    echo 'Flowers';
+                ?></h2>
         </div>
     </div>
     <!--breadcrumbs-->
@@ -86,13 +96,23 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where sub_categor
                                                         <?php
                                                         if ($product_color[$k]['hot_product'] == '1') {
                                                             ?>
-                                                            <div class="new-label new-top-left">Hot</div>
+                                                            <div class="new-label new-top-left"><?php
+                                                                if($_COOKIE['language'] == 'CN')
+                                                                    echo '熱的';
+                                                                else
+                                                                    echo 'Hot';
+                                                                ?></div>
                                                             <?php
                                                         }
                                                         ?>
                                                         <div class="add_cart">
                                                             <button class="button btn-cart" type="button">
-                                                                <span>Add to Cart</span></button>
+                                                                <span><?php
+                                                                    if($_COOKIE['language'] == 'CN')
+                                                                        echo '添加到購物車';
+                                                                    else
+                                                                        echo 'Add to Cart';
+                                                                    ?></span></button>
                                                         </div>
                                                     </div>
                                                     <div class="item-info">
@@ -166,13 +186,23 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where sub_categor
                                                             <?php
                                                             if ($product_price[$k]['hot_product'] == '1') {
                                                                 ?>
-                                                                <div class="new-label new-top-left">Hot</div>
+                                                                <div class="new-label new-top-left"><?php
+                                                                    if($_COOKIE['language'] == 'CN')
+                                                                        echo '熱的';
+                                                                    else
+                                                                        echo 'Hot';
+                                                                    ?></div>
                                                                 <?php
                                                             }
                                                             ?>
                                                             <div class="add_cart">
                                                                 <button class="button btn-cart" type="button">
-                                                                    <span>Add to Cart</span></button>
+                                                                    <span><?php
+                                                                        if($_COOKIE['language'] == 'CN')
+                                                                            echo '添加到購物車';
+                                                                        else
+                                                                            echo 'Add to Cart';
+                                                                        ?></span></button>
                                                             </div>
                                                         </div>
                                                         <div class="item-info">
@@ -245,13 +275,23 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where sub_categor
                                                             <?php
                                                             if ($product_price[$k]['hot_product'] == '1') {
                                                                 ?>
-                                                                <div class="new-label new-top-left">Hot</div>
+                                                                <div class="new-label new-top-left"><?php
+                                                                    if($_COOKIE['language'] == 'CN')
+                                                                        echo '熱的';
+                                                                    else
+                                                                        echo 'Hot';
+                                                                    ?></div>
                                                                 <?php
                                                             }
                                                             ?>
                                                             <div class="add_cart">
                                                                 <button class="button btn-cart" type="button">
-                                                                    <span>Add to Cart</span></button>
+                                                                    <span><?php
+                                                                        if($_COOKIE['language'] == 'CN')
+                                                                            echo '添加到購物車';
+                                                                        else
+                                                                            echo 'Add to Cart';
+                                                                        ?></span></button>
                                                             </div>
                                                         </div>
                                                         <div class="item-info">
@@ -326,13 +366,23 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where sub_categor
                                                         <?php
                                                         if ($fetch_product[$i]['hot_product'] == '1') {
                                                             ?>
-                                                            <div class="new-label new-top-left">Hot</div>
+                                                            <div class="new-label new-top-left"><?php
+                                                                if($_COOKIE['language'] == 'CN')
+                                                                    echo '熱的';
+                                                                else
+                                                                    echo 'Hot';
+                                                                ?></div>
                                                             <?php
                                                         }
                                                         ?>
                                                         <div class="add_cart">
                                                             <button class="button btn-cart" type="button">
-                                                                <span>Add to Cart</span></button>
+                                                                <span><?php
+                                                                    if($_COOKIE['language'] == 'CN')
+                                                                        echo '添加到購物車';
+                                                                    else
+                                                                        echo 'Add to Cart';
+                                                                    ?></span></button>
                                                         </div>
                                                     </div>
                                                     <div class="item-info">
@@ -393,23 +443,48 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where sub_categor
                 <aside class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9 wow bounceInUp animated">
                     <!--side-nav-categories-->
                     <div class="block block-layered-nav">
-                        <div class="block-title"> Shop By</div>
+                        <div class="block-title"> <?php
+                            if($_COOKIE['language'] == 'CN')
+                                echo '選購';
+                            else
+                                echo 'Shop By';
+                            ?></div>
                         <div class="block-content">
-                            <p class="block-subtitle">Shopping Options</p>
+                            <p class="block-subtitle"> <?php
+                                if($_COOKIE['language'] == 'CN')
+                                    echo '購物選擇';
+                                else
+                                    echo 'Shopping Options';
+                                ?></p>
                             <dl id="narrow-by-list">
-                                <dt class="odd">Price</dt>
+                                <dt class="odd"><?php
+                                    if($_COOKIE['language'] == 'CN')
+                                        echo '價格';
+                                    else
+                                        echo 'Price';
+                                    ?></dt>
                                 <dd class="odd">
                                     <ol>
                                         <li><a href="Sub-Category?id=<?php echo $sub_category ?>&price=1"><span class="price">$0.00</span>
                                                 - <span
                                                     class="price">$99.99</span></a>
                                         </li>
-                                        <li><a href="Sub-Category?id=<?php echo $sub_category ?>&price=2"><span class="price">$100.00</span>
-                                                and above</a>
+                                        <li><a href="Sub-Category?id=<?php echo $sub_category ?>&price=2"><span class="price">$100.00</span><?php
+                                                if($_COOKIE['language'] == 'CN')
+                                                    echo '以上';
+                                                else
+                                                    echo ' and above';
+                                                ?>
+                                               </a>
                                         </li>
                                     </ol>
                                 </dd>
-                                <dt class="odd">Color</dt>
+                                <dt class="odd"><?php
+                                    if($_COOKIE['language'] == 'CN')
+                                        echo '顏色';
+                                    else
+                                        echo 'Color';
+                                    ?></dt>
                                 <dd class="odd">
                                     <ol>
                                         <?php
@@ -428,7 +503,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where sub_categor
                             </dl>
                         </div>
                     </div>
-                    <div class="custom-slider">
+               <!--     <div class="custom-slider">
                         <div>
                             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
@@ -466,7 +541,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where sub_categor
                             </div>
                         </div>
                         <!--block block-list block-compare-->
-                </aside>
+                </aside>-->
                 <!--col-right sidebar-->
             </div>
             <!--row-->

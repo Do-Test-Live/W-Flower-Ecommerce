@@ -7,7 +7,7 @@ $db_handle = new DBController();
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Four Seasons Florist</title>
+    <title>四季花店</title>
     <?php include('include/css.php'); ?>
 
     <style>
@@ -29,7 +29,12 @@ $db_handle = new DBController();
             <div class="row">
                 <div class="col-xs-12">
                     <div class="page-title">
-                        <h2>Checkout</h2>
+                        <h2><?php
+                            if($_COOKIE['language'] == 'CN')
+                                echo '查看';
+                            else
+                                echo 'Checkout';
+                            ?></h2>
                     </div>
                 </div>
             </div>
@@ -53,7 +58,12 @@ $db_handle = new DBController();
                             <div class="col-lg-6">
                                 <div class="checkout-box">
                                     <div class="checkout-title">
-                                        <h2>Delivery Address</h2>
+                                        <h2><?php
+                                            if($_COOKIE['language'] == 'CN')
+                                                echo '郵寄地址';
+                                            else
+                                                echo 'Delivery Address';
+                                            ?></h2>
                                     </div>
                                     <div class="checkout-detail">
                                         <div class="row g-4">
@@ -102,8 +112,13 @@ $db_handle = new DBController();
                                                             <input class="form-check-input card-class" name="addInfo"
                                                                    type="checkbox"
                                                                    value="" id="flexCheckChecked">
-                                                            <label class="form-check-label ms-2" for="flexCheckChecked">
-                                                                Add this data to customer info
+                                                            <label class="form-check-label ms-2" for="flexCheckChecked"><?php
+                                                                if($_COOKIE['language'] == 'CN')
+                                                                    echo '將此數據添加到客戶信息';
+                                                                else
+                                                                    echo ' Add this data to customer info';
+                                                                ?>
+
                                                             </label>
                                                         </div>
                                                     </div>
@@ -115,7 +130,12 @@ $db_handle = new DBController();
                             </div>
                             <div class="col-lg-6">
                                 <div class="summery-header">
-                                    <h2>Order Summery</h2>
+                                    <h2><?php
+                                        if($_COOKIE['language'] == 'CN')
+                                            echo '訂單摘要';
+                                        else
+                                            echo 'Order Summery';
+                                        ?></h2>
                                 </div>
 
                                 <table style="width: 100%">
@@ -147,7 +167,12 @@ $db_handle = new DBController();
                                     ?>
                                     <tr>
                                         <td style="text-align: left">
-                                            <h4>Subtotal</h4>
+                                            <h4><?php
+                                                if($_COOKIE['language'] == 'CN')
+                                                    echo '小計';
+                                                else
+                                                    echo 'Subtotal';
+                                                ?></h4>
                                         </td>
                                         <td colspan="2" style="text-align: right">
                                             <h4 class="price"><?php echo "HK$ " . number_format($total_price_new, 2); ?></h4>
@@ -155,7 +180,12 @@ $db_handle = new DBController();
                                     </tr>
                                     <tr>
                                         <td style="text-align: left">
-                                            <h4>Shipping</h4>
+                                            <h4><?php
+                                                if($_COOKIE['language'] == 'CN')
+                                                    echo '船運';
+                                                else
+                                                    echo 'Shipping';
+                                                ?></h4>
                                         </td>
                                         <td colspan="2" style="text-align: right">
                                             <h4 class="price">HK$ 0.00</h4>
@@ -163,7 +193,12 @@ $db_handle = new DBController();
                                     </tr>
                                     <tr>
                                         <td style="text-align: left">
-                                            <h4>Coupon/Code</h4>
+                                            <h4><?php
+                                                if($_COOKIE['language'] == 'CN')
+                                                    echo '優惠券代碼';
+                                                else
+                                                    echo 'Coupon/Code';
+                                                ?></h4>
                                         </td>
                                         <td colspan="2" style="text-align: right">
                                             <h4 class="price">HK$ 0.00</h4>
@@ -171,15 +206,24 @@ $db_handle = new DBController();
                                     </tr>
                                     <tr>
                                         <td style="text-align: left">
-                                            <h4>Total (HKD)</h4>
+                                            <h4><?php
+                                                if($_COOKIE['language'] == 'CN')
+                                                    echo '總計（港元）';
+                                                else
+                                                    echo 'Total (HKD)';
+                                                ?></h4>
                                         </td>
                                         <td colspan="2" style="text-align: right">
                                             <h4 class="price"><?php echo "HK$ " . number_format($total_price_new, 2); ?></h4>
                                         </td>
                                     </tr>
                                 </table>
-                                <button class="button" name="placeOrder" type="submit" style="margin-top: 2em">Place
-                                    Order
+                                <button class="button" name="placeOrder" type="submit" style="margin-top: 2em"><?php
+                                    if($_COOKIE['language'] == 'CN')
+                                        echo '下訂單';
+                                    else
+                                        echo 'Place Order';
+                                    ?>
                                 </button>
                             </div>
                         </div> <!--cart-collaterals-->

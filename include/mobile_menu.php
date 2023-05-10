@@ -73,13 +73,33 @@
             <?php
             if(isset($_SESSION['id'])){
                 ?>
-                <li><a href="Account" title="My Account">My Account</a></li>
-                <li><a href="Cart" title="Cart">Checkout</a></li>
-                <li><a href="Logout" title="Logout">Logout</a></li>
+                <li><a href="Account" title="My Account"><?php
+                        if($_COOKIE['language'] == 'CN')
+                            echo '我的賬戶';
+                        else
+                            echo 'My Account';
+                        ?></a></li>
+                <li><a href="Cart" title="Cart"><?php
+                        if($_COOKIE['language'] == 'CN')
+                            echo '查看';
+                        else
+                            echo 'Checkout';
+                        ?></a></li>
+                <li><a href="Logout" title="Logout"><?php
+                        if($_COOKIE['language'] == 'CN')
+                            echo '登出';
+                        else
+                            echo 'Logout';
+                        ?></a></li>
                 <?php
             }else{
                 ?>
-                <li class="last"><a href="Login" title="Login"><span>Login</span></a></li>
+                <li class="last"><a href="Login" title="Login"><span><?php
+                            if($_COOKIE['language'] == 'CN')
+                                echo '登錄';
+                            else
+                                echo 'Login';
+                            ?></span></a></li>
                 <?php
             }
             ?>

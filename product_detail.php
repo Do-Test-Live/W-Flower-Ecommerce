@@ -20,7 +20,12 @@ $product_id = $_GET['id'];
                 <div class="row">
                     <div class="col-xs-12">
                         <ul>
-                            <li class="home"><a href="Home" title="Go to Home Page">Home</a>
+                            <li class="home"><a href="Home" title="Go to Home Page"><?php
+                                    if($_COOKIE['language'] == 'CN')
+                                        echo '家';
+                                    else
+                                        echo 'Home';
+                                    ?></a>
                             </li>
                         </ul>
                     </div>
@@ -31,7 +36,12 @@ $product_id = $_GET['id'];
             <!--container-->
         </div>
         <div class="page-title">
-            <h2>Flowers</h2>
+            <h2><?php
+                if($_COOKIE['language'] == 'CN')
+                    echo '花朵';
+                else
+                    echo 'Flowers';
+                ?></h2>
         </div>
     </div>
     <!-- BEGIN Main Container -->
@@ -122,7 +132,12 @@ $product_id = $_GET['id'];
                                     <div class="add-to-box" style="margin-top: 2em">
                                         <div class="add-to-cart">
                                             <button class="button btn-cart"
-                                                    title="Add to Cart" type="submit">Add to Cart
+                                                    title="Add to Cart" type="submit"><?php
+                                                if($_COOKIE['language'] == 'CN')
+                                                    echo '添加到購物車';
+                                                else
+                                                    echo 'Add to Cart';
+                                                ?>
                                             </button>
                                         </div>
                                     </div>
@@ -132,9 +147,24 @@ $product_id = $_GET['id'];
                                 </div>
 
                                 <ul class="shipping-pro">
-                                    <li>Free Wordwide Shipping</li>
-                                    <li>30 Days Return</li>
-                                    <li>Member Discount</li>
+                                    <li><?php
+                                        if($_COOKIE['language'] == 'CN')
+                                            echo '全球免費送貨';
+                                        else
+                                            echo 'Free Wordwide Shipping';
+                                        ?></li>
+                                    <li><?php
+                                        if($_COOKIE['language'] == 'CN')
+                                            echo '30 天退貨';
+                                        else
+                                            echo '30 Days Return';
+                                        ?></li>
+                                    <li><?php
+                                        if($_COOKIE['language'] == 'CN')
+                                            echo '會員優惠';
+                                        else
+                                            echo 'Member Discount';
+                                        ?></li>
                                 </ul>
                             </div>
 
@@ -172,7 +202,12 @@ $product_id = $_GET['id'];
                                                             <?php
                                                             if ($hot_products[$x]['hot_product'] == '1') {
                                                                 ?>
-                                                                <div class="new-label new-top-left">Hot</div>
+                                                                <div class="new-label new-top-left"><?php
+                                                                    if($_COOKIE['language'] == 'CN')
+                                                                        echo '熱的';
+                                                                    else
+                                                                        echo 'Hot';
+                                                                    ?></div>
                                                                 <?php
                                                             }
                                                             ?>
@@ -181,7 +216,12 @@ $product_id = $_GET['id'];
                                                         <div class="add_cart">
                                                             <button class="button btn-cart"
                                                                     onclick="location.href='Checkout'" type="button">
-                                                                <span>Add to Cart</span></button>
+                                                                <span><?php
+                                                                    if($_COOKIE['language'] == 'CN')
+                                                                        echo '添加到購物車';
+                                                                    else
+                                                                        echo 'Add to Cart';
+                                                                    ?></span></button>
                                                         </div>
                                                     </div>
                                                     <div class="item-info">

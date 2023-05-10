@@ -30,7 +30,12 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                 <div class="row">
                     <div class="col-xs-12">
                         <ul>
-                            <li class="home"><a href="index.php" title="Go to Home Page">Home</a>
+                            <li class="home"><a href="index.php" title="Go to Home Page"><?php
+                                    if($_COOKIE['language'] == 'CN')
+                                        echo '家';
+                                    else
+                                        echo ' Home';
+                                    ?></a>
                                 <span>&rsaquo; </span></li>
                             <li style="color: white"><?php
                                 $cat_name = $db_handle->runQuery("select * from category where id = '$category'");
@@ -45,7 +50,12 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
             <!--container-->
         </div>
         <div class="page-title">
-            <h2>Flowers</h2>
+            <h2><?php
+                if($_COOKIE['language'] == 'CN')
+                    echo '花朵';
+                else
+                    echo ' Flowers';
+                ?></h2>
         </div>
     </div>
     <!--breadcrumbs-->
@@ -91,7 +101,12 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                                         ?>
                                                         <div class="add_cart">
                                                             <button class="button btn-cart" type="button">
-                                                                <span>Add to Cart</span></button>
+                                                                <span><?php
+                                                                    if($_COOKIE['language'] == 'CN')
+                                                                        echo '添加到購物車';
+                                                                    else
+                                                                        echo 'Add to Cart';
+                                                                    ?></span></button>
                                                         </div>
                                                     </div>
                                                     <div class="item-info">
@@ -171,7 +186,12 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                                             ?>
                                                             <div class="add_cart">
                                                                 <button class="button btn-cart" type="button">
-                                                                    <span>Add to Cart</span></button>
+                                                                    <span><?php
+                                                                        if($_COOKIE['language'] == 'CN')
+                                                                            echo '添加到購物車';
+                                                                        else
+                                                                            echo 'Add to Cart';
+                                                                        ?></span></button>
                                                             </div>
                                                         </div>
                                                         <div class="item-info">
@@ -250,7 +270,12 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                                             ?>
                                                             <div class="add_cart">
                                                                 <button class="button btn-cart" type="button">
-                                                                    <span>Add to Cart</span></button>
+                                                                    <span><?php
+                                                                        if($_COOKIE['language'] == 'CN')
+                                                                            echo '添加到購物車';
+                                                                        else
+                                                                            echo 'Add to Cart';
+                                                                        ?></span></button>
                                                             </div>
                                                         </div>
                                                         <div class="item-info">
@@ -331,7 +356,12 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                                         ?>
                                                         <div class="add_cart">
                                                             <button class="button btn-cart" type="button">
-                                                                <span>Add to Cart</span></button>
+                                                                <span><?php
+                                                                    if($_COOKIE['language'] == 'CN')
+                                                                        echo '添加到購物車';
+                                                                    else
+                                                                        echo 'Add to Cart';
+                                                                    ?></span></button>
                                                         </div>
                                                     </div>
                                                     <div class="item-info">
@@ -392,11 +422,26 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                 <aside class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9 wow bounceInUp animated">
                     <!--side-nav-categories-->
                     <div class="block block-layered-nav">
-                        <div class="block-title"> Shop By</div>
+                        <div class="block-title"><?php
+                            if($_COOKIE['language'] == 'CN')
+                                echo '選購';
+                            else
+                                echo 'Shop By';
+                            ?></div>
                         <div class="block-content">
-                            <p class="block-subtitle">Shopping Options</p>
+                            <p class="block-subtitle"><?php
+                                if($_COOKIE['language'] == 'CN')
+                                    echo '購物選擇';
+                                else
+                                    echo 'Shopping Options';
+                                ?></p>
                             <dl id="narrow-by-list">
-                                <dt class="odd">Price</dt>
+                                <dt class="odd"><?php
+                                    if($_COOKIE['language'] == 'CN')
+                                        echo '價格';
+                                    else
+                                        echo 'Price';
+                                    ?></dt>
                                 <dd class="odd">
                                     <ol>
                                         <li><a href="Category?id=<?php echo $category ?>&price=1"><span class="price">$0.00</span>
@@ -427,7 +472,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                             </dl>
                         </div>
                     </div>
-                    <div class="custom-slider">
+                  <!--  <div class="custom-slider">
                         <div>
                             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
@@ -465,7 +510,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                             </div>
                         </div>
                         <!--block block-list block-compare-->
-                </aside>
+                </aside>-->
                 <!--col-right sidebar-->
             </div>
             <!--row-->

@@ -2,6 +2,11 @@
 session_start();
 require_once("admin/include/dbController.php");
 $db_handle = new DBController();
+if(!isset($_COOKIE['language'])){
+    $cookie_name='language';
+    $cookie_value='CN';
+    setcookie($cookie_name, $cookie_value);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,8 +39,19 @@ $db_handle = new DBController();
         <section class=" wow bounceInUp animated">
             <div class="best-pro slider-items-products container">
                 <div class="new_title">
-                    <h2>Hot Deals</h2>
-                    <h4>Hot Deals for You</h4>
+                    <h2><?php
+                        if($_COOKIE['language'] == 'CN')
+                            echo '熱賣';
+                        else
+                            echo 'Hot Deals';
+                        ?></h2>
+                    <h4>
+                        <?php
+                        if($_COOKIE['language'] == 'CN')
+                            echo '熱賣給你';
+                        else
+                            echo 'Hot Deals for You';
+                        ?></h4>
                 </div>
                 <div id="best-seller" class="product-flexslider hidden-buttons">
                     <div class="slider-items slider-width-col4 products-grid owl-carousel">
@@ -56,7 +72,12 @@ $db_handle = new DBController();
                                             <div class="new-label new-top-left">Hot</div>
                                         </div>
                                         <div class="add_cart">
-                                            <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
+                                            <button class="button btn-cart" type="button"><span><?php
+                                                    if($_COOKIE['language'] == 'CN')
+                                                        echo '添加到購物車';
+                                                    else
+                                                        echo 'Add to Cart';
+                                                    ?></span></button>
                                         </div>
                                     </div>
                                     <div class="item-info">
@@ -101,8 +122,18 @@ $db_handle = new DBController();
         <section class=" wow bounceInUp animated">
             <div class="best-pro slider-items-products container">
                 <div class="new_title">
-                    <h2>Best Seller</h2>
-                    <h4>So you get to know me better</h4>
+                    <h2><?php
+                        if($_COOKIE['language'] == 'CN')
+                            echo '暢銷書';
+                        else
+                            echo 'Best Seller';
+                        ?></h2>
+                    <h4><?php
+                        if($_COOKIE['language'] == 'CN')
+                            echo '讓你更了解我';
+                        else
+                            echo 'So you get to know me better';
+                        ?></h4>
                 </div>
                 <div id="best-seller" class="product-flexslider hidden-buttons">
                     <div class="slider-items slider-width-col4 products-grid">
@@ -130,7 +161,12 @@ $db_handle = new DBController();
 
                                         </div>
                                         <div class="add_cart">
-                                            <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
+                                            <button class="button btn-cart" type="button"><span><?php
+                                                    if($_COOKIE['language'] == 'CN')
+                                                        echo '添加到購物車';
+                                                    else
+                                                        echo 'Add to Cart';
+                                                    ?></span></button>
                                         </div>
                                     </div>
                                     <div class="item-info">

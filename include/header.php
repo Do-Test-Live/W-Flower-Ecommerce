@@ -65,8 +65,18 @@ if (isset($_SESSION["cart_item"])) {
                     <div class="header-banner">
                         <div class="assetBlock">
                             <div id="slideshow">
-                                <p>Special Offers! - Get <span>50%</span> off on vegetables </p>
-                                <p>sale <span>40%</span> of on bulk shopping! </p>
+                                <p><?php
+                                    if($_COOKIE['language'] == 'CN')
+                                        echo '特別優惠！ - 購買蔬菜可享受 <span>50%</span> 優惠';
+                                    else
+                                        echo 'Special Offers! - Get <span>50%</span> off on vegetables ';
+                                    ?></p>
+                                <p><?php
+                                    if($_COOKIE['language'] == 'CN')
+                                        echo '批量購物減價 <span>40%</span>！';
+                                    else
+                                        echo 'sale <span>40%</span> of on bulk shopping! ';
+                                    ?></p>
                             </div>
                         </div>
                     </div>
@@ -87,7 +97,12 @@ if (isset($_SESSION["cart_item"])) {
                                 <i class="icon-align-justify" id="menu_icon" onclick="change_image();"></i>
                                 <i class="icon-align-cross" id="menu_icon_cross" style="display: none;" onclick="change_image_rep();"></i>
                                 <span
-                                    class="mm-label">Menu</span></div>
+                                    class="mm-label"><?php
+                                    if($_COOKIE['language'] == 'CN')
+                                        echo '菜單';
+                                    else
+                                        echo 'Menu';
+                                    ?></span></div>
                         </div>
                         <div class="nav-inner">
                             <!-- BEGIN NAV -->
@@ -180,9 +195,9 @@ if (isset($_SESSION["cart_item"])) {
                                 <div class="language-currency">
                                     <div class="fl-language">
                                         <ul class="lang">
-                                            <li><a href="#"> <img src="images/english.png" alt="English"> <span>English</span>
+                                            <li><a href="set_lan.php?lan=EN"> <img src="images/english.png" alt="English"> <span>English</span>
                                                 </a></li>
-                                            <li><a href="#"> <img src="images/hong-kong.jpg" alt="French"> <span>Chinese</span>
+                                            <li><a href="set_lan.php?lan=CN"> <img src="images/hong-kong.jpg" alt="French"> <span>Chinese</span>
                                                 </a></li>
                                         </ul>
                                     </div>

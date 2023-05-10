@@ -15,7 +15,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where product_typ
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Category - Four Seasons Florist</title>
+    <title>類別 - 四季花店</title>
     <?php include('include/css.php'); ?>
     <!-- BEGIN GOOGLE ANALYTICS CODEs -->
 
@@ -30,7 +30,12 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where product_typ
                 <div class="row">
                     <div class="col-xs-12">
                         <ul>
-                            <li class="home"><a href="index.php" title="Go to Home Page">Home</a>
+                            <li class="home"><a href="index.php" title="Go to Home Page"><?php
+                                    if($_COOKIE['language'] == 'CN')
+                                        echo '家';
+                                    else
+                                        echo 'Home';
+                                    ?></a>
                                 <span>&rsaquo; </span></li>
                             <li style="color: white"><?php
                                 $cat_name = $db_handle->runQuery("select * from product_type where product_type_id = '$id_product_type'");
@@ -86,13 +91,23 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where product_typ
                                                         <?php
                                                         if ($product_color[$k]['hot_product'] == '1') {
                                                             ?>
-                                                            <div class="new-label new-top-left">Hot</div>
+                                                            <div class="new-label new-top-left"><?php
+                                                                if($_COOKIE['language'] == 'CN')
+                                                                    echo '熱的';
+                                                                else
+                                                                    echo 'Hot';
+                                                                ?></div>
                                                             <?php
                                                         }
                                                         ?>
                                                         <div class="add_cart">
                                                             <button class="button btn-cart" type="button">
-                                                                <span>Add to Cart</span></button>
+                                                                <span><?php
+                                                                    if($_COOKIE['language'] == 'CN')
+                                                                        echo '添加到購物車';
+                                                                    else
+                                                                        echo 'Add to Cart';
+                                                                    ?></span></button>
                                                         </div>
                                                     </div>
                                                     <div class="item-info">
@@ -166,13 +181,23 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where product_typ
                                                             <?php
                                                             if ($product_price[$k]['hot_product'] == '1') {
                                                                 ?>
-                                                                <div class="new-label new-top-left">Hot</div>
+                                                                <div class="new-label new-top-left"><?php
+                                                                    if($_COOKIE['language'] == 'CN')
+                                                                        echo '熱的';
+                                                                    else
+                                                                        echo 'Hot';
+                                                                    ?></div>
                                                                 <?php
                                                             }
                                                             ?>
                                                             <div class="add_cart">
                                                                 <button class="button btn-cart" type="button">
-                                                                    <span>Add to Cart</span></button>
+                                                                    <span><?php
+                                                                        if($_COOKIE['language'] == 'CN')
+                                                                            echo '添加到購物車';
+                                                                        else
+                                                                            echo 'Add to Cart';
+                                                                        ?></span></button>
                                                             </div>
                                                         </div>
                                                         <div class="item-info">
@@ -245,13 +270,23 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where product_typ
                                                             <?php
                                                             if ($product_price[$k]['hot_product'] == '1') {
                                                                 ?>
-                                                                <div class="new-label new-top-left">Hot</div>
+                                                                <div class="new-label new-top-left"><?php
+                                                                    if($_COOKIE['language'] == 'CN')
+                                                                        echo '熱的';
+                                                                    else
+                                                                        echo 'Hot';
+                                                                    ?></div>
                                                                 <?php
                                                             }
                                                             ?>
                                                             <div class="add_cart">
                                                                 <button class="button btn-cart" type="button">
-                                                                    <span>Add to Cart</span></button>
+                                                                    <span><?php
+                                                                        if($_COOKIE['language'] == 'CN')
+                                                                            echo '添加到購物車';
+                                                                        else
+                                                                            echo 'Add to Cart';
+                                                                        ?></span></button>
                                                             </div>
                                                         </div>
                                                         <div class="item-info">
@@ -326,13 +361,23 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where product_typ
                                                         <?php
                                                         if ($fetch_product[$i]['hot_product'] == '1') {
                                                             ?>
-                                                            <div class="new-label new-top-left">Hot</div>
+                                                            <div class="new-label new-top-left"><?php
+                                                                if($_COOKIE['language'] == 'CN')
+                                                                    echo '熱的';
+                                                                else
+                                                                    echo 'Hot';
+                                                                ?></div>
                                                             <?php
                                                         }
                                                         ?>
                                                         <div class="add_cart">
                                                             <button class="button btn-cart" type="button">
-                                                                <span>Add to Cart</span></button>
+                                                                <span><?php
+                                                                    if($_COOKIE['language'] == 'CN')
+                                                                        echo '添加到購物車';
+                                                                    else
+                                                                        echo 'Add to Cart';
+                                                                    ?></span></button>
                                                         </div>
                                                     </div>
                                                     <div class="item-info">
@@ -428,7 +473,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where product_typ
                             </dl>
                         </div>
                     </div>
-                    <div class="custom-slider">
+               <!--     <div class="custom-slider">
                         <div>
                             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
@@ -466,7 +511,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where product_typ
                             </div>
                         </div>
                         <!--block block-list block-compare-->
-                </aside>
+                </aside>-->
                 <!--col-right sidebar-->
             </div>
             <!--row-->

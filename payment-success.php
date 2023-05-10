@@ -166,18 +166,48 @@ if (!empty($_GET['session_id'])) {
             </script>
             <?php
         } else { ?>
-            <h1 class="error">Your Payment been failed!</h1>
+            <h1 class="error"><?php
+                if($_COOKIE['language'] == 'CN')
+                    echo '您的付款失敗！';
+                else
+                    echo 'Your Payment been failed!';
+                ?></h1>
             <p class="error"><?php echo $statusMsg; ?></p>
-            <p>Admin Mail Send Failed.</p>
+            <p><?php
+                if($_COOKIE['language'] == 'CN')
+                    echo '管理員郵件發送失敗。';
+                else
+                    echo 'Admin Mail Send Failed.';
+                ?></p>
         <?php }
     } else { ?>
-        <h1 class="error">Your Payment been failed!</h1>
+        <h1 class="error"><?php
+            if($_COOKIE['language'] == 'CN')
+                echo '您的付款失敗！';
+            else
+                echo 'Your Payment been failed!';
+            ?></p></h1>
         <p class="error"><?php echo $statusMsg; ?></p>
-        <p>Customer Mail Send Failed.</p>
+        <p><?php
+            if($_COOKIE['language'] == 'CN')
+                echo '客戶郵件發送失敗。';
+            else
+                echo 'Customer Mail Send Failed.';
+            ?></p>
 
     <?php }
 } else { ?>
-    <h1 class="error">Your Payment been failed!</h1>
+    <h1 class="error"><?php
+        if($_COOKIE['language'] == 'CN')
+            echo '您的付款失敗！';
+        else
+            echo 'Customer Mail Send Failed.';
+        ?></h1>
     <p class="error"><?php echo $statusMsg; ?></p>
-    <p>Status mesage not match.</p>
+    <p><?php
+        if($_COOKIE['language'] == 'CN')
+            echo '狀態消息不匹配。';
+        else
+            echo 'Status mesage not match.';
+        ?></p>
 <?php } ?>
