@@ -87,7 +87,7 @@ if(isset($_POST['login'])){
                                     ?></p>
                                 <div class="buttons-set">
                                     <button type="button" title="Create an Account" class="button create-account"
-                                            onClick="changeForm();"><span><span>Create an Account</span></span></button>
+                                            onClick="changeForm();"><span><span><?php if($_COOKIE['language'] === 'CN') echo '創建一個帳戶'; else echo 'Create an Account';?></span></span></button>
                                 </div>
                             </div>
                         </div>
@@ -108,7 +108,7 @@ if(isset($_POST['login'])){
                                     ?></p>
                                 <ul class="form-list">
                                     <li>
-                                        <label for="email">Email Address<em class="required">*</em></label>
+                                        <label for="email"><?php if ($_COOKIE['language'] === 'CN') echo '電子郵件地址'; else echo 'Email Address';?><em class="required">*</em></label>
                                         <div class="input-box">
                                             <input type="text" name="email" value="" id="email"
                                                    class="input-text required-entry validate-email"
@@ -116,7 +116,7 @@ if(isset($_POST['login'])){
                                         </div>
                                     </li>
                                     <li>
-                                        <label for="pass">Password<em class="required">*</em></label>
+                                        <label for="pass"><?php if($_COOKIE['language']) echo '密碼'; else echo 'Password';?><em class="required">*</em></label>
                                         <div class="input-box">
                                             <input type="password" name="password"
                                                    class="input-text required-entry validate-password" id="pass"
@@ -174,7 +174,7 @@ if(isset($_POST['login'])){
                                     ?></p>
                                 <div class="buttons-set">
                                     <button type="button" title="Create an Account" class="button create-account"
-                                            onClick="logIn();"><span><span>Log In</span></span></button>
+                                            onClick="logIn();"><span><span><?php if ($_COOKIE['language'] === 'CN') echo '登錄'; else echo 'Log In';?></span></span></button>
                                 </div>
                             </div>
                         </div>
@@ -187,7 +187,12 @@ if(isset($_POST['login'])){
                                 ?></strong>
                             <div class="content">
 
-                                <p>If you don't have an account with us, please create a new one.</p>
+                                <p><?php
+                                    if($_COOKIE['language'] === 'CN')
+                                        echo '如果您沒有我們的帳戶，請創建一個新帳戶。';
+                                    else
+                                        echo 'If you do not have an account with us, please create a new one.';
+                                    ?></p>
                                 <ul class="form-list">
                                     <li>
                                         <label for="email"><?php
