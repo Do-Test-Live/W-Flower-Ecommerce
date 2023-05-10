@@ -14,7 +14,7 @@
                                 <a href="Sub-Category?id=<?php echo $sub_cat_id?>">
                                     <div class="pro-img"><img src="admin/<?php echo $sub_cat_slider[$m]['sub_cat_image'];?>"
                                                               alt="Fresh Organic Mustard Leaves ">
-                                        <div class="pro-info"><?php echo $sub_cat_slider[$m]['sub_cat_name'];?></div>
+                                        <div class="pro-info"><?php if($_COOKIE['language'] === 'CN') echo $sub_cat_slider[$m]['sub_cat_name']; else echo $sub_cat_slider[$m]['sub_cat_name_en'];?></div>
                                     </div>
                                 </a>
                             </div>

@@ -69,7 +69,7 @@ if(!isset($_COOKIE['language'])){
                                                                       title="Four Season Flowers"
                                                                       class="product-image"><img
                                                         src="admin/<?php echo $image[0];?>" alt="Four Season Flowers"></a>
-                                            <div class="new-label new-top-left">Hot</div>
+                                            <div class="new-label new-top-left"><?php if($_COOKIE['language'] === 'CN') echo '热门'; else echo 'Hot';?></div>
                                         </div>
                                         <div class="add_cart">
                                             <button class="button btn-cart" type="button"><span><?php
@@ -83,7 +83,7 @@ if(!isset($_COOKIE['language'])){
                                     <div class="item-info">
                                         <div class="info-inner">
                                             <div class="item-title"><a href="Product-Details?id=<?php echo $product_id;?>"
-                                                                       title="Four Season Flowers"><?php echo $hot_products[$x]['p_name'];?></a></div>
+                                                                       title="Four Season Flowers"><?php if($_COOKIE['language'] === 'CN') echo $hot_products[$x]['p_name']; else echo $hot_products[$x]['p_name_en'];?></a></div>
                                             <div class="item-content">
                                                 <div class="item-price">
                                                     <div class="price-box"><span class="regular-price"><span class="price"><?php echo $hot_products[$x]['product_price'];?> HKD</span> </span>
@@ -154,7 +154,7 @@ if(!isset($_COOKIE['language'])){
                                             <?php
                                             if($hot_products[$x]['hot_product'] == '1'){
                                                 ?>
-                                                <div class="new-label new-top-left">Hot</div>
+                                                <div class="new-label new-top-left"><?php if($_COOKIE['language'] === 'CN') echo '热门'; else echo 'Hot';?></div>
                                                 <?php
                                             }
                                             ?>
@@ -172,7 +172,7 @@ if(!isset($_COOKIE['language'])){
                                     <div class="item-info">
                                         <div class="info-inner">
                                             <div class="item-title"><a href="Product-Details?id=<?php echo $product_id;?>"
-                                                                       title="Four Season Flowers"><?php echo $hot_products[$x]['p_name'];?></a></div>
+                                                                       title="Four Season Flowers"><?php if($_COOKIE['language'] === 'CN') echo $hot_products[$x]['p_name']; else echo $hot_products[$x]['p_name_en'];?></a></div>
                                             <div class="item-content">
                                                 <div class="item-price">
                                                     <div class="price-box"><span class="regular-price"><span class="price"><?php echo $hot_products[$x]['product_price'];?> HKD</span> </span>

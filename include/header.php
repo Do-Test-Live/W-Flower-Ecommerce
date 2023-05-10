@@ -113,7 +113,7 @@ if (isset($_SESSION["cart_item"])) {
                                 for($i = 0; $i<$no_cat; $i++){
                                     $cat_id = $cat[$i]['id'];
                                     ?>
-                                    <li class="mega-menu"><a class="level-top" href="Category?id=<?php echo $cat_id?>"><span><?php echo $cat[$i]['c_name'];?></span></a>
+                                    <li class="mega-menu"><a class="level-top" href="Category?id=<?php echo $cat_id?>"><span><?php if($_COOKIE['language'] === 'CN') echo $cat[$i]['c_name']; else echo $cat[$i]['c_name_en'];?></span></a>
                                         <?php
                                         $sub_cat = $db_handle->runQuery("SELECT * FROM `sub_category` where cat_id = '$cat_id'");
                                         $no_sub_cat = $db_handle->numRows("SELECT * FROM `sub_category` where cat_id = '$cat_id'");
@@ -131,7 +131,7 @@ if (isset($_SESSION["cart_item"])) {
                                                                         $sub_cat_id = $sub_cat[$j]['sub_cat_id'];
                                                                         ?>
                                                                         <li class="level3 nav-6-1 parent item"><a
-                                                                                href="Sub-Category?id=<?php echo $sub_cat_id?>"><span><?php echo $sub_cat[$j]['sub_cat_name'];?></span></a>
+                                                                                href="Sub-Category?id=<?php echo $sub_cat_id?>"><span><?php if($_COOKIE['language'] === 'CN') echo $sub_cat[$j]['sub_cat_name']; else echo $sub_cat[$j]['sub_cat_name_en'];?></span></a>
                                                                             <!--sub sub category-->
                                                                             <?php
                                                                             $product_type = $db_handle->runQuery("SELECT * FROM `product_type` WHERE cat_id = '$cat_id' AND sub_cat_id = '$sub_cat_id'");
@@ -142,7 +142,7 @@ if (isset($_SESSION["cart_item"])) {
                                                                                 ?>
                                                                                 <ul class="level1">
                                                                                     <li class="level2 nav-6-1-1"><a
-                                                                                            href="Product-Type?id=<?php echo $product_type_id?>"><span><?php echo $product_type[$k]['product_type'];?></span></a>
+                                                                                            href="Product-Type?id=<?php echo $product_type_id?>"><span><?php if($_COOKIE['language'] === 'CN') echo $product_type[$k]['product_type']; else echo $product_type[$k]['product_type_en'];?></span></a>
                                                                                     </li>
                                                                                 </ul>
                                                                                 <?php
@@ -216,15 +216,13 @@ if (isset($_SESSION["cart_item"])) {
                                     <?php
                                     if(isset($_SESSION['id'])){
                                         ?>
-                                        <li><a href="Account" title="My Account">My Account</a></li>
-                                        <li><a href="Cart" title="Cart">Cart</a></li>
-                                        <li><a href="Logout">Logout</a></li>
+                                        <li><a href="Account" title="My Account"><?php if($_COOKIE['language'] === 'CN') echo '我的账户'; else echo 'My Account';?></a></li>
+                                        <li><a href="Cart" title="Cart"><?php if($_COOKIE['language'] === 'CN') echo '大车'; else echo 'Cart';?></a></li>
+                                        <li><a href="Logout"><?php if($_COOKIE['language'] === 'CN') echo '登出'; else echo 'Logout';?></a></li>
                                         <?php
                                     }else{
                                         ?>
-                                        <li class="last"><a href="#"><span>帳戶資料</span></a></li>
-                                        <li class="last"><a href="Login"><span>登錄</span></a></li>
-                                        <li class="last"><a href="#"><span>查看記錄</span></a></li>
+                                        <li class="last"><a href="Login"><span><?php if($_COOKIE['language'] === 'CN') echo '登錄'; else echo 'Log In';?></span></a></li>
                                         <?php
                                     }
                                     ?>

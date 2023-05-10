@@ -20,7 +20,7 @@
         for ($i = 0; $i < $no_cat; $i++) {
             $cat_id = $cat[$i]['id'];
             ?>
-            <li><a href="Category?id=<?php echo $cat_id?>"><span><?php echo $cat[$i]['c_name']; ?></span></a>
+            <li><a href="Category?id=<?php echo $cat_id?>"><span><?php if($_COOKIE['language'] === 'CN') echo $cat[$i]['c_name']; else echo $cat[$i]['c_name_en']; ?></span></a>
                 <?php
                 $sub_cat = $db_handle->runQuery("SELECT * FROM `sub_category` where cat_id = '$cat_id'");
                 $no_sub_cat = $db_handle->numRows("SELECT * FROM `sub_category` where cat_id = '$cat_id'");
@@ -32,7 +32,7 @@
                         for ($j = 0; $j < $no_sub_cat; $j++) {
                             $sub_cat_id = $sub_cat[$j]['sub_cat_id'];
                             ?>
-                            <li><a href="Sub-Category?id=<?php echo $sub_cat_id?>"><span><?php echo $sub_cat[$j]['sub_cat_name']; ?></span></a>
+                            <li><a href="Sub-Category?id=<?php echo $sub_cat_id?>"><span><?php if($_COOKIE['language'] === 'CN') echo $sub_cat[$j]['sub_cat_name']; else echo $sub_cat[$j]['sub_cat_name_en'];?></span></a>
                                 <!--sub sub category-->
                                 <?php
                                 $product_type = $db_handle->runQuery("SELECT * FROM `product_type` WHERE cat_id = '$cat_id' AND sub_cat_id = '$sub_cat_id'");
@@ -43,7 +43,7 @@
                                         ?>
                                         <ul>
                                             <li>
-                                                <a href="Product-Type?id=<?php echo $product_type_id?>"><span><?php echo $product_type[$k]['product_type']; ?></span></a>
+                                                <a href="Product-Type?id=<?php echo $product_type_id?>"><span><?php if($_COOKIE['language'] === 'CN') echo $product_type[$k]['product_type']; else echo $product_type[$k]['product_type']; ?></span></a>
                                             </li>
                                         </ul>
                                         <?php
