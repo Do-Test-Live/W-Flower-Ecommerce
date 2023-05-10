@@ -71,40 +71,40 @@ $db_handle = new DBController();
                                                 <div class="delivery-address-box">
                                                     <div class="row">
                                                         <div class="form-group col-md-12 mb-3">
-                                                            <label>聯繫人姓名</label>
+                                                            <label><?php if ($_COOKIE['language'] === 'CN') echo '聯繫人姓名'; else echo 'Contact Name';?></label>
                                                             <input type="text" class="form-control" name="contact_name"
                                                                    value="" required="">
                                                         </div>
                                                         <div class="form-group col-md-12 mb-3">
-                                                            <label>聯繫人電話</label>
+                                                            <label><?php if ($_COOKIE['language'] === 'CN') echo '聯繫人電話'; else echo 'Contact Number';?></label>
                                                             <input type="text" class="form-control" name="contact_phone"
 
                                                         <div class="form-group col-md-12 mb-3">
-                                                            <label>電子郵件</label>
+                                                            <label><?php if ($_COOKIE['language'] === 'CN') echo '電子郵件'; else echo 'Email';?></label>
                                                             <input type="email" class="form-control" name="email"
                                                                    value="" required="">
                                                         </div>
                                                         <div class="form-group col-md-12 mb-3">
-                                                            <label>收件人姓名</label>
+                                                            <label><?php if ($_COOKIE['language'] === 'CN') echo '收件人姓名'; else echo 'Recipient Name';?></label>
                                                             <input type="text" class="form-control" name="receiver_name"
                                                                    value="" required="">
                                                         </div>
                                                         <div class="form-group col-md-12 mb-3">
-                                                            <label>收件人電話</label>
+                                                            <label><?php if ($_COOKIE['language'] === 'CN') echo '收件人電話'; else echo 'Recipient Phone';?></label>
                                                             <input type="text" class="form-control" name="receiver_phone"
                                                                    value="" required="">
                                                         </div>
                                                         <div class="form-group col-md-12 mb-3">
-                                                            <label>地址</label>
+                                                            <label><?php if ($_COOKIE['language'] === 'CN') echo '地址'; else echo 'Address';?></label>
                                                             <input type="text" class="form-control" name="address"
                                                                    value="" required="">
                                                         </div>
                                                         <div class="form-group col-md-6 mb-3">
-                                                            <label>交貨日期</label>
+                                                            <label><?php if ($_COOKIE['language'] === 'CN') echo '交貨日期'; else echo 'Delivery Date';?></label>
                                                             <input type="date" class="form-control" name="deliver_date" required="">
                                                         </div>
                                                         <div class="form-group col-md-6 mb-3">
-                                                            <label>交貨時間</label>
+                                                            <label><?php if ($_COOKIE['language'] === 'CN') echo '交貨時間'; else echo 'Delivery Time';?></label>
                                                             <input type="time" class="form-control" name="deliver_time"
                                                                    value="" required="">
                                                         </div>

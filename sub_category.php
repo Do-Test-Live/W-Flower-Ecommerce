@@ -119,7 +119,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where sub_categor
                                                         <div class="info-inner">
                                                             <div class="item-title"><a
                                                                     href="Product-Details?id=<?php echo $product_color[$k]['id']; ?>"
-                                                                    title="Test Flower"><?php echo $product_color[$k]['p_name']; ?></a>
+                                                                    title="Test Flower"><?php if($_COOKIE['language']) echo $product_color[$k]['p_name'];else echo $product_color[$k]['p_name_en'];?></a>
                                                             </div>
                                                             <div class="item-content">
                                                                 <div class="item-price">
@@ -209,7 +209,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where sub_categor
                                                             <div class="info-inner">
                                                                 <div class="item-title"><a
                                                                         href="Product-Details?id=<?php echo $product_price[$k]['id']; ?>"
-                                                                        title="Test Flower"><?php echo $product_price[$k]['p_name']; ?></a>
+                                                                        title="Test Flower"><?php if($_COOKIE['language'] === 'CN') echo $product_price[$k]['p_name']; else echo $product_price[$k]['p_name_en']; ?></a>
                                                                 </div>
                                                                 <div class="item-content">
                                                                     <div class="item-price">
@@ -298,7 +298,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where sub_categor
                                                             <div class="info-inner">
                                                                 <div class="item-title"><a
                                                                         href="Product-Details?id=<?php echo $product_price[$k]['id']; ?>"
-                                                                        title="Test Flower"><?php echo $product_price[$k]['p_name']; ?></a>
+                                                                        title="Test Flower"><?php if($_COOKIE['language'] === 'CN') echo $product_price[$k]['p_name']; else echo $product_price[$k]['p_name_en'];?></a>
                                                                 </div>
                                                                 <div class="item-content">
                                                                     <div class="item-price">
@@ -389,7 +389,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where sub_categor
                                                         <div class="info-inner">
                                                             <div class="item-title"><a
                                                                     href="Product-Details?id=<?php echo $fetch_product[$i]['id']; ?>"
-                                                                    title="Test Flower"><?php echo $fetch_product[$i]['p_name']; ?></a>
+                                                                    title="Test Flower"><?php if($_COOKIE['language'] === 'CN') echo $fetch_product[$i]['p_name']; else echo $fetch_product[$i]['p_name_en'];?></a>
                                                             </div>
                                                             <div class="item-content">
                                                                 <div class="item-price">
@@ -493,7 +493,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where sub_categor
                                         for ($i = 0; $i < $no_color; $i++) {
                                             ?>
                                             <li>
-                                                <a href="Sub-Category?id=<?php echo $sub_category?>&color=<?php echo $color[$i]['color_id']; ?>"><?php echo $color[$i]['color']; ?></a>
+                                                <a href="Sub-Category?id=<?php echo $sub_category?>&color=<?php echo $color[$i]['color_id']; ?>"><?php if($_COOKIE['language'] === 'CN') echo $color[$i]['color_cn']; else echo $color[$i]['color'];?></a>
                                             </li>
                                             <?php
                                         }
@@ -503,44 +503,6 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where sub_categor
                             </dl>
                         </div>
                     </div>
-               <!--     <div class="custom-slider">
-                        <div>
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                <ol class="carousel-indicators">
-                                    <li class="active" data-target="#carousel-example-generic" data-slide-to="0"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
-                                </ol>
-                                <div class="carousel-inner">
-                                    <div class="item active"><img src="images/flower/1.jpg" alt="slide3">
-                                        <div class="carousel-caption">
-                                            <h4>Fruit Shop</h4>
-                                            <h3><a title=" Sample Product" href="product_detail.php">Up to 70% Off</a>
-                                            </h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                            <a class="link" href="#">Buy Now</a></div>
-                                    </div>
-                                    <div class="item"><img src="images/flower/2.jpg" alt="slide1">
-                                        <div class="carousel-caption">
-                                            <h4>Black Grapes</h4>
-                                            <h3><a title=" Sample Product" href="product_detail.php">Mega Sale</a></h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                            <a class="link" href="#">Buy Now</a>
-                                        </div>
-                                    </div>
-                                    <div class="item"><img src="images/flower/3.jpg" alt="slide2">
-                                        <div class="carousel-caption">
-                                            <h4>Food Farm</h4>
-                                            <h3><a title=" Sample Product" href="product_detail.php">Up to 50% Off</a>
-                                            </h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                            <a class="link" href="#">Buy Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--block block-list block-compare-->
                 </aside>-->
                 <!--col-right sidebar-->
             </div>

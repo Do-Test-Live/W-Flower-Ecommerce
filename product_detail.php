@@ -87,20 +87,20 @@ $product_id = $_GET['id'];
                                                                  src="admin/<?php echo $image[0]; ?>"
                                                                  onclick="related_image(this);"
                                                                  alt="product-image"/> </a></div>
-                                                    <div class="more-views-items"><a href="#"
-                                                                                     data-image="admin/<?php echo $image[1]; ?>"
-                                                                                     data-zoom-image="admin/<?php echo $image[1]; ?>">
+                                                    <!--<div class="more-views-items"><a href="#"
+                                                                                     data-image="admin/<?php /*echo $image[1]; */?>"
+                                                                                     data-zoom-image="admin/<?php /*echo $image[1]; */?>">
                                                             <img id="product-zoom1"
-                                                                 src="admin/<?php echo $image[1]; ?>"
+                                                                 src="admin/<?php /*echo $image[1]; */?>"
                                                                  alt=" product-image"
                                                                  onclick="related_image(this);"/> </a></div>
                                                     <div class="more-views-items"><a href="#"
-                                                                                     data-image="admin/<?php echo $image[2]; ?>"
-                                                                                     data-zoom-image="admin/<?php echo $image[2]; ?>">
+                                                                                     data-image="admin/<?php /*echo $image[2]; */?>"
+                                                                                     data-zoom-image="admin/<?php /*echo $image[2]; */?>">
                                                             <img id="product-zoom2"
-                                                                 src="admin/<?php echo $image[2]; ?>"
+                                                                 src="admin/<?php /*echo $image[2]; */?>"
                                                                  alt=" product-image"
-                                                                 onclick="related_image(this);"/> </a></div>
+                                                                 onclick="related_image(this);"/> </a></div>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -112,11 +112,11 @@ $product_id = $_GET['id'];
                             <!-- For version 3 -->
                             <div class="product-shop col-lg- col-sm-7 col-xs-12">
                                 <div class="product-name">
-                                    <h1><?php echo $select_product[0]['p_name']; ?></h1>
+                                    <h1><?php if($_COOKIE['language'] === 'CN') echo $select_product[0]['p_name']; else echo $select_product[0]['p_name_en']; ?></h1>
                                 </div>
                                 <div class="price-block">
                                     <div class="price-box">
-                                        <p class="availability in-stock"><span>In Stock</span></p>
+                                        <p class="availability in-stock"><span><?php if($_COOKIE['language'] === 'CN') echo '有存货'; else echo 'In Stock'?></span></p>
                                         <p class="special-price">
                                                 <span id="product-price-48"
                                                       class="price"> <?php echo $select_product[0]['product_price']; ?> HKD</span>
@@ -143,7 +143,7 @@ $product_id = $_GET['id'];
                                     </div>
                                 </form>
                                 <div class="short-description">
-                                    <p><?php echo $select_product[0]['description']; ?> </p>
+                                    <p><?php if($_COOKIE['language'] === 'CN') echo $select_product[0]['description']; else echo $select_product[0]['description_en']; ?> </p>
                                 </div>
 
                                 <ul class="shipping-pro">
@@ -178,7 +178,14 @@ $product_id = $_GET['id'];
                         <div class="related-pro container">
                             <div class="slider-items-products">
                                 <div class="new_title center">
-                                    <h2>Related Products</h2>
+                                    <h2><?php
+                                        if($_COOKIE['language'] === 'CN')
+                                            echo '相关产品';
+                                        else
+                                            echo 'Related Products';
+                                        ?>
+
+                                        </h2>
                                 </div>
                                 <div id="related-slider" class="product-flexslider hidden-buttons">
                                     <div class="slider-items slider-width-col4 products-grid">
@@ -228,7 +235,7 @@ $product_id = $_GET['id'];
                                                         <div class="info-inner">
                                                             <div class="item-title"><a
                                                                         href="Product-Details?id=<?php echo $product_id; ?>"
-                                                                        title="Four Season Flowers"><?php echo $hot_products[$x]['p_name']; ?></a>
+                                                                        title="Four Season Flowers"><?php if($_COOKIE['language'] === 'CN') echo $hot_products[$x]['p_name']; else echo $hot_products[$x]['p_name_en'];?></a>
                                                             </div>
                                                             <div class="item-content">
                                                                 <div class="item-price">
