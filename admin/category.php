@@ -64,11 +64,19 @@ if (!isset($_SESSION['userid'])) {
                                         <input type="hidden" value="<?php echo $data[0]["id"]; ?>" name="id" required>
 
                                         <div class="mb-3 row">
-                                            <label class="col-sm-3 col-form-label">Category Name</label>
+                                            <label class="col-sm-3 col-form-label">Category Name (CN)</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control" name="c_name"
                                                        placeholder="Category Name"
                                                        value="<?php echo $data[0]["c_name"]; ?>" required>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label class="col-sm-3 col-form-label">Category Name (EN)</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" name="c_name_en"
+                                                       placeholder="Category Name"
+                                                       value="<?php echo $data[0]["c_name_en"]; ?>" required>
                                             </div>
                                         </div>
                                         <div class="mb-3 row">

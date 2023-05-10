@@ -72,8 +72,12 @@ if (!isset($_SESSION['userid'])) {
                                             </select>
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <label>Sub-Category Name</label>
+                                            <label>Sub-Category Name(CN) </label>
                                             <input type="text" class="form-control" name="sub_cat_name" placeholder="" required>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label>Sub-Category Name(EN)</label>
+                                            <input type="text" class="form-control" name="sub_cat_name_en" placeholder="" required>
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label>Sub-Category Image</label>

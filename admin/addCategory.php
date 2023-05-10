@@ -57,8 +57,12 @@ if (!isset($_SESSION['userid'])) {
                                 <form action="Insert" method="post" enctype="multipart/form-data">
                                     <div class="form-row">
                                         <div class="form-group col-md-12">
-                                            <label>Category Name</label>
+                                            <label>Category Name (CN)</label>
                                             <input type="text" class="form-control" placeholder="" name="cat_name" required>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label>Category Name (EN)</label>
+                                            <input type="text" class="form-control" placeholder="" name="cat_name_en" required>
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label>Category Image</label>

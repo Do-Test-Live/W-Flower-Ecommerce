@@ -59,7 +59,7 @@ if (!isset($_SESSION['userid'])) {
                                 <div class="basic-form">
                                     <form method="post" action="Update" enctype="multipart/form-data">
 
-                                        <?php $data = $db_handle->runQuery("SELECT p.product_type, c.id, c.c_name,s.sub_cat_id, s.sub_cat_name FROM `product_type` as p, category as c, sub_category as s WHERE p.cat_id = c.id and p.sub_cat_id = s.sub_cat_id and p.product_type_id = ".$_GET['product_type_id'].";");?>
+                                        <?php $data = $db_handle->runQuery("SELECT p.product_type,p.product_type_en, c.id, c.c_name,s.sub_cat_id, s.sub_cat_name FROM `product_type` as p, category as c, sub_category as s WHERE p.cat_id = c.id and p.sub_cat_id = s.sub_cat_id and p.product_type_id = ".$_GET['product_type_id'].";");?>
 
                                         <input type="hidden" value="<?php echo$_GET['product_type_id'];?>" name="id" required>
 
@@ -94,10 +94,16 @@ if (!isset($_SESSION['userid'])) {
                                             </select>
                                         </div>
                                         <div class="mb-3 row">
-                                            <label>Product Type Name</label>
+                                            <label>Product Type Name (CN)</label>
                                             <input type="text" class="form-control" name="product_type"
                                                    placeholder="Sub-Category Name"
                                                    value="<?php echo $data[0]["product_type"]; ?>" required>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label>Product Type Name (EN)</label>
+                                            <input type="text" class="form-control" name="product_type_en"
+                                                   placeholder="Sub-Category Name"
+                                                   value="<?php echo $data[0]["product_type_en"]; ?>" required>
                                         </div>
                                         <div class="mb-3 row">
                                             <div class="col-sm-6 mx-auto">

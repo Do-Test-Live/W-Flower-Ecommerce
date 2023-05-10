@@ -15,6 +15,7 @@ if (!isset($_SESSION['userid'])) {
     <!-- Datatable -->
     <link href="vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
     <?php include 'include/css.php'; ?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.21.0/ckeditor.js" integrity="sha512-ff67djVavIxfsnP13CZtuHqf7VyX62ZAObYle+JlObWZvS4/VQkNVaFBOO6eyx2cum8WtiZ0pqyxLCQKC7bjcg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
 
@@ -64,11 +65,19 @@ if (!isset($_SESSION['userid'])) {
                                         <input type="hidden" value="<?php echo $data[0]["id"]; ?>" name="id" required>
 
                                         <div class="mb-3 row">
-                                            <label class="col-sm-3 col-form-label">Product Name</label>
+                                            <label class="col-sm-3 col-form-label">Product Name (CN)</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control" name="p_name"
-                                                       placeholder="Category Name"
+                                                       placeholder="Product Name"
                                                        value="<?php echo $data[0]["p_name"]; ?>" required>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label class="col-sm-3 col-form-label">Product Name (EN)</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" name="p_name_en"
+                                                       placeholder="Product Name"
+                                                       value="<?php echo $data[0]["p_name_en"]; ?>" required>
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
@@ -88,11 +97,18 @@ if (!isset($_SESSION['userid'])) {
                                             </div>
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <label>Product Description *</label>
+                                            <label>Product Description (CN) *</label>
                                             <textarea class="form-control" rows="4" id="comment"
                                                       name="product_description"
                                                       required><?php echo $data[0]["description"]; ?></textarea>
                                         </div>
+                                        <div class="form-group col-md-12">
+                                            <label>Product Description (EN) *</label>
+                                            <textarea class="form-control" rows="4" id="comment"
+                                                      name="product_description_en"
+                                                      required><?php echo $data[0]["description_en"]; ?></textarea>
+                                        </div>
+
                                         <div class="form-group col-md-12">
                                             <label>Select Product Category *</label>
                                             <select class="form-control default-select" id="category"
@@ -404,6 +420,10 @@ if (!isset($_SESSION['userid'])) {
         });
     });
 
+</script>
+<script>
+    CKEDITOR.replace('product_description');
+    CKEDITOR.replace('product_description_en');
 </script>
 </body>
 </html>

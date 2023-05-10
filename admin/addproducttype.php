@@ -78,8 +78,12 @@ if (!isset($_SESSION['userid'])) {
                                             </select>
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <label>Product Type Name</label>
+                                            <label>Product Type Name (CN)</label>
                                             <input type="text" class="form-control" name="product_type" placeholder="" required>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label>Product Type Name (EN)</label>
+                                            <input type="text" class="form-control" name="product_type_en" placeholder="" required>
                                         </div>
                                     </div>
                                     <div class="text-center">

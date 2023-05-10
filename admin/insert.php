@@ -6,6 +6,7 @@ date_default_timezone_set("Asia/Hong_Kong");
 
 if (isset($_POST["add_cat"])) {
     $name = $db_handle->checkValue($_POST['cat_name']);
+    $name_en = $db_handle->checkValue($_POST['cat_name_en']);
     $image = '';
     if (!empty($_FILES['cat_image']['name'])) {
         $RandomAccountNumber = mt_rand(1, 99999);
@@ -29,7 +30,7 @@ if (isset($_POST["add_cat"])) {
 
     $inserted_at = date("Y-m-d H:i:s");
 
-    $insert = $db_handle->insertQuery("INSERT INTO `category`(`c_name`, `image`,  `inserted_at`) VALUES ('$name','$image','$inserted_at')");
+    $insert = $db_handle->insertQuery("INSERT INTO `category`(`c_name`,`c_name_en`, `image`,  `inserted_at`) VALUES ('$name','$name_en','$image','$inserted_at')");
 
     echo "<script>
                 document.cookie = 'alert = 3;';
@@ -40,10 +41,11 @@ if (isset($_POST["add_cat"])) {
 
 if (isset($_POST["add_color"])) {
     $color_name = $db_handle->checkValue($_POST['color_name']);
+    $color_name_cn = $db_handle->checkValue($_POST['color_name_cn']);
 
     $inserted_at = date("Y-m-d H:i:s");
 
-    $insert = $db_handle->insertQuery("INSERT INTO `flower_color`(`color`, `inserted_at`) VALUES ('$color_name','$inserted_at')");
+    $insert = $db_handle->insertQuery("INSERT INTO `flower_color`(`color`,`color_cn`, `inserted_at`) VALUES ('$color_name','$color_name_cn','$inserted_at')");
 
     echo "<script>
                 document.cookie = 'alert = 3;';
@@ -56,6 +58,7 @@ if (isset($_POST["add_color"])) {
 if (isset($_POST["add_sub_cat"])) {
     $category = $db_handle->checkValue($_POST['category']);
     $sub_cat_name = $db_handle->checkValue($_POST['sub_cat_name']);
+    $sub_cat_name_en = $db_handle->checkValue($_POST['sub_cat_name_en']);
     $image = '';
     if (!empty($_FILES['sub_cat_image']['name'])) {
         $RandomAccountNumber = mt_rand(1, 99999);
@@ -79,8 +82,8 @@ if (isset($_POST["add_sub_cat"])) {
 
     $inserted_at = date("Y-m-d H:i:s");
 
-    $insert = $db_handle->insertQuery("INSERT INTO `sub_category`(`sub_cat_name`, `cat_id`, `sub_cat_image`, `inserted_at`)
-VALUES ('$sub_cat_name','$category','$image','$inserted_at')");
+    $insert = $db_handle->insertQuery("INSERT INTO `sub_category`(`sub_cat_name`,`sub_cat_name_en`, `cat_id`, `sub_cat_image`, `inserted_at`)
+VALUES ('$sub_cat_name','$sub_cat_name_en','$category','$image','$inserted_at')");
 
     echo "<script>
                 document.cookie = 'alert = 3;';
@@ -92,10 +95,11 @@ if (isset($_POST["add_product_type"])) {
     $category = $db_handle->checkValue($_POST['category']);
     $subcategory = $db_handle->checkValue($_POST['subcategory']);
     $product_type = $db_handle->checkValue($_POST['product_type']);
+    $product_type_en = $db_handle->checkValue($_POST['product_type_en']);
     $inserted_at = date("Y-m-d H:i:s");
 
-    $insert = $db_handle->insertQuery("INSERT INTO `product_type`(`product_type`, `cat_id`, `sub_cat_id`, `inserted_at`) 
-VALUES ('$product_type','$category','$subcategory','$inserted_at')");
+    $insert = $db_handle->insertQuery("INSERT INTO `product_type`(`product_type`,`product_type_en`, `cat_id`, `sub_cat_id`, `inserted_at`) 
+VALUES ('$product_type','$product_type_en','$category','$subcategory','$inserted_at')");
 
     echo "<script>
                 document.cookie = 'alert = 3;';
@@ -108,11 +112,13 @@ VALUES ('$product_type','$category','$subcategory','$inserted_at')");
 
 if (isset($_POST["add_product"])) {
     $product_name = $db_handle->checkValue($_POST['product_name']);
+    $product_name_en = $db_handle->checkValue($_POST['product_name_en']);
     $product_code = $db_handle->checkValue($_POST['product_code']);
     $product_category = $db_handle->checkValue($_POST['product_category']);
     $selling_price = $db_handle->checkValue($_POST['selling_price']);
     $product_status = $db_handle->checkValue($_POST['product_status']);
     $product_description = $db_handle->checkValue($_POST['product_description']);
+    $product_description_en = $db_handle->checkValue($_POST['product_description_en']);
     $product_type = $db_handle->checkValue($_POST['product_type']);
     $subcategory = $db_handle->checkValue($_POST['subcategory']);
     $product_color = $db_handle->checkValue($_POST['product_color']);
@@ -143,8 +149,8 @@ if (isset($_POST["add_product"])) {
         $products_image = '';
     }
 
-    $insert = $db_handle->insertQuery("INSERT INTO `product`(`category_id`, `product_code`, `p_name`,`product_price`, `description`, `p_image`,`status`, `inserted_at`,`sub_category`,`product_type`,`product_color`,`hot_product`) 
-VALUES ('$product_category','$product_code','$product_name','$selling_price','$product_description','$products_image','$product_status','$inserted_at','$subcategory','$product_type','$product_color','$hot_product')");
+    $insert = $db_handle->insertQuery("INSERT INTO `product`(`category_id`, `product_code`, `p_name`,`p_name_en`,`product_price`, `description`,`description_en`, `p_image`,`status`, `inserted_at`,`sub_category`,`product_type`,`product_color`,`hot_product`) 
+VALUES ('$product_category','$product_code','$product_name','$product_name_en','$selling_price','$product_description','$product_description_en','$products_image','$product_status','$inserted_at','$subcategory','$product_type','$product_color','$hot_product')");
 
     echo "<script>
                 document.cookie = 'alert = 3;';

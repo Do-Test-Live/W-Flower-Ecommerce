@@ -57,8 +57,14 @@ if (!isset($_SESSION['userid'])) {
                                 <form action="Insert" method="post" enctype="multipart/form-data">
                                     <div class="form-row">
                                         <div class="form-group col-md-12">
-                                            <label>Color Name</label>
+                                            <label>Color Name (EN)</label>
                                             <input type="text" class="form-control" placeholder="" name="color_name" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label>Color Name (CN)</label>
+                                            <input type="text" class="form-control" placeholder="" name="color_name_cn" required>
                                         </div>
                                     </div>
                                     <div class="text-center">

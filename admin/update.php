@@ -14,6 +14,7 @@ if (!isset($_SESSION["userid"])) {
 if (isset($_POST['updateCategory'])) {
     $id = $db_handle->checkValue($_POST['id']);
     $name = $db_handle->checkValue($_POST['c_name']);
+    $name_en = $db_handle->checkValue($_POST['c_name_en']);
     $status = $db_handle->checkValue($_POST['status']);
     $image = '';
     $query = '';
@@ -35,7 +36,7 @@ if (isset($_POST['updateCategory'])) {
         }
     }
 
-    $data = $db_handle->insertQuery("update category set c_name='$name', status='$status'" . $query . " where id={$id}");
+    $data = $db_handle->insertQuery("update category set c_name='$name',c_name_en='$name_en', status='$status'" . $query . " where id={$id}");
     echo "<script>
                 document.cookie = 'alert = 3;';
                 window.location.href='Category';
@@ -49,6 +50,7 @@ if (isset($_POST['updateSubCategory'])) {
     $id = $db_handle->checkValue($_POST['id']);
     $category = $db_handle->checkValue($_POST['category']);
     $sub_cat_name = $db_handle->checkValue($_POST['sub_cat_name']);
+    $sub_cat_name_en = $db_handle->checkValue($_POST['sub_cat_name_en']);
     $image = '';
     $query = '';
     $updated_at = date("Y-m-d H:i:s");
@@ -70,7 +72,7 @@ if (isset($_POST['updateSubCategory'])) {
         }
     }
 
-     $data = $db_handle->insertQuery("UPDATE `sub_category` SET `sub_cat_name`='$sub_cat_name',`cat_id`='$category',`updated_at`='$updated_at'" . $query . " where sub_cat_id ={$id}");
+     $data = $db_handle->insertQuery("UPDATE `sub_category` SET `sub_cat_name`='$sub_cat_name',`sub_cat_name_en`='$sub_cat_name_en',`cat_id`='$category',`updated_at`='$updated_at'" . $query . " where sub_cat_id ={$id}");
     echo "<script>
                 document.cookie = 'alert = 3;';
                 window.location.href='Sub-Category';
@@ -81,8 +83,10 @@ if (isset($_POST['updateSubCategory'])) {
 if (isset($_POST['updateProduct'])) {
     $id = $db_handle->checkValue($_POST['id']);
     $p_name = $db_handle->checkValue($_POST['p_name']);
+    $p_name_en = $db_handle->checkValue($_POST['p_name_en']);
     $product_code = $db_handle->checkValue($_POST['p_code']);
     $product_description = $db_handle->checkValue($_POST['product_description']);
+    $product_description_en = $db_handle->checkValue($_POST['product_description_en']);
     $product_category = $db_handle->checkValue($_POST['product_category']);
     $subcategory = $db_handle->checkValue($_POST['subcategory']);
     $product_type = $db_handle->checkValue($_POST['product_type']);
@@ -93,7 +97,7 @@ if (isset($_POST['updateProduct'])) {
 
     $updated_at = date("Y-m-d H:i:s");
 
-    $data = $db_handle->insertQuery("UPDATE `product` SET `category_id`='$product_category',`product_code`='$product_code',`p_name`='$p_name',`description`='$product_description',
+    $data = $db_handle->insertQuery("UPDATE `product` SET `category_id`='$product_category',`product_code`='$product_code',`p_name`='$p_name',`p_name_en`='$p_name_en',`description`='$product_description',`description_en`='$product_description_en',
                      `status`='$status',`updated_at`='$updated_at',`product_price`='$product_price', `sub_category` = '$subcategory', `product_type` = '$product_type', `product_color` = '$product_color', 
                      `hot_product` = '$hot_product' WHERE id={$id}");
     echo "<script>
@@ -229,9 +233,10 @@ if (isset($_POST['updateHomeBanner'])) {
 if(isset($_POST['updateColor'])){
     $id = $db_handle->checkValue($_POST['id']);
     $color_name = $db_handle->checkValue($_POST['color_name']);
+    $color_name_cn = $db_handle->checkValue($_POST['color_name_cn']);
     $updated_at = date("Y-m-d H:i:s");
 
-    $data = $db_handle->insertQuery("UPDATE `flower_color` SET `color`='$color_name',`updated_at`='$updated_at' WHERE color_id = '$id'");
+    $data = $db_handle->insertQuery("UPDATE `flower_color` SET `color`='$color_name',`color_cn`='$color_name_cn',`updated_at`='$updated_at' WHERE color_id = '$id'");
     echo "<script>
                 document.cookie = 'alert = 3;';
                 window.location.href='Color';
@@ -295,9 +300,10 @@ if(isset($_POST['updateProductType'])){
     $category = $db_handle->checkValue($_POST['category']);
     $sub_cat = $db_handle->checkValue($_POST['sub_cat']);
     $product_type = $db_handle->checkValue($_POST['product_type']);
+    $product_type_en = $db_handle->checkValue($_POST['product_type_en']);
     $updated_at = date("Y-m-d H:i:s");
 
-    $update = $db_handle->insertQuery("UPDATE `product_type` SET `product_type`='$product_type',`cat_id`='$category',`sub_cat_id`='$sub_cat',`updated_at`='$updated_at' 
+    $update = $db_handle->insertQuery("UPDATE `product_type` SET `product_type`='$product_type',`product_type_en`='$product_type_en',`cat_id`='$category',`sub_cat_id`='$sub_cat',`updated_at`='$updated_at' 
                       WHERE product_type_id = '$id'");
     if($update){
         echo "<script>

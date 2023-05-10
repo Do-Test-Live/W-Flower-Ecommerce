@@ -446,10 +446,10 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                     <ol>
                                         <li><a href="Category?id=<?php echo $category ?>&price=1"><span class="price">$0.00</span>
                                                 - <span
-                                                        class="price">$99.99</span></a> (6)
+                                                        class="price">$99.99</span></a>
                                         </li>
                                         <li><a href="Category?id=<?php echo $category ?>&price=2"><span class="price">$100.00</span>
-                                                and above</a> (6)
+                                                <?php if ($_COOKIE['language'] === 'CN') echo ' 以上'; else echo ' and above'?></a>
                                         </li>
                                     </ol>
                                 </dd>
@@ -462,7 +462,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                                         for ($i = 0; $i < $no_color; $i++) {
                                             ?>
                                             <li>
-                                                <a href="Category?id=<?php echo $category ?>&color=<?php echo $color[$i]['color_id']; ?>"><?php echo $color[$i]['color']; ?></a>
+                                                <a href="Category?id=<?php echo $category ?>&color=<?php echo $color[$i]['color_id']; ?>"><?php if ($_COOKIE['language'] === 'CN') echo $color[$i]['color_cn']; else echo $color[$i]['color'];?></a>
                                             </li>
                                             <?php
                                         }

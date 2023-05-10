@@ -13,6 +13,7 @@ if (!isset($_SESSION['userid'])) {
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Add Product | Four Seasons</title>
     <?php include 'include/css.php'; ?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.21.0/ckeditor.js" integrity="sha512-ff67djVavIxfsnP13CZtuHqf7VyX62ZAObYle+JlObWZvS4/VQkNVaFBOO6eyx2cum8WtiZ0pqyxLCQKC7bjcg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
 
@@ -57,8 +58,13 @@ if (!isset($_SESSION['userid'])) {
                                 <form action="Insert" method="post" enctype="multipart/form-data">
                                     <div class="form-row">
                                         <div class="form-group col-md-12">
-                                            <label>Product Name *</label>
+                                            <label>Product Name (CN) *</label>
                                             <input type="text" class="form-control" name="product_name" placeholder=""
+                                                   required>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label>Product Name (EN) *</label>
+                                            <input type="text" class="form-control" name="product_name_en" placeholder=""
                                                    required>
                                         </div>
                                         <div class="form-group col-md-12">
@@ -145,9 +151,14 @@ if (!isset($_SESSION['userid'])) {
                                             </select>
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <label>Product Description *</label>
+                                            <label>Product Description (CN)*</label>
                                             <textarea class="form-control" rows="4" id="comment"
                                                       name="product_description" required></textarea>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label>Product Description (EN) *</label>
+                                            <textarea class="form-control" rows="4" id="comment"
+                                                      name="product_description_en" required></textarea>
                                         </div>
                                     </div>
                                     <div class="text-center">
@@ -233,6 +244,10 @@ if (!isset($_SESSION['userid'])) {
         });
     });
 
+</script>
+<script>
+    CKEDITOR.replace('product_description');
+    CKEDITOR.replace('product_description_en');
 </script>
 
 </body>

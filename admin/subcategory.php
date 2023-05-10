@@ -59,7 +59,7 @@ if (!isset($_SESSION['userid'])) {
                                 <div class="basic-form">
                                     <form method="post" action="Update" enctype="multipart/form-data">
 
-                                        <?php $data = $db_handle->runQuery("SELECT s.sub_cat_id, s.sub_cat_name, s.sub_cat_image, s.inserted_at, c.c_name,c.id FROM `sub_category` as s,`category` as c WHERE s.cat_id = c.id and s.sub_cat_id = {$_GET['subcatId']}");?>
+                                        <?php $data = $db_handle->runQuery("SELECT s.sub_cat_id, s.sub_cat_name,s.sub_cat_name_en, s.sub_cat_image, s.inserted_at, c.c_name,c.id FROM `sub_category` as s,`category` as c WHERE s.cat_id = c.id and s.sub_cat_id = {$_GET['subcatId']}");?>
 
                                         <input type="hidden" value="<?php echo $data[0]["sub_cat_id"];?>" name="id" required>
 
@@ -79,10 +79,16 @@ if (!isset($_SESSION['userid'])) {
                                             </select>
                                         </div>
                                         <div class="mb-3 row">
-                                            <label>Sub Category Name *</label>
+                                            <label>Sub Category Name(CN) *</label>
                                             <input type="text" class="form-control" name="sub_cat_name"
                                                    placeholder="Sub-Category Name"
                                                    value="<?php echo $data[0]["sub_cat_name"]; ?>" required>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label>Sub Category Name(EN) *</label>
+                                            <input type="text" class="form-control" name="sub_cat_name_en"
+                                                   placeholder="Sub-Category Name"
+                                                   value="<?php echo $data[0]["sub_cat_name_en"]; ?>" required>
                                         </div>
                                         <div class="mb-3 row">
                                             <label class="col-sm-3 col-form-label">Image</label>

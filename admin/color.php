@@ -64,11 +64,19 @@ if (!isset($_SESSION['userid'])) {
                                         <input type="hidden" value="<?php echo $data[0]["color_id"]; ?>" name="id" required>
 
                                         <div class="mb-3 row">
-                                            <label class="col-sm-3 col-form-label">Color Name</label>
+                                            <label class="col-sm-3 col-form-label">Color Name (EN)</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control" name="color_name"
                                                        placeholder=""
                                                        value="<?php echo $data[0]["color"]; ?>" required>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label class="col-sm-3 col-form-label">Color Name (CN)</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" name="color_name_cn"
+                                                       placeholder=""
+                                                       value="<?php echo $data[0]["color_cn"]; ?>" required>
                                             </div>
                                         </div>
 
@@ -96,7 +104,8 @@ if (!isset($_SESSION['userid'])) {
                                         <thead>
                                         <tr>
                                             <th>SL</th>
-                                            <th>Category Name</th>
+                                            <th>Color Name (EN)</th>
+                                            <th>Color Name (CN)</th>
                                             <th>Insert Date</th>
                                             <th>Action</th>
                                         </tr>
@@ -111,6 +120,7 @@ if (!isset($_SESSION['userid'])) {
                                             <tr>
                                                 <td><?php echo $i + 1; ?></td>
                                                 <td><?php echo $color_data[$i]["color"]; ?></td>
+                                                <td><?php echo $color_data[$i]["color_cn"]; ?></td>
                                                 <?php
                                                 $date = date_create($color_data[$i]["inserted_at"]);
                                                 $date_formatted = date_format($date, "d F y, g:i A");
