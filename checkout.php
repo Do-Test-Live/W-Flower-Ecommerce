@@ -218,7 +218,15 @@ $db_handle = new DBController();
                                         </td>
                                     </tr>
                                 </table>
-                                <button class="button" name="placeOrder" type="submit" style="margin-top: 2em"><?php
+                                <p style="margin-top: 2em">
+                                    <?php
+                                        if($_COOKIE['language'] == 'CN')
+                                            echo '下一個工作天24小時後開始送貨';
+                                        else
+                                            echo 'Delivery starts after 24 hours on the next working day';
+                                    ?>
+                                </p>
+                                <button class="button" name="placeOrder" type="submit" style="margin-top: 1em"><?php
                                     if($_COOKIE['language'] == 'CN')
                                         echo '下訂單';
                                     else

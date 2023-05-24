@@ -472,7 +472,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where category_id
                             </dl>
                         </div>
                     </div>
-                </aside>-->
+                </aside>
                 <!--col-right sidebar-->
             </div>
             <!--row-->

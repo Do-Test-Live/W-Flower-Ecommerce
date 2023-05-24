@@ -91,7 +91,7 @@ if (!isset($_SESSION['userid'])) {
                                                    value="<?php echo $data[0]["sub_cat_name_en"]; ?>" required>
                                         </div>
                                         <div class="mb-3 row">
-                                            <label class="col-sm-3 col-form-label">Image</label>
+                                            <label class="col-sm-3 col-form-label">Image (140px * 100px)</label>
                                             <div class="col-sm-6">
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
