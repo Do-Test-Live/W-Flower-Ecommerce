@@ -67,13 +67,13 @@ if (isset($_SESSION["cart_item"])) {
                             <div id="slideshow">
                                 <p><?php
                                     if($_COOKIE['language'] == 'CN')
-                                        echo '特別優惠！ - 購買蔬菜可享受 <span>50%</span> 優惠';
+                                        echo '沙田四季花陪伴大眾超過廿載';
                                     else
                                         echo 'Special Offers! - Get <span>50%</span> off on vegetables ';
                                     ?></p>
                                 <p><?php
                                     if($_COOKIE['language'] == 'CN')
-                                        echo '批量購物減價 <span>40%</span>！';
+                                        echo '我們誠心為你傳遞上真摯的祝福與心意';
                                     else
                                         echo 'sale <span>40%</span> of on bulk shopping! ';
                                     ?></p>

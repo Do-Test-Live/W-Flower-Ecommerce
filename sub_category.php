@@ -32,9 +32,9 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where sub_categor
                         <ul>
                             <li class="home"><a href="index.php" title="Go to Home Page"><?php
                                     if($_COOKIE['language'] == 'CN')
-                                        echo '家';
+                                        echo '主頁';
                                     else
-                                        echo 'Home';
+                                        echo 'Home Page';
                                     ?></a>
                                 <span>&rsaquo; </span></li>
                             <li style="color: white"><?php

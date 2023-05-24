@@ -41,7 +41,7 @@ if(!isset($_COOKIE['language'])){
                 <div class="new_title">
                     <h2><?php
                         if($_COOKIE['language'] == 'CN')
-                            echo '熱賣';
+                            echo '本期限定';
                         else
                             echo 'Hot Deals';
                         ?></h2>
@@ -102,22 +102,6 @@ if(!isset($_COOKIE['language'])){
             </div>
         </section>
 
-
-        <div id="top">
-            <div class="container">
-                <div class="row">
-                    <?php
-                    $add_one = $db_handle->runQuery("select banner_img from banner where id = '4'");
-                    $add_two = $db_handle->runQuery("select banner_img from banner where id = '5'");
-                    ?>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><a href="#" data-scroll-goto="1"> <img
-                                    src="admin/<?php echo $add_one[0]['banner_img'];?>" alt="promotion-banner1"> </a></div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><a href="#" data-scroll-goto="2"> <img
-                                    src="admin/<?php echo $add_two[0]['banner_img'];?>" alt="promotion-banner2"> </a></div>
-                </div>
-            </div>
-        </div>
-
         <!-- best Pro Slider -->
         <section class=" wow bounceInUp animated">
             <div class="best-pro slider-items-products container">
@@ -130,7 +114,7 @@ if(!isset($_COOKIE['language'])){
                         ?></h2>
                     <h4><?php
                         if($_COOKIE['language'] == 'CN')
-                            echo '讓你更了解我';
+                            echo '熱賣推薦';
                         else
                             echo 'So you get to know me better';
                         ?></h4>
