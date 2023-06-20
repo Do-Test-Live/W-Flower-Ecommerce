@@ -8,22 +8,16 @@
                     <div class="cat-img-title cat-bg cat-box">
                         <div class="small-tag"><?php
                             if($_COOKIE['language'] == 'CN')
-                                echo '2018 賽季';
+                                echo '不論何時何地';
                             else
-                                echo 'Season 2018';
+                                echo 'No matter when and where';
                             ?></div>
                         <h2 class="cat-heading"><?php
                             if($_COOKIE['language'] == 'CN')
-                                echo '有機<span>世界';
+                                echo '讓我們為你傳達心意';
                             else
-                                echo 'Organic <span>World';
+                                echo 'let us convey your heart to your lover';
                             ?></span></h2>
-                        <p><?php
-                            if($_COOKIE['language'] == 'CN')
-                                echo '享受 40% 的折扣 &sdot;免費送貨';
-                            else
-                                echo 'GET 40% OFF &sdot; Free Delivery ';
-                            ?></p>
                     </div>
                 </div>
                 <!-- End Item -->
@@ -33,22 +27,17 @@
                     <div class="cat-img-title cat-bg cat-box">
                         <div class="small-tag"><?php
                             if($_COOKIE['language'] == 'CN')
-                                echo '綠世界';
+                                echo '誠心為你提供專業花藝服務';
                             else
-                                echo 'Green World';
+                                echo 'Sincerely provide you with </br> professional floral services';
                             ?></div>
                         <h2 class="cat-heading"><?php
                             if($_COOKIE['language'] == 'CN')
-                                echo '蔬菜<span>特賣</span>';
+                                echo '送上至誠祝福';
                             else
-                                echo 'Vegetable <span>sale</span>';
+                                echo 'Best wishes to you though our bouquet';
                             ?></h2>
-                        <p><?php
-                            if($_COOKIE['language'] == 'CN')
-                                echo '所有商品立省 70%';
-                            else
-                                echo 'Save 70% on all items';
-                            ?></p>
+                        
                     </div>
                     <!-- End Item -->
 

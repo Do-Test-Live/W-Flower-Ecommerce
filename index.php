@@ -2,9 +2,9 @@
 session_start();
 require_once("admin/include/dbController.php");
 $db_handle = new DBController();
-if(!isset($_COOKIE['language'])){
-    $cookie_name='language';
-    $cookie_value='CN';
+if (!isset($_COOKIE['language'])) {
+    $cookie_name = 'language';
+    $cookie_value = 'CN';
     setcookie($cookie_name, $cookie_value);
 }
 ?>
@@ -14,11 +14,11 @@ if(!isset($_COOKIE['language'])){
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Home - Four Seasons Florist</title>
-    <?php include ('include/css.php');?>
+    <?php include('include/css.php'); ?>
     <script>
-    if (location.protocol !== 'https:') {
-        location.replace(`https:${location.href.substring(location.protocol.length)}`);
-    }
+        if (location.protocol !== 'https:') {
+            location.replace(`https:${location.href.substring(location.protocol.length)}`);
+        }
     </script>
 </head>
 <body>
@@ -40,53 +40,44 @@ if(!isset($_COOKIE['language'])){
             <div class="best-pro slider-items-products container">
                 <div class="new_title">
                     <h2><?php
-                        if($_COOKIE['language'] == 'CN')
+                        if ($_COOKIE['language'] == 'CN')
                             echo '本期限定';
                         else
                             echo 'Hot Deals';
                         ?></h2>
-                    <h4>
-                        <?php
-                        if($_COOKIE['language'] == 'CN')
-                            echo '熱賣給你';
-                        else
-                            echo 'Hot Deals for You';
-                        ?></h4>
+                
                 </div>
                 <div id="best-seller" class="product-flexslider hidden-buttons">
                     <div class="slider-items slider-width-col4 products-grid owl-carousel">
                         <?php
                         $hot_products = $db_handle->runQuery("select * from product where hot_product = 1 ORDER BY rand () limit 20;");
                         $no_hot_products = $db_handle->numRows("select * from product where hot_product = 1 ORDER BY rand () limit 20;");
-                        for($x=0; $x<$no_hot_products; $x++){
-                            $image = explode(',',$hot_products[$x]['p_image']);
+                        for ($x = 0; $x < $no_hot_products; $x++) {
+                            $image = explode(',', $hot_products[$x]['p_image']);
                             $product_id = $hot_products[$x]['id'];
                             ?>
                             <div class="item">
                                 <div class="item-inner">
                                     <div class="item-img">
-                                        <div class="item-img-info"><a href="Product-Details?id=<?php echo $product_id;?>"
-                                                                      title="Four Season Flowers"
-                                                                      class="product-image"><img
-                                                        src="admin/<?php echo $image[0];?>" alt="Four Season Flowers"></a>
-                                            <div class="new-label new-top-left"><?php if($_COOKIE['language'] === 'CN') echo '热门'; else echo 'Hot';?></div>
+                                        <div class="item-img-info"><a
+                                                    href="Product-Details?id=<?php echo $product_id; ?>"
+                                                    title="Four Season Flowers"
+                                                    class="product-image"><img
+                                                        src="admin/<?php echo $image[0]; ?>" alt="Four Season Flowers"></a>
+                                            <div class="new-label new-top-left"><?php if ($_COOKIE['language'] === 'CN') echo '热门'; else echo 'Hot'; ?></div>
                                         </div>
-                                        <div class="add_cart">
-                                            <button class="button btn-cart" type="button"><span><?php
-                                                    if($_COOKIE['language'] == 'CN')
-                                                        echo '添加到購物車';
-                                                    else
-                                                        echo 'Add to Cart';
-                                                    ?></span></button>
-                                        </div>
+                                        
                                     </div>
                                     <div class="item-info">
                                         <div class="info-inner">
-                                            <div class="item-title"><a href="Product-Details?id=<?php echo $product_id;?>"
-                                                                       title="Four Season Flowers"><?php if($_COOKIE['language'] === 'CN') echo $hot_products[$x]['p_name']; else echo $hot_products[$x]['p_name_en'];?></a></div>
+                                            <div class="item-title"><a
+                                                        href="Product-Details?id=<?php echo $product_id; ?>"
+                                                        title="Four Season Flowers"><?php if ($_COOKIE['language'] === 'CN') echo $hot_products[$x]['p_name']; else echo $hot_products[$x]['p_name_en']; ?></a>
+                                            </div>
                                             <div class="item-content">
                                                 <div class="item-price">
-                                                    <div class="price-box"><span class="regular-price"><span class="price"><?php echo $hot_products[$x]['product_price'];?> HKD</span> </span>
+                                                    <div class="price-box"><span class="regular-price"><span
+                                                                    class="price"><?php echo $hot_products[$x]['product_price']; ?> HKD</span> </span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -107,59 +98,51 @@ if(!isset($_COOKIE['language'])){
             <div class="best-pro slider-items-products container">
                 <div class="new_title">
                     <h2><?php
-                        if($_COOKIE['language'] == 'CN')
-                            echo '暢銷書';
+                        if ($_COOKIE['language'] == 'CN')
+                            echo '熱賣推薦';
                         else
                             echo 'Best Seller';
                         ?></h2>
-                    <h4><?php
-                        if($_COOKIE['language'] == 'CN')
-                            echo '熱賣推薦';
-                        else
-                            echo 'So you get to know me better';
-                        ?></h4>
+                
                 </div>
                 <div id="best-seller" class="product-flexslider hidden-buttons">
                     <div class="slider-items slider-width-col4 products-grid">
                         <?php
                         $hot_products = $db_handle->runQuery("select * from product ORDER BY rand () limit 20;");
                         $no_hot_products = $db_handle->numRows("select * from product ORDER BY rand () limit 20;");
-                        for($x=0; $x<$no_hot_products; $x++){
+                        for ($x = 0; $x < $no_hot_products; $x++) {
                             $product_id = $hot_products[$x]['id'];
-                            $image = explode(',',$hot_products[$x]['p_image']);
+                            $image = explode(',', $hot_products[$x]['p_image']);
                             ?>
                             <div class="item">
                                 <div class="item-inner">
                                     <div class="item-img">
-                                        <div class="item-img-info"><a href="Product-Details?id=<?php echo $product_id;?>"
-                                                                      title="Four Season Flowers"
-                                                                      class="product-image"><img
-                                                        src="admin/<?php echo $image[0];?>" alt="Four Season Flowers"></a>
+                                        <div class="item-img-info"><a
+                                                    href="Product-Details?id=<?php echo $product_id; ?>"
+                                                    title="Four Season Flowers"
+                                                    class="product-image"><img
+                                                        src="admin/<?php echo $image[0]; ?>" alt="Four Season Flowers"></a>
                                             <?php
-                                            if($hot_products[$x]['hot_product'] == '1'){
+                                            if ($hot_products[$x]['hot_product'] == '1') {
                                                 ?>
-                                                <div class="new-label new-top-left"><?php if($_COOKIE['language'] === 'CN') echo '热门'; else echo 'Hot';?></div>
+                                                <div class="new-label new-top-left"><?php if ($_COOKIE['language'] === 'CN') echo '热门'; else echo 'Hot'; ?></div>
                                                 <?php
                                             }
                                             ?>
 
                                         </div>
-                                        <div class="add_cart">
-                                            <button class="button btn-cart" type="button"><span><?php
-                                                    if($_COOKIE['language'] == 'CN')
-                                                        echo '添加到購物車';
-                                                    else
-                                                        echo 'Add to Cart';
-                                                    ?></span></button>
-                                        </div>
+                                        
                                     </div>
                                     <div class="item-info">
                                         <div class="info-inner">
-                                            <div class="item-title"><a href="Product-Details?id=<?php echo $product_id;?>"
-                                                                       title="Four Season Flowers"><?php if($_COOKIE['language'] === 'CN') echo $hot_products[$x]['p_name']; else echo $hot_products[$x]['p_name_en'];?></a></div>
+                                            <div class="item-title"><a
+                                                        href="Product-Details?id=<?php echo $product_id; ?>"
+                                                        title="Four Season Flowers"><?php if ($_COOKIE['language'] === 'CN') echo $hot_products[$x]['p_name']; else echo $hot_products[$x]['p_name_en']; ?></a>
+                                            </div>
                                             <div class="item-content">
                                                 <div class="item-price">
-                                                    <div class="price-box"><span class="regular-price"><span class="price"><?php echo $hot_products[$x]['product_price'];?> HKD</span> </span>
+                                                    <div class="price-box"><span class="regular-price"><span
+                                                                    class="price"><?php echo $hot_products[$x]['product_price']; ?> HKD</span> </span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -183,17 +166,14 @@ if(!isset($_COOKIE['language'])){
 
 
 <?php
-include ('include/footer.php');
+include('include/footer.php');
 ?>
-
-
-</div>
 <!--page-->
 <!-- Mobile Menu-->
-<?php include ('include/mobile_menu.php');?>
+<?php include('include/mobile_menu.php'); ?>
 
 <!-- JavaScript -->
-<?php include ('include/js.php');?>
+<?php include('include/js.php'); ?>
 
 </body>
 

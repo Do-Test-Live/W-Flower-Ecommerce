@@ -83,10 +83,8 @@ if (isset($_POST['updateSubCategory'])) {
 if (isset($_POST['updateProduct'])) {
     $id = $db_handle->checkValue($_POST['id']);
     $p_name = $db_handle->checkValue($_POST['p_name']);
-    $p_name_en = $db_handle->checkValue($_POST['p_name_en']);
     $product_code = $db_handle->checkValue($_POST['p_code']);
     $product_description = $db_handle->checkValue($_POST['product_description']);
-    $product_description_en = $db_handle->checkValue($_POST['product_description_en']);
     $product_category = $db_handle->checkValue($_POST['product_category']);
     $subcategory = $db_handle->checkValue($_POST['subcategory']);
     $product_type = $db_handle->checkValue($_POST['product_type']);
@@ -97,7 +95,7 @@ if (isset($_POST['updateProduct'])) {
 
     $updated_at = date("Y-m-d H:i:s");
 
-    $data = $db_handle->insertQuery("UPDATE `product` SET `category_id`='$product_category',`product_code`='$product_code',`p_name`='$p_name',`p_name_en`='$p_name_en',`description`='$product_description',`description_en`='$product_description_en',
+    $data = $db_handle->insertQuery("UPDATE `product` SET `category_id`='$product_category',`product_code`='$product_code',`p_name`='$p_name',`description`='$product_description',
                      `status`='$status',`updated_at`='$updated_at',`product_price`='$product_price', `sub_category` = '$subcategory', `product_type` = '$product_type', `product_color` = '$product_color', 
                      `hot_product` = '$hot_product' WHERE id={$id}");
     echo "<script>
@@ -105,7 +103,6 @@ if (isset($_POST['updateProduct'])) {
                 window.location.href='Product';
                 </script>";
 }
-
 if (isset($_POST['updateCourse'])) {
     $course_id = $db_handle->checkValue($_POST['id']);
     $course_name = $db_handle->checkValue($_POST['course_name']);

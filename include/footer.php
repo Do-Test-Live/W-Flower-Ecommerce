@@ -3,32 +3,8 @@
     <div class="footer-inner">
         <div class="footer-middle">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-9 col-sm-6">
-                        <div class="footer-column">
-                            <h4 style="color: white"><?php
-                                if($_COOKIE['language'] == 'CN')
-                                    echo '菜單';
-                                else
-                                    echo 'Menu';
-                                ?></h4>
-                            <ul class="links">
-                                <li><a href="#" title="How to buy"><?php
-                                        if($_COOKIE['language'] == 'CN')
-                                            echo '家';
-                                        else
-                                            echo 'Home';
-                                        ?></a></li>
-                                <li><a href="#" title="FAQs"><?php
-                                        if($_COOKIE['language'] == 'CN')
-                                            echo '商店';
-                                        else
-                                            echo 'Shops';
-                                        ?></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
+                <div class="row text-center">
+                    <div class="col-md-12 col-sm-12">
                         <div class="footer-column">
                             <h4 style="color: white"><?php
                                 if($_COOKIE['language'] == 'CN')

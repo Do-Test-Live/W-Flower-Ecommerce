@@ -13986,7 +13986,8 @@ button.button span span {
     font-size: 28px;
     letter-spacing: 1px;
     font-weight: normal;
-    font-family: 'Oswald', sans-serif
+    font-family: 'Oswald', sans-serif;
+    line-height: 30px;
 }
 
 .cat-img-title .cat-heading {

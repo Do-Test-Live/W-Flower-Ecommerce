@@ -60,9 +60,9 @@ $db_handle = new DBController();
                                     <div class="checkout-title">
                                         <h2><?php
                                             if($_COOKIE['language'] == 'CN')
-                                                echo '郵寄地址';
+                                                echo '下單起計, 下一個工作天24小時後開始送貨';
                                             else
-                                                echo 'Delivery Address';
+                                                echo 'From the time the order is placed, the delivery will start 24 hours later on the next working day';
                                             ?></h2>
                                     </div>
                                     <div class="checkout-detail">
@@ -101,7 +101,7 @@ $db_handle = new DBController();
                                                         </div>
                                                         <div class="form-group col-md-6 mb-3">
                                                             <label><?php if ($_COOKIE['language'] === 'CN') echo '交貨日期'; else echo 'Delivery Date';?></label>
-                                                            <input type="date" class="form-control" name="deliver_date" required="">
+                                                            <input type="date" class="form-control" name="deliver_date" required="" id="deliver_date">
                                                         </div>
                                                         <div class="form-group col-md-6 mb-3">
                                                             <label><?php if ($_COOKIE['language'] === 'CN') echo '交貨時間'; else echo 'Delivery Time';?></label>
@@ -218,14 +218,7 @@ $db_handle = new DBController();
                                         </td>
                                     </tr>
                                 </table>
-                                <p style="margin-top: 2em">
-                                    <?php
-                                        if($_COOKIE['language'] == 'CN')
-                                            echo '下一個工作天24小時後開始送貨';
-                                        else
-                                            echo 'Delivery starts after 24 hours on the next working day';
-                                    ?>
-                                </p>
+                                
                                 <button class="button" name="placeOrder" type="submit" style="margin-top: 1em"><?php
                                     if($_COOKIE['language'] == 'CN')
                                         echo '下訂單';
@@ -254,6 +247,21 @@ $db_handle = new DBController();
 <?php include('include/mobile_menu.php'); ?>
 <!-- JavaScript -->
 <?php include('include/js.php'); ?>
+
+<script>
+    // Get the current date
+    var currentDate = new Date();
+
+    // Calculate the minimum date as two days after the current date
+    var minDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + 3);
+
+    // Format the minimum date in YYYY-MM-DD format
+    var formattedMinDate = minDate.toISOString().split('T')[0];
+
+    // Set the min attribute of the input element
+    var inputElement = document.getElementById('deliver_date');
+    inputElement.setAttribute('min', formattedMinDate);
+</script>
 
 
 </body>

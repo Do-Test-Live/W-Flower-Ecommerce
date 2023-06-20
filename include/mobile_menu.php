@@ -2,16 +2,17 @@
     <ul>
         <li>
             <div class="mm-search">
-                <form id="search1" name="search">
+                <form id="search1" method="get" action="search.php" name="search">
                     <div class="input-group">
 
-                        <input type="text" class="form-control simple" placeholder="Search ..." name="srch-term"
-                               id="srch-term">
+                        <input type="text" class="form-control simple" placeholder="Search ..." name="search"
+                               id="searchInput">
                         <div class="input-group-btn">
                             <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
                         </div>
                     </div>
                 </form>
+                <div id="searchResults"></div>
             </div>
         </li>
         <?php

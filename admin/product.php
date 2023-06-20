@@ -11,7 +11,7 @@ if (!isset($_SESSION['userid'])) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Product | Four Seasons</title>
+    <title>Product | Admin</title>
     <!-- Datatable -->
     <link href="vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
     <?php include 'include/css.php'; ?>
@@ -65,19 +65,11 @@ if (!isset($_SESSION['userid'])) {
                                         <input type="hidden" value="<?php echo $data[0]["id"]; ?>" name="id" required>
 
                                         <div class="mb-3 row">
-                                            <label class="col-sm-3 col-form-label">Product Name (CN)</label>
+                                            <label class="col-sm-3 col-form-label">Product Name</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control" name="p_name"
-                                                       placeholder="Product Name"
+                                                       placeholder="Category Name"
                                                        value="<?php echo $data[0]["p_name"]; ?>" required>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label class="col-sm-3 col-form-label">Product Name (EN)</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" name="p_name_en"
-                                                       placeholder="Product Name"
-                                                       value="<?php echo $data[0]["p_name_en"]; ?>" required>
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
@@ -97,18 +89,11 @@ if (!isset($_SESSION['userid'])) {
                                             </div>
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <label>Product Description (CN) *</label>
+                                            <label>Product Description *</label>
                                             <textarea class="form-control" rows="4" id="comment"
                                                       name="product_description"
                                                       required><?php echo $data[0]["description"]; ?></textarea>
                                         </div>
-                                        <div class="form-group col-md-12">
-                                            <label>Product Description (EN) *</label>
-                                            <textarea class="form-control" rows="4" id="comment"
-                                                      name="product_description_en"
-                                                      required><?php echo $data[0]["description_en"]; ?></textarea>
-                                        </div>
-
                                         <div class="form-group col-md-12">
                                             <label>Select Product Category *</label>
                                             <select class="form-control default-select" id="category"
@@ -233,6 +218,7 @@ if (!isset($_SESSION['userid'])) {
                                             <th>Insert Date</th>
                                             <th>Last Updated</th>
                                             <th>Status</th>
+                                            <th>Deal Today</th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>
@@ -267,6 +253,17 @@ if (!isset($_SESSION['userid'])) {
                                                 } else {
                                                     ?>
                                                     <td>Deactive</td>
+                                                    <?php
+                                                }
+                                                ?>
+                                                <?php
+                                                if ($product[$i]["deal_today"] == 1) {
+                                                    ?>
+                                                    <td>Yes</td>
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                    <td>No</td>
                                                     <?php
                                                 }
                                                 ?>
@@ -361,66 +358,6 @@ if (!isset($_SESSION['userid'])) {
 <!-- Datatable -->
 <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
 <script src="js/plugins-init/datatables.init.js"></script>
-
-<script>
-    $(document).ready(function () {
-        // Bind an event listener to the first select field
-        $('#category').on('change', function () {
-            // Get the selected value from the first select field
-            var selectedValue = $(this).val();
-
-            // Make an AJAX request to fetch the data based on the selected value
-            $.ajax({
-                url: 'fetch-sub-cat.php', // change this to the URL of your PHP script
-                method: 'GET', // or 'GET', depending on how you want to send the data
-                data: {selectedValue: selectedValue},
-                dataType: 'json', // or 'html', depending on how you're returning the data
-                success: function (data) {
-                    // Clear the current options in the second select field
-                    $('#subcategory').empty();
-
-                    // Add the new options based on the fetched data
-                    $.each(data, function (index, value) {
-                        $('#subcategory').append('<option value="' + value.sub_cat_id + '">' + value.sub_cat_name + '</option>');
-                    });
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.error(textStatus, errorThrown);
-                }
-            });
-        });
-    });
-
-    $(document).ready(function () {
-        // Bind an event listener to the first select field
-        $('#subcategory').on('change', function () {
-            // Get the selected value from the first select field
-            var selectedValue = $(this).val();
-
-            // Make an AJAX request to fetch the data based on the selected value
-            $.ajax({
-                url: 'fetch-product-type.php', // change this to the URL of your PHP script
-                method: 'GET', // or 'GET', depending on how you want to send the data
-                data: {selectedValue: selectedValue},
-                dataType: 'json', // or 'html', depending on how you're returning the data
-                success: function (data) {
-                    console.log(data);
-                    // Clear the current options in the second select field
-                    $('#product_type').empty();
-
-                    // Add the new options based on the fetched data
-                    $.each(data, function (index, value) {
-                        $('#product_type').append('<option value="' + value.product_type_id + '">' + value.product_type + '</option>');
-                    });
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.error(textStatus, errorThrown);
-                }
-            });
-        });
-    });
-
-</script>
 <script>
     CKEDITOR.replace('product_description');
     CKEDITOR.replace('product_description_en');
