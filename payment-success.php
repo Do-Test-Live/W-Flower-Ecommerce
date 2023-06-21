@@ -104,6 +104,7 @@ if (!empty($_GET['session_id'])) {
 
                     $status = 'success';
                     $statusMsg = 'Your Payment has been Successful!';
+
                 } else {
                     $statusMsg = "Transaction has been failed!";
                 }
@@ -121,31 +122,70 @@ if (!empty($_GET['session_id'])) {
 
 <?php if ($statusMsg=="Your Payment has been Successful!") {
 
-    $email_to = $customer_email;
-    $subject = 'Flower';
+    $orderdetails = '<table class="customTable" style="margin-top: 20px; margin-bottom: 20px;">';
+    $orderdetails .= '<thead>
+                             <tr>
+                                <th>產品名稱</th>
+                                <th>產品代碼</th>
+                                <th>數量</th>
+                                <th>價格</th>
+                                <th>合計</th>
+                            </tr>
+                      </thead>';
+    $orderdetails .= '<tbody>';
 
+    $data = $db_handle->runQuery("SELECT id,deliver_date,deliver_time FROM billing_details order by id desc LIMIT  1");
 
-    $headers = "From: Flower <" . $db_handle->from_email() . ">\r\n";
-    $headers .= "Content-Type: text/html; charset=utf-8\r\n";
+    $id = $data[0]['id'];
+    $ddate = $data[0]['deliver_date'];
+    $dtime = $data[0]['deliver_time'];
 
-    $messege = "
-            <html>
-                <body style='background-color: #eee; font-size: 16px;'>
-                <div style='min-width: 200px; background-color: #ffffff; padding: 20px; margin: auto;'>
-                    <h3 style='color:black'>Payment Successful</h3>
-                    <p style='color:black;'>
-                    Thank you for payment.
-                    </p>
-                </div>
-                </body>
-            </html>";
-    if (mail($email_to, $subject, $messege, $headers)) {
+// Format date
+    $formattedDate = date('d M Y', strtotime($ddate));
 
+// Format time
+    $formattedTime = date('g.i A', strtotime($dtime));
+
+    $product_details = $db_handle->runQuery("SELECT * FROM `invoice_details` WHERE `billing_id` = '$id'");
+    $no_product_details = $db_handle->numRows("SELECT * FROM `invoice_details` WHERE `billing_id` = '$id'");
+
+    $tableHtml = '<table style="border-collapse: collapse; width: 100%;">';
+    $tableHtml .= '<tr>
+                    <th style="border: 1px solid #000; padding: 8px; text-align: center;">產品名稱</th>
+                    <th style="border: 1px solid #000; padding: 8px; text-align: center;">數量</th>
+                    <th style="border: 1px solid #000; padding: 8px; text-align: center;">價格</th>
+                    <th style="border: 1px solid #000; padding: 8px; text-align: center;">合計</th>
+                </tr>';
+
+    for ($i = 0; $i < $no_product_details; $i++) {
+        $tableHtml .= '<tr>';
+        $tableHtml .= '<td style="border: 1px solid #000; padding: 8px; text-align: center;">' . $product_details[$i]['product_name'] . '</td>';
+        $tableHtml .= '<td style="border: 1px solid #000; padding: 8px; text-align: center;">' . $product_details[$i]['product_quantity'] . '</td>';
+        $tableHtml .= '<td style="border: 1px solid #000; padding: 8px; text-align: center;">' . $product_details[$i]['product_unit_price'] . '</td>';
+        $tableHtml .= '<td style="border: 1px solid #000; padding: 8px; text-align: center;">' . $product_details[$i]['product_total_price'] . '</td>';
+        $tableHtml .= '</tr>';
+    }
+    $tableHtml .= '</table>';
+
+    $footer = '<h4 style="font-size: 19px; font-weight: 700; margin: 0;>聯絡我們</h4>';
+    $footer .= '<h5 style="font-size: 13px; text-transform: uppercase; margin: 0; letter-spacing:1px; font-weight: 500;">聯繫我們</h5>';
+    $footer .= '<h5 style="font-size: 13px; text-transform: uppercase; margin: 0; letter-spacing:1px; font-weight: 500;">地址: 沙田正街沙田街巿地下S3至S6號及S20號鋪</h5>';
+    $footer .= '<h5 style="font-size: 13px; text-transform: uppercase; margin: 0; letter-spacing:1px; font-weight: 500;">電話: (852) 2697 7720 / (852) 4611 2770</h5>';
+    $footer .= '<h5 style="font-size: 13px; text-transform: uppercase; margin: 0; letter-spacing:1px; font-weight: 500;">電郵: csfsf@hkfloristfsf.com</h5>';
+
+    $img = '<img src="https://wayshk.ngt.hk/assets/images/welcome-poster.jpg" alt="" style="width: 100%;">';
+
+    $to = $customer_email;
+    $subject = 'Four Season Flower';
+    $message = $img . '<br><br>非常感謝您選購來自四季花卉的產品。您的訂單編號是：FSF: ' . $id . '，配送日期：'. $formattedDate .'，配送時間：' . $formattedTime . ' <br><br> Order Details ' . $tableHtml .'<br><br>' . $footer;
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+    $headers .= 'From: business@fourseasonflower.com' . "\r\n";
+
+    if (mail($to, $subject, $message, $headers)) {
         $email_to = $db_handle->notify_email();
-        $subject = 'Flower';
-
-
-        $headers = "From: Flower <" . $db_handle->from_email() . ">\r\n";
+        $subject = 'Four Season Flower';
+        $headers = "From: Four Season Flower <" . $db_handle->from_email() . ">\r\n";
         $headers .= "Content-Type: text/html; charset=utf-8\r\n";
 
         $messege = "
@@ -153,61 +193,28 @@ if (!empty($_GET['session_id'])) {
                 <body style='background-color: #eee; font-size: 16px;'>
                 <div style='min-width: 200px; background-color: #ffffff; padding: 20px; margin: auto;'>
                     <p style='color:black;'>
-                        New Order Arrive.
+                        New Order Arrived. 
                     </p>
                 </div>
                 </body>
             </html>";
 
         if (mail($email_to, $subject, $messege, $headers)) {
-            ?>
-            <script>
-                location.href = "Home";
-            </script>
-            <?php
-        } else { ?>
-            <h1 class="error"><?php
-                if($_COOKIE['language'] == 'CN')
-                    echo '您的付款失敗！';
-                else
-                    echo 'Your Payment been failed!';
-                ?></h1>
-            <p class="error"><?php echo $statusMsg; ?></p>
-            <p><?php
-                if($_COOKIE['language'] == 'CN')
-                    echo '管理員郵件發送失敗。';
-                else
-                    echo 'Admin Mail Send Failed.';
-                ?></p>
-        <?php }
-    } else { ?>
-        <h1 class="error"><?php
-            if($_COOKIE['language'] == 'CN')
-                echo '您的付款失敗！';
-            else
-                echo 'Your Payment been failed!';
-            ?></p></h1>
-        <p class="error"><?php echo $statusMsg; ?></p>
-        <p><?php
-            if($_COOKIE['language'] == 'CN')
-                echo '客戶郵件發送失敗。';
-            else
-                echo 'Customer Mail Send Failed.';
-            ?></p>
+            echo "
+    <script>
+    alert('您的訂單已經成功提交。請查看您的郵件以獲取更多詳細資訊');
+    window.location.href = 'Home';
+    </script>
+    ";
+        } else {
+            echo "
+    <script>
+    alert('出了些問題');
+    window.location.href = 'Home';
+    </script>
+    ";
+        }
+    }
+}
 
-    <?php }
-} else { ?>
-    <h1 class="error"><?php
-        if($_COOKIE['language'] == 'CN')
-            echo '您的付款失敗！';
-        else
-            echo 'Customer Mail Send Failed.';
-        ?></h1>
-    <p class="error"><?php echo $statusMsg; ?></p>
-    <p><?php
-        if($_COOKIE['language'] == 'CN')
-            echo '狀態消息不匹配。';
-        else
-            echo 'Status mesage not match.';
-        ?></p>
-<?php } ?>
+?>

@@ -30,7 +30,7 @@ if (isset($_POST["placeOrder"])) {
     $receiver_phone = $db_handle->checkValue($_POST['receiver_phone']);
     $email = $db_handle->checkValue($_POST['email']);
     $address = $db_handle->checkValue($_POST['address']);
-    $deliver_date= $db_handle->checkValue($_POST['deliver_date']);
+    $deliver_date = $db_handle->checkValue($_POST['deliver_date']);
     $deliver_time = $db_handle->checkValue($_POST['deliver_time']);
     $addInfo = 0;
 
@@ -74,6 +74,7 @@ if (isset($_POST["placeOrder"])) {
                               `product_quantity`, `product_unit_price`,`product_total_price`, `updated_at`) 
                               VALUES ('$customer_id','$id','$name','$quantity','$unit_price','$item_price', '$updated_at')");
     }
+
     unset($_SESSION["cart_item"]);
 
     $name = $contact_name;
@@ -90,9 +91,6 @@ if (isset($_POST["placeOrder"])) {
         }
     }
 
-    $data = $db_handle->runQuery("SELECT id FROM billing_details order by id desc LIMIT  1");
-
-    $id = $data[0]['id'];
 
     if (isset($_SESSION) && $insert_user) {
         session_unset();

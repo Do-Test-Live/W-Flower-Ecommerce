@@ -149,21 +149,15 @@ $product_id = $_GET['id'];
                                 <ul class="shipping-pro">
                                     <li><?php
                                         if($_COOKIE['language'] == 'CN')
-                                            echo '全球免費送貨';
-                                        else
-                                            echo 'Free Wordwide Shipping';
+                                            echo '長洲，坪洲及離島交通禁區不設送貨';
                                         ?></li>
                                     <li><?php
                                         if($_COOKIE['language'] == 'CN')
-                                            echo '30 天退貨';
-                                        else
-                                            echo '30 Days Return';
+                                            echo '訂單需時預備，將會在第三個工作天處理';
                                         ?></li>
                                     <li><?php
                                         if($_COOKIE['language'] == 'CN')
-                                            echo '會員優惠';
-                                        else
-                                            echo 'Member Discount';
+                                            echo '送貨時段為9.00am-7.pm，如需要緊急送貨或訂單自取，請直接聯絡我們';
                                         ?></li>
                                 </ul>
                             </div>
