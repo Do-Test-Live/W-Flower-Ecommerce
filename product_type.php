@@ -30,9 +30,9 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where product_typ
                 <div class="row">
                     <div class="col-xs-12">
                         <ul>
-                            <li class="home"><a href="index.php" title="Go to Home Page"><?php
+                            <li class="home"><a href="index.php"><?php
                                     if($_COOKIE['language'] == 'CN')
-                                        echo '家';
+                                        echo '主頁';
                                     else
                                         echo 'Home';
                                     ?></a>

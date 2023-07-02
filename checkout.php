@@ -182,7 +182,7 @@ $db_handle = new DBController();
                                         <td style="text-align: left">
                                             <h4><?php
                                                 if($_COOKIE['language'] == 'CN')
-                                                    echo '船運';
+                                                    echo '運費';
                                                 else
                                                     echo 'Shipping';
                                                 ?></h4>

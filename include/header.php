@@ -1,4 +1,11 @@
 <?php
+$cookie_name = 'language';
+
+// Check if the cookie is already set
+if (!isset($_COOKIE[$cookie_name])) {
+    $default_language = 'CN'; // Set your default language here
+    setcookie($cookie_name, $default_language);
+}
 if (!empty($_GET["action"])) {
     switch ($_GET["action"]) {
         case "add":
