@@ -11,7 +11,7 @@ if (!isset($_SESSION['userid'])) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Pending Order | Four Seasons</title>
+    <title>Confirm Order | Four Seasons</title>
     <!-- Datatable -->
     <link href="vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
     <?php include 'include/css.php'; ?>
@@ -52,7 +52,7 @@ if (!isset($_SESSION['userid'])) {
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Pending Orders</h4>
+                            <h4 class="card-title">Confirm Orders</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">

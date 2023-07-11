@@ -32,7 +32,7 @@ if (isset($_POST["placeOrder"])) {
     $address = $db_handle->checkValue($_POST['address']);
     $deliver_date = $db_handle->checkValue($_POST['deliver_date']);
     $deliver_time = $db_handle->checkValue($_POST['deliver_time']);
-    
+
     $remarks = $db_handle->checkValue($_POST['remarks']);
     $addInfo = 0;
 
@@ -68,13 +68,14 @@ if (isset($_POST["placeOrder"])) {
 
     foreach ($_SESSION["cart_item"] as $item) {
         $name = $item["name"];
+        $product_code = $item["product_code"];
         $item_price = $item["quantity"] * $item["price"];
         $quantity = $item["quantity"];
         $unit_price = $item["price"];
 
-        $invoice = $db_handle->insertQuery("INSERT INTO `invoice_details`( `customer_id`, `billing_id`, `product_name`, 
+        $invoice = $db_handle->insertQuery("INSERT INTO `invoice_details`( `customer_id`, `billing_id`, `product_name`,`product_code`, 
                               `product_quantity`, `product_unit_price`,`product_total_price`, `updated_at`) 
-                              VALUES ('$customer_id','$id','$name','$quantity','$unit_price','$item_price', '$updated_at')");
+                              VALUES ('$customer_id','$id','$name','$product_code','$quantity','$unit_price','$item_price', '$updated_at')");
     }
 
     unset($_SESSION["cart_item"]);

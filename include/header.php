@@ -12,12 +12,12 @@ if (!empty($_GET["action"])) {
             if (!empty($_POST["quantity"])) {
 
                 $productByCode = $db_handle->runQuery("SELECT * FROM product WHERE id ='" . $_GET["id"] . "'");
-                $itemArray = array($productByCode[0]["id"] => array('name' => $productByCode[0]["p_name"], 'image' => $productByCode[0]["p_image"], 'id' => $productByCode[0]["id"], 'quantity' => $_POST["quantity"], 'price' => $productByCode[0]["product_price"]));
+                $itemArray = array("FSF".$productByCode[0]["id"] => array('name' => $productByCode[0]["p_name"], 'image' => $productByCode[0]["p_image"], 'id' => $productByCode[0]["id"],'product_code' => $productByCode[0]["product_code"], 'quantity' => $_POST["quantity"], 'price' => $productByCode[0]["product_price"]));
 
                 if (!empty($_SESSION["cart_item"])) {
-                    if (in_array($productByCode[0]["id"], array_keys($_SESSION["cart_item"]))) {
+                    if (in_array("FSF".$productByCode[0]["id"], array_keys($_SESSION["cart_item"]))) {
                         foreach ($_SESSION["cart_item"] as $k => $v) {
-                            if ($productByCode[0]["id"] == $k) {
+                            if ("FSF".$productByCode[0]["id"] == $k) {
                                 if (empty($_SESSION["cart_item"][$k]["quantity"])) {
                                     $_SESSION["cart_item"][$k]["quantity"] = 0;
                                 }

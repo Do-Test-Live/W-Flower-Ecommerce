@@ -140,6 +140,14 @@ if (!empty($_GET['session_id'])) {
     $ddate = $data[0]['deliver_date'];
     $dtime = $data[0]['deliver_time'];
 
+    $contact_name=$data[0]['contact_name'];
+    $contact_phone=$data[0]['contact_phone'];
+    $email=$data[0]['email'];
+    $receiver_name=$data[0]['receiver_name'];
+    $receiver_phone=$data[0]['receiver_phone'];
+    $address=$data[0]['address'];
+    $remarks=$data[0]['remarks'];
+
 // Format date
     $formattedDate = date('d M Y', strtotime($ddate));
 
@@ -152,6 +160,7 @@ if (!empty($_GET['session_id'])) {
     $tableHtml = '<table style="border-collapse: collapse; width: 100%;">';
     $tableHtml .= '<tr>
                     <th style="border: 1px solid #000; padding: 8px; text-align: center;">產品名稱</th>
+                    <th style="border: 1px solid #000; padding: 8px; text-align: center;">產品代碼</th>
                     <th style="border: 1px solid #000; padding: 8px; text-align: center;">數量</th>
                     <th style="border: 1px solid #000; padding: 8px; text-align: center;">價格</th>
                     <th style="border: 1px solid #000; padding: 8px; text-align: center;">合計</th>
@@ -160,6 +169,7 @@ if (!empty($_GET['session_id'])) {
     for ($i = 0; $i < $no_product_details; $i++) {
         $tableHtml .= '<tr>';
         $tableHtml .= '<td style="border: 1px solid #000; padding: 8px; text-align: center;">' . $product_details[$i]['product_name'] . '</td>';
+        $tableHtml .= '<td style="border: 1px solid #000; padding: 8px; text-align: center;">' . $product_details[$i]['product_code'] . '</td>';
         $tableHtml .= '<td style="border: 1px solid #000; padding: 8px; text-align: center;">' . $product_details[$i]['product_quantity'] . '</td>';
         $tableHtml .= '<td style="border: 1px solid #000; padding: 8px; text-align: center;">' . $product_details[$i]['product_unit_price'] . '</td>';
         $tableHtml .= '<td style="border: 1px solid #000; padding: 8px; text-align: center;">' . $product_details[$i]['product_total_price'] . '</td>';
@@ -195,6 +205,28 @@ if (!empty($_GET['session_id'])) {
                     <p style='color:black;'>
                         New Order Arrived. 
                     </p>
+                    <p style='color:black;'>
+                        聯繫人姓名:  $contact_name
+                    </p>
+                    <p style='color:black;'>
+                        聯繫人電話:  $contact_phone
+                    </p>
+                    <p style='color:black;'>
+                        電子郵件:  $email
+                    </p>
+                    <p style='color:black;'>
+                        收件人姓名:  $receiver_name
+                    </p>
+                    <p style='color:black;'>
+                        聯繫人姓名:  $receiver_phone
+                    </p>
+                    <p style='color:black;'>
+                        地址:  $address
+                    </p>
+                    <p style='color:black;'>
+                        備註:  $remarks
+                    </p>
+                    
                     <br><br>非常感謝您選購來自四季花店的產品。您的訂單編號是：FSF: " . $id . "，
                     配送日期：". $formattedDate ."，
                     配送時間：" . $formattedTime . " <br><br> 
@@ -206,10 +238,10 @@ if (!empty($_GET['session_id'])) {
 
         if (mail($email_to, $subject, $messege, $headers)) {
             echo "
-    <script>
-    window.location.href='SendSms/src/sms/send-sms-lib.php';
-    </script>
-    ";
+                <script>
+                window.location.href='SendSms/src/sms/send-sms-lib.php';
+                </script>
+                ";
         } else {
             echo "
     <script>

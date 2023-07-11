@@ -65,6 +65,12 @@ $db_handle = new DBController();
                                             ?></span></th>
                                     <th class="a-center" colspan="1"><span class="nobr"><?php
                                             if($_COOKIE['language'] == 'CN')
+                                                echo '產品代碼';
+                                            else
+                                                echo 'Product Code';
+                                            ?></span></th>
+                                    <th class="a-center" colspan="1"><span class="nobr"><?php
+                                            if($_COOKIE['language'] == 'CN')
                                                 echo '單價';
                                             else
                                                 echo 'Unit Price';
@@ -101,6 +107,11 @@ $db_handle = new DBController();
                                     <td>
                                         <h2 class="product-name">
                                             <a href="Product-Details?id=<?php echo $item["id"]; ?>"><?php echo $item["name"]; ?></a>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="product-name">
+                                            <?php echo $item["product_code"]; ?>
                                         </h2>
                                     </td>
                                     <td class="a-right hidden-table">

@@ -63,6 +63,7 @@ $billing_id = $_GET['billing_id'];
                                     <tr>
                                         <th>SL</th>
                                         <th>Product Name</th>
+                                        <th>Product Code</th>
                                         <th>Product Quantity</th>
                                         <th>Product Unit Price</th>
                                         <th>Total Price</th>
@@ -78,6 +79,7 @@ $billing_id = $_GET['billing_id'];
                                         <tr>
                                             <td><?php echo $i + 1; ?></td>
                                             <td><?php echo $bills[$i]["product_name"];?></td>
+                                            <td><?php echo $bills[$i]["product_code"]; ?></td>
                                             <td><?php echo $bills[$i]["product_quantity"]; ?></td>
                                             <td><?php echo $bills[$i]["product_unit_price"]; ?></td>
                                             <td><?php echo $bills[$i]["product_total_price"]; ?></td>
