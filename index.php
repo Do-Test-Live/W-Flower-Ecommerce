@@ -6,6 +6,8 @@ if (!isset($_COOKIE['language'])) {
     $cookie_name = 'language';
     $cookie_value = 'CN';
     setcookie($cookie_name, $cookie_value);
+
+    header("Location: set_lan.php?lan=CN");
 }
 ?>
 <!DOCTYPE html>

@@ -1356,7 +1356,6 @@ ul.vertnav-top li > a > span > .cat-label {
     font-family: 'Rubik', sans-serif;
     font-weight: 500;
     position: relative;
-    letter-spacing: 1px;
     -webkit-transition: all 0.3s cubic-bezier(0.8, 0, 0, 1);
     -o-transition: all 0.3s cubic-bezier(0.8, 0, 0, 1);
     transition: all 0.3s cubic-bezier(0.8, 0, 0, 1);

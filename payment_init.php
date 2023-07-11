@@ -20,11 +20,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $input = file_get_contents('php://input');
     $request = json_decode($input);
 
-    $productName='Wayshk Purchase';
+    $productName='Four Seasons Florist Purchase';
 
     $productPrice=$_GET['total_purchase'];
 
-    $productID='WAYSHK';
+    $productID='Four Seasons Florist';
 
     $currency='hkd';
 }

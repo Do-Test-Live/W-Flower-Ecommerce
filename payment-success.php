@@ -177,7 +177,7 @@ if (!empty($_GET['session_id'])) {
 
     $to = $customer_email;
     $subject = 'Four Season Flower';
-    $message = $img . '<br><br>非常感謝您選購來自四季花卉的產品。您的訂單編號是：FSF: ' . $id . '，配送日期：'. $formattedDate .'，配送時間：' . $formattedTime . ' <br><br> Order Details ' . $tableHtml .'<br><br>' . $footer;
+    $message = $img . '<br><br>非常感謝您選購來自四季花店的產品。您的訂單編號是：FSF: ' . $id . '，配送日期：'. $formattedDate .'，配送時間：' . $formattedTime . ' <br><br> Order Details ' . $tableHtml .'<br><br>' . $footer;
     $headers = "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
     $headers .= 'From: business@fourseasonflower.com' . "\r\n";
@@ -195,15 +195,19 @@ if (!empty($_GET['session_id'])) {
                     <p style='color:black;'>
                         New Order Arrived. 
                     </p>
+                    <br><br>非常感謝您選購來自四季花店的產品。您的訂單編號是：FSF: " . $id . "，
+                    配送日期：". $formattedDate ."，
+                    配送時間：" . $formattedTime . " <br><br> 
+                    Order Details ".$tableHtml."
                 </div>
+
                 </body>
             </html>";
 
         if (mail($email_to, $subject, $messege, $headers)) {
             echo "
     <script>
-    alert('您的訂單已經成功提交。請查看您的郵件以獲取更多詳細資訊');
-    window.location.href = 'Home';
+    window.location.href='SendSms/src/sms/send-sms-lib.php';
     </script>
     ";
         } else {

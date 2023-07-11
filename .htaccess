@@ -1,4 +1,4 @@
-ErrorDocument 404 http://localhost/W-Wayshk-Admin/404.php
+ErrorDocument 404 https://hkfloristfsf.com/404
 
 RewriteEngine on
 

@@ -22,7 +22,7 @@ $product_id = $_GET['id'];
                         <ul>
                             <li class="home"><a href="Home" title="Go to Home Page"><?php
                                     if($_COOKIE['language'] == 'CN')
-                                        echo '家';
+                                        echo '主頁';
                                     else
                                         echo 'Home';
                                     ?></a>
@@ -37,10 +37,13 @@ $product_id = $_GET['id'];
         </div>
         <div class="page-title">
             <h2><?php
+
+                $select_product = $db_handle->runQuery("select * from product,category where category.id=product.category_id and product.id = '$product_id'");
+
                 if($_COOKIE['language'] == 'CN')
-                    echo '花朵';
+                    echo $select_product[0]['c_name'];
                 else
-                    echo 'Flowers';
+                    echo $select_product[0]['c_name_en'];
                 ?></h2>
         </div>
     </div>
@@ -174,7 +177,7 @@ $product_id = $_GET['id'];
                                 <div class="new_title center">
                                     <h2><?php
                                         if($_COOKIE['language'] === 'CN')
-                                            echo '相关产品';
+                                            echo '相關產品';
                                         else
                                             echo 'Related Products';
                                         ?>

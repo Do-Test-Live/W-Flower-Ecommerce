@@ -68,6 +68,14 @@
             <?php
         }
         ?>
+        <li>
+            <a href="set_lan.php?lan=EN"> <img src="images/english.png" alt="English">
+            </a>
+        </li>
+        <li>
+            <a href="set_lan.php?lan=CN"> <img src="images/hong-kong.jpg" alt="French">
+            </a>
+        </li>
     </ul>
     <div class="top-links">
         <ul class="links">

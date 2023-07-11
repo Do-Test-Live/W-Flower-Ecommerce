@@ -80,7 +80,7 @@ if (!isset($_SESSION['userid'])) {
                                             <input type="text" class="form-control" name="sub_cat_name_en" placeholder="" required>
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <label>Sub-Category Image</label>
+                                            <label>Sub-Category Image (140 X 100)</label>
                                             <div class="input-group mb-3">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">Upload</span>

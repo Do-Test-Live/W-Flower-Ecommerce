@@ -32,6 +32,8 @@ if (isset($_POST["placeOrder"])) {
     $address = $db_handle->checkValue($_POST['address']);
     $deliver_date = $db_handle->checkValue($_POST['deliver_date']);
     $deliver_time = $db_handle->checkValue($_POST['deliver_time']);
+    
+    $remarks = $db_handle->checkValue($_POST['remarks']);
     $addInfo = 0;
 
     if (!empty($_POST['addInfo'])) {
@@ -54,9 +56,9 @@ if (isset($_POST["placeOrder"])) {
 
 
     $insert_user = $db_handle->insertQuery("INSERT INTO `billing_details`(`customer_id`,`contact_name`, `contact_phone`, `receiver_name`, 
-                              `receiver_phone`, `deliver_date`,`deliver_time`, `email`, `address`,`payment_type`, 
+                              `receiver_phone`, `deliver_date`,`deliver_time`,`remarks`, `email`, `address`,`payment_type`, 
                               `total_purchase`, `purchase_points`, `updated_at`) VALUES ('$customer_id','$contact_name','$contact_phone','$receiver_name',
-                                                                                         '$receiver_phone','$deliver_date','$deliver_time','$email','$address',
+                                                                                         '$receiver_phone','$deliver_date','$deliver_time','$remarks','$email','$address',
                                                                                          '$payment','$total_purchase','$purchase_points','$updated_at')");
 
 

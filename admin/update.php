@@ -262,6 +262,7 @@ if(isset($_POST['pass_update'])){
 
 if(isset($_GET['billing_id'])){
     $billing_id = $_GET['billing_id'];
+
     $update = $db_handle->insertQuery("update billing_details set approve = '2' where id=$billing_id");
     if($update){
         echo "<script>

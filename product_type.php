@@ -50,9 +50,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where product_typ
             </div>
             <!--container-->
         </div>
-        <div class="page-title">
-            <h2>Flowers</h2>
-        </div>
+        
     </div>
     <!--breadcrumbs-->
     <!-- BEGIN Main Container col2-left -->
@@ -100,15 +98,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where product_typ
                                                             <?php
                                                         }
                                                         ?>
-                                                        <div class="add_cart">
-                                                            <button class="button btn-cart" type="button">
-                                                                <span><?php
-                                                                    if($_COOKIE['language'] == 'CN')
-                                                                        echo '添加到購物車';
-                                                                    else
-                                                                        echo 'Add to Cart';
-                                                                    ?></span></button>
-                                                        </div>
+                                                    
                                                     </div>
                                                     <div class="item-info">
                                                         <div class="info-inner">
@@ -190,15 +180,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where product_typ
                                                                 <?php
                                                             }
                                                             ?>
-                                                            <div class="add_cart">
-                                                                <button class="button btn-cart" type="button">
-                                                                    <span><?php
-                                                                        if($_COOKIE['language'] == 'CN')
-                                                                            echo '添加到購物車';
-                                                                        else
-                                                                            echo 'Add to Cart';
-                                                                        ?></span></button>
-                                                            </div>
+                                                            
                                                         </div>
                                                         <div class="item-info">
                                                             <div class="info-inner">
@@ -279,15 +261,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where product_typ
                                                                 <?php
                                                             }
                                                             ?>
-                                                            <div class="add_cart">
-                                                                <button class="button btn-cart" type="button">
-                                                                    <span><?php
-                                                                        if($_COOKIE['language'] == 'CN')
-                                                                            echo '添加到購物車';
-                                                                        else
-                                                                            echo 'Add to Cart';
-                                                                        ?></span></button>
-                                                            </div>
+                                                            
                                                         </div>
                                                         <div class="item-info">
                                                             <div class="info-inner">
@@ -370,15 +344,7 @@ $no_fetch_product = $db_handle->numRows("SELECT * FROM product where product_typ
                                                             <?php
                                                         }
                                                         ?>
-                                                        <div class="add_cart">
-                                                            <button class="button btn-cart" type="button">
-                                                                <span><?php
-                                                                    if($_COOKIE['language'] == 'CN')
-                                                                        echo '添加到購物車';
-                                                                    else
-                                                                        echo 'Add to Cart';
-                                                                    ?></span></button>
-                                                        </div>
+                                                        
                                                     </div>
                                                     <div class="item-info">
                                                         <div class="info-inner">

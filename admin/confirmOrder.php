@@ -66,6 +66,7 @@ if (!isset($_SESSION['userid'])) {
                                         <th>Address</th>
                                         <th>City</th>
                                         <th>Total Amount</th>
+                                        <th>Remarks</th>
                                         <th>Order Date</th>
                                         <th>Status</th>
                                         <th>Action</th>
@@ -86,6 +87,7 @@ if (!isset($_SESSION['userid'])) {
                                             <td><?php echo $bills[$i]["address"]; ?></td>
                                             <td><?php echo $bills[$i]["city"]; ?></td>
                                             <td><?php echo $bills[$i]["total_purchase"]; ?></td>
+                                            <td><?php echo $bills[$i]["remarks"]; ?></td>
                                             <?php
                                             $date = date_create($bills[$i]["updated_at"]);
                                             $date_formatted = date_format($date, "d F y, g:i A");

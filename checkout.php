@@ -108,19 +108,23 @@ $db_handle = new DBController();
                                                             <input type="time" class="form-control" name="deliver_time"
                                                                    value="" required="">
                                                         </div>
-                                                        <div class="form-group col-md-6 mb-3">
+                                                        <div class="form-group col-md-12 mb-3">
+                                                            <label><?php if ($_COOKIE['language'] === 'CN') echo '備註'; else echo 'Remarks';?></label>
+                                                            <textarea class="form-control" name="remarks" rows="4"></textarea>
+                                                        </div>
+                                                        <!--<div class="form-group col-md-6 mb-3">
                                                             <input class="form-check-input card-class" name="addInfo"
                                                                    type="checkbox"
                                                                    value="" id="flexCheckChecked">
                                                             <label class="form-check-label ms-2" for="flexCheckChecked"><?php
-                                                                if($_COOKIE['language'] == 'CN')
+/*                                                                if($_COOKIE['language'] == 'CN')
                                                                     echo '將此數據添加到客戶信息';
                                                                 else
                                                                     echo ' Add this data to customer info';
-                                                                ?>
+                                                                */?>
 
                                                             </label>
-                                                        </div>
+                                                        </div>-->
                                                     </div>
                                                 </div>
                                             </div>

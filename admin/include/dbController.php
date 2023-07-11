@@ -5,7 +5,7 @@ class DBController {
     private $password = "";
     private $database = "four_season";
     private $from_email='noreply@ngt-tech.io';
-    private $notification_email='francis@ngttech.io';
+    private $notification_email='vikas.cheung@gmail.com, sandy0358@gmail.com';
     private $conn;
 
     function __construct() {
